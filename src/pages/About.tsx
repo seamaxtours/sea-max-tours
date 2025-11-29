@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Users, Heart, Anchor, Fish, Waves } from "lucide-react";
+import founderImage from "@/assets/founder-hero.jpg";
 import whaleSharkImage from "@/assets/about-whale-shark.jpg";
 import beachImage from "@/assets/about-beach.jpg";
 import lighthouseImage from "@/assets/about-lighthouse.jpg";
@@ -56,23 +57,28 @@ export default function About() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[60vh] overflow-hidden">
+        <section className="relative h-[70vh] overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: `url(${whaleSharkImage})`,
+              backgroundImage: `url(${founderImage})`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
           
-          <div className="relative h-full flex flex-col justify-center items-center text-center px-4">
-            <div className="max-w-4xl animate-fade-in">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                About Sea Max Tours
-              </h1>
-              <p className="text-xl text-white/90 max-w-2xl mx-auto">
-                Your gateway to discovering the untouched paradise of Mafia Island, Tanzania
-              </p>
+          <div className="relative h-full flex flex-col justify-end pb-16 px-4">
+            <div className="container animate-fade-in">
+              <div className="max-w-3xl">
+                <span className="inline-block text-sm text-primary-foreground/90 font-medium uppercase tracking-wider mb-3 bg-primary/80 px-4 py-1.5 rounded-full">
+                  Meet The Founder
+                </span>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                  Born on Mafia Island,<br />Sharing Its Wonders
+                </h1>
+                <p className="text-xl text-white/90 max-w-2xl">
+                  A lifetime of island knowledge turned into unforgettable adventures for travelers from around the world
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -83,28 +89,29 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in">
                 <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                  Our Story
+                  The Sea Max Tours Story
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-                  Sharing Mafia Island's Magic
+                  A Lifetime on Mafia Island
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  Sea Max Tours was founded by a passionate local who grew up exploring 
-                  every corner of Mafia Island. From childhood days swimming in crystal-clear lagoons 
-                  to diving the legendary Chole Bay, he lived and breathed this island paradise 
-                  his entire life.
+                  Sea Max Tours was born from a simple love story—the love of a local islander for 
+                  his home. Our founder grew up on Mafia Island, spending his childhood diving into 
+                  crystal-clear lagoons, learning to navigate by the stars aboard traditional dhows, 
+                  and discovering secret spots where whale sharks gather each season.
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  What started as sharing our favorite spots with visiting friends has grown into a 
-                  professional tour operation dedicated to showcasing the very best of Mafia Island. 
-                  We believe that authentic experiences come from deep local knowledge, genuine 
-                  passion, and a commitment to preserving the natural wonders that make this island 
-                  so special.
+                  What began as casually showing friends the island's hidden gems evolved into something 
+                  greater. Visitors kept returning, not just for the pristine beaches and marine life, 
+                  but for the authentic connection to Mafia Island that only a true local could provide. 
+                  That's when Sea Max Tours was born—a bridge between this untouched paradise and 
+                  travelers seeking genuine experiences.
                 </p>
                 <p className="text-muted-foreground">
-                  Today, Sea Max Tours is recognized as one of the leading tour operators on Mafia 
-                  Island, offering everything from thrilling whale shark encounters to peaceful 
-                  sandbank picnics, always with a focus on sustainability and unforgettable experiences.
+                  Today, we're proud to be one of Mafia Island's most trusted tour operators, offering 
+                  everything from whale shark encounters to cultural village visits. Every tour is guided 
+                  by locals who know these waters, reefs, and communities intimately—because this isn't 
+                  just our workplace, it's our home.
                 </p>
               </div>
               
