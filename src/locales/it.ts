@@ -218,10 +218,10 @@ export const it = {
   },
   home: {
     welcome: {
-      subtitle: "Benvenuti a MareSereno",
-      title: "Alloggi di Lusso sul Mare",
-      description1: "Situato sulla incontaminata costa mediterranea, MareSereno offre una squisita collezione di appartamenti di lusso e camere d'albergo. I nostri alloggi fronte mare combinano un design elegante con comfort moderni, creando l'ambientazione perfetta per una indimenticabile fuga al mare.",
-      description2: "Che tu stia cercando una fuga romantica, una vacanza in famiglia o un ritiro tranquillo, la nostra vasta gamma di alloggi si adatta a ogni preferenza ed esigenza. Ogni spazio è progettato con cura per fornire viste panoramiche sul mare e accesso diretto alla spiaggia.",
+      subtitle: "Benvenuti a Sea Max Tours",
+      title: "Scopri il Paradiso di Mafia Island",
+      description1: "Mafia Island è un gioiello nascosto al largo della costa della Tanzania, rinomato per le sue spiagge incontaminate, barriere coralline vivaci e incredibile vita marina. I nostri tour guidati da esperti mostrano il meglio di questo paradiso tropicale, dal nuotare con gli squali balena all'esplorare antiche rovine e foreste di mangrovie intatte.",
+      description2: "Vivi avventure indimenticabili intorno a Mafia Island tra cui immersioni e snorkeling di livello mondiale, tour culturali dei villaggi, picnic su banchi di sabbia e navigazione in dhow. Ogni tour è accuratamente realizzato da esperti locali che conoscono ogni angolo segreto e tesoro nascosto di questa straordinaria destinazione insulare.",
       learnMore: "Scopri di Più"
     },
     booking: {
