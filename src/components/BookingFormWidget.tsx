@@ -171,7 +171,6 @@ Please confirm availability for this booking.
               onValueChange={(value) =>
                 setFormData((prev) => ({ ...prev, tourType: value }))
               }
-              required
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select a tour" />
