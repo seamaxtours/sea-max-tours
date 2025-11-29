@@ -118,7 +118,7 @@ export default {
 				},
 				'zoom': {
 					'0%': { transform: 'scale(1)' },
-					'100%': { transform: 'scale(1.1)' }
+					'100%': { transform: 'scale(1.15)' }
 				}
 			},
 			animation: {
@@ -133,7 +133,7 @@ export default {
 				'pulse-slow': 'pulse-slow 4s ease-in-out infinite',
 				'wave': 'wave 12s -2s linear infinite',
 				'button-glow': 'button-glow 3s ease-in-out infinite',
-				'zoom': 'zoom 5s ease-out forwards'
+				'zoom': 'zoom 6s ease-out forwards'
 			}
 		}
 	},
