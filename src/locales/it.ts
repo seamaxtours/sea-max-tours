@@ -1,6 +1,7 @@
 export const it = {
   nav: {
     home: "Home",
+    about: "Chi Siamo",
     apartments: "Tour",
     amenities: "Servizi",
     gallery: "Galleria",
