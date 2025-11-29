@@ -17,6 +17,7 @@ export default function Navbar() {
     { name: t.nav.home, path: "/" },
     { name: t.nav.about, path: "/about" },
     { name: t.nav.apartments, path: "/tours" },
+    { name: t.nav.blog, path: "/blog" },
     { name: t.nav.gallery, path: "/gallery" },
     { name: t.nav.contact, path: "/contact" }
   ];
