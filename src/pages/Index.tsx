@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import BookingForm from "@/components/BookingForm";
+import BookingFormWidget from "@/components/BookingFormWidget";
 import TourCard, { TourProps } from "@/components/TourCard";
 import ReviewsSection from "@/components/ReviewsSection";
 import { Button } from "@/components/ui/button";
@@ -216,6 +217,32 @@ export default function Index() {
         
         {/* Reviews Section */}
         <ReviewsSection />
+        
+        {/* WhatsApp Booking Section */}
+        <section className="relative py-20 bg-gradient-to-r from-primary/5 to-sea-light/20 dark:from-primary/10 dark:to-sea-dark/20 overflow-hidden">
+          <div className="container relative z-10">
+            <div className="max-w-2xl mx-auto text-center mb-12 animate-fade-in">
+              <span className="text-sm text-primary font-medium uppercase tracking-wider">
+                Quick & Easy Booking
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
+                Book Your Tour via WhatsApp
+              </h2>
+              <p className="text-muted-foreground">
+                Get instant confirmation and personalized assistance for your tour booking through WhatsApp
+              </p>
+            </div>
+            <div className="max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]">
+              <BookingFormWidget />
+            </div>
+          </div>
+          
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
+            <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-[#25D366]/30 blur-3xl" />
+            <div className="absolute bottom-10 right-40 w-48 h-48 rounded-full bg-primary/30 blur-3xl" />
+          </div>
+        </section>
         
         {/* Features Section */}
         <section className="section bg-card">
