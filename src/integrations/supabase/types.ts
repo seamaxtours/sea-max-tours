@@ -14,7 +14,157 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          booking_date: string
+          created_at: string
+          guest_email: string
+          guest_name: string
+          guest_phone: string | null
+          id: string
+          participants: number
+          payment_intent_id: string | null
+          special_requests: string | null
+          status: string | null
+          total_price: number
+          tour_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          booking_date: string
+          created_at?: string
+          guest_email: string
+          guest_name: string
+          guest_phone?: string | null
+          id?: string
+          participants: number
+          payment_intent_id?: string | null
+          special_requests?: string | null
+          status?: string | null
+          total_price: number
+          tour_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          booking_date?: string
+          created_at?: string
+          guest_email?: string
+          guest_name?: string
+          guest_phone?: string | null
+          id?: string
+          participants?: number
+          payment_intent_id?: string | null
+          special_requests?: string | null
+          status?: string | null
+          total_price?: number
+          tour_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "bookings_tour_id_fkey"
+            columns: ["tour_id"]
+            isOneToOne: false
+            referencedRelation: "tours"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      reviews: {
+        Row: {
+          comment: string
+          created_at: string
+          id: string
+          rating: number
+          tour_id: string
+          updated_at: string
+          user_id: string
+          user_name: string
+        }
+        Insert: {
+          comment: string
+          created_at?: string
+          id?: string
+          rating: number
+          tour_id: string
+          updated_at?: string
+          user_id: string
+          user_name: string
+        }
+        Update: {
+          comment?: string
+          created_at?: string
+          id?: string
+          rating?: number
+          tour_id?: string
+          updated_at?: string
+          user_id?: string
+          user_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_tour_id_fkey"
+            columns: ["tour_id"]
+            isOneToOne: false
+            referencedRelation: "tours"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tours: {
+        Row: {
+          available: boolean | null
+          category: string | null
+          created_at: string
+          description: string
+          difficulty: string | null
+          duration_hours: number
+          features: string[]
+          id: string
+          image_url: string
+          location: string
+          max_participants: number
+          name: string
+          price: number
+          updated_at: string
+        }
+        Insert: {
+          available?: boolean | null
+          category?: string | null
+          created_at?: string
+          description: string
+          difficulty?: string | null
+          duration_hours: number
+          features?: string[]
+          id?: string
+          image_url: string
+          location: string
+          max_participants: number
+          name: string
+          price: number
+          updated_at?: string
+        }
+        Update: {
+          available?: boolean | null
+          category?: string | null
+          created_at?: string
+          description?: string
+          difficulty?: string | null
+          duration_hours?: number
+          features?: string[]
+          id?: string
+          image_url?: string
+          location?: string
+          max_participants?: number
+          name?: string
+          price?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
