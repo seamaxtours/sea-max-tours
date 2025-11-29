@@ -1,0 +1,400 @@
+export const de = {
+  nav: {
+    home: "Startseite",
+    about: "Über Uns",
+    apartments: "Touren",
+    blog: "Blog",
+    amenities: "Dienstleistungen",
+    gallery: "Galerie",
+    contact: "Kontakt",
+    bookNow: "Tour Buchen"
+  },
+  hero: {
+    subtitle: "UNVERGESSLICHE TOUR-ERLEBNISSE",
+    title: "Entdecken Sie Mafia Island",
+    description: "Erkunden Sie atemberaubende Destinationen mit unseren kuratierten Touren. Von kulturellen Ausflügen bis zu Wasserabenteuern schaffen wir unvergessliche Erlebnisse.",
+    bookStay: "Buchen Sie Ihre Tour",
+    exploreApartments: "Touren Erkunden",
+    scrollDown: "Nach Unten Scrollen"
+  },
+  footer: {
+    description: "Erleben Sie unvergessliche Abenteuer mit unseren fachkundig geführten Touren. Wir sind spezialisiert auf die Schaffung unvergesslicher Erlebnisse, die Sie mit erstaunlichen Zielen verbinden.",
+    quickLinks: "Schnelllinks",
+    contact: "Kontakt",
+    newsletter: "Newsletter",
+    newsletterDesc: "Abonnieren Sie unseren Newsletter für Sonderangebote und Updates.",
+    yourEmail: "Ihre E-Mail-Adresse",
+    subscribe: "Abonnieren",
+    allRights: "Alle Rechte vorbehalten."
+  },
+  bookingForm: {
+    title: "Buchen Sie Ihre Tour",
+    checkIn: "Tour-Datum",
+    checkOut: "Rückkehrdatum",
+    adults: "Erwachsene",
+    children: "Kinder",
+    adult: "Erwachsener",
+    child: "Kind",
+    selectDate: "Datum wählen",
+    checkAvailability: "Verfügbarkeit Prüfen",
+    bookingConfirmed: "Buchung Bestätigt!"
+  },
+  testimonials: {
+    title: "Was Unsere Gäste Sagen",
+    description: "Entdecken Sie, warum unsere Gäste immer wieder für ihre Urlaube am Meer zu uns zurückkommen."
+  },
+  notFound: {
+    title: "Seite Nicht Gefunden",
+    description: "Wir konnten die Seite, die Sie gesucht haben, nicht finden. Vielleicht haben Sie eine falsche Abzweigung im Paradies genommen?",
+    returnHome: "Zurück zur Startseite"
+  },
+  home: {
+    welcome: {
+      subtitle: "Willkommen bei Sea Max Tours",
+      title: "Entdecken Sie das Paradies von Mafia Island",
+      description1: "Mafia Island ist ein verstecktes Juwel vor der Küste Tansanias, bekannt für seine unberührten Strände, lebendigen Korallenriffe und unglaubliche Meereswelt. Unsere fachkundig geführten Touren zeigen das Beste dieses tropischen Paradieses.",
+      description2: "Erleben Sie unvergessliche Abenteuer rund um Mafia Island, einschließlich Weltklasse-Tauchen und Schnorcheln, kulturelle Dorftouren, Sandbank-Picknicks und Dhow-Segeln.",
+      learnMore: "Mehr Erfahren"
+    },
+    booking: {
+      subtitle: "Buchen Sie Ihr Abenteuer",
+      title: "Reservieren Sie Ihre Perfekte Tour",
+      description: "Beginnen Sie mit der Planung Ihres nächsten Abenteuers, indem Sie unsere verfügbaren Touren erkunden und Ihr bevorzugtes Erlebnis buchen.",
+      benefits: ["Sofortbestätigung", "Lokale Expertenführer", "Flexible Stornierung", "Sichere Zahlung"]
+    },
+    featuredApartments: {
+      subtitle: "Beliebte Touren",
+      title: "Vorgestellte Erlebnisse",
+      description: "Entdecken Sie unsere beliebtesten Tourpakete, die jeweils einzigartige Erlebnisse und unvergessliche Abenteuer bieten.",
+      viewAll: "Alle Touren Anzeigen"
+    },
+    amenities: {
+      subtitle: "Hotel-Annehmlichkeiten",
+      title: "Erleben Sie Das Beste",
+      description: "Genießen Sie unsere Premium-Einrichtungen und -Services, die Ihren Aufenthalt außergewöhnlich machen.",
+      features: {
+        beachfront: {
+          title: "Strandlage",
+          description: "Direkter Zugang zu unberührten Stränden mit kristallklarem Wasser."
+        },
+        pools: {
+          title: "Schwimmbäder",
+          description: "Entspannen Sie an unseren Infinity-Pools mit atemberaubendem Meerblick."
+        },
+        restaurant: {
+          title: "Gourmet-Restaurant",
+          description: "Genießen Sie exquisite lokale und internationale Küche."
+        },
+        wifi: {
+          title: "Highspeed-WLAN",
+          description: "Bleiben Sie mit kostenlosem Highspeed-Internet verbunden."
+        },
+        bar: {
+          title: "Strandbar & Café",
+          description: "Erfrischende Getränke und Snacks direkt am Strand serviert."
+        },
+        location: {
+          title: "Erstklassige Lage",
+          description: "In der Nähe von lokalen Attraktionen, Geschäften und Restaurants."
+        }
+      }
+    },
+    cta: {
+      title: "Bereit für Ihr Nächstes Abenteuer?",
+      description: "Buchen Sie Ihre Tour heute und erleben Sie unvergessliche Momente mit erfahrenen Führern an atemberaubenden Orten.",
+      bookNow: "Jetzt Buchen"
+    }
+  },
+  apartments: {
+    title: "Unsere Touren & Erlebnisse",
+    subtitle: "Entdecken Sie unsere Auswahl an fachkundig geführten Touren, von kulturellen Ausflügen bis zu aufregenden Abenteuern.",
+    filters: {
+      guests: "Gäste",
+      anyGuests: "Beliebige Anzahl von Gästen",
+      onePlus: "1+ Gäste",
+      twoPlus: "2+ Gäste",
+      threePlus: "3+ Gäste",
+      fourPlus: "4+ Gäste",
+      location: "Standort",
+      allLocations: "Alle Standorte",
+      priceRange: "Preisspanne",
+      showing: "Anzeigen",
+      of: "von",
+      accommodations: "Unterkünften",
+      resetFilters: "Filter Zurücksetzen",
+      noMatch: "Keine Apartments entsprechen Ihren Filtern",
+      adjustFilters: "Versuchen Sie, Ihre Filterkriterien anzupassen, um mehr Optionen zu sehen.",
+      viewDetails: "Details Anzeigen",
+      features: "Merkmale",
+      more: "mehr"
+    }
+  },
+  gallery: {
+    title: "Fotogalerie",
+    subtitle: "Erkunden Sie unser Küstenparadies durch fesselnde Bilder.",
+    filters: {
+      all: "Alle",
+      exterior: "Außenbereich",
+      rooms: "Zimmer",
+      amenities: "Annehmlichkeiten"
+    }
+  },
+  booking: {
+    title: "Buchen Sie Ihren Aufenthalt",
+    subtitle: "Vervollständigen Sie Ihre Reservierung in wenigen einfachen Schritten.",
+    steps: {
+      chooseRoom: "Zimmer Wählen",
+      guestDetails: "Gästedetails",
+      confirmation: "Bestätigung"
+    },
+    dates: {
+      selectDates: "Daten und Gäste Auswählen",
+      checkIn: "Check-in-Datum",
+      checkOut: "Check-out-Datum",
+      adults: "Erwachsene",
+      children: "Kinder",
+      adult: "Erwachsener",
+      child: "Kind",
+      selectDate: "Datum wählen"
+    },
+    accommodationSelect: {
+      title: "Wählen Sie Ihre Unterkunft",
+      guests: "Gäste",
+      selected: "Ausgewählt",
+      select: "Auswählen",
+      continue: "Weiter"
+    },
+    guestInfo: {
+      title: "Gästeinformationen",
+      firstName: "Vorname",
+      lastName: "Nachname",
+      email: "E-Mail",
+      phone: "Telefon",
+      address: "Adresse",
+      city: "Stadt",
+      zipCode: "Postleitzahl",
+      country: "Land",
+      specialRequests: "Sonderwünsche",
+      specialRequestsPlaceholder: "Besondere Wünsche oder Hinweise für Ihren Aufenthalt"
+    },
+    payment: {
+      title: "Zahlungsinformationen",
+      creditCard: "Kreditkarte",
+      payAtProperty: "An der Unterkunft Zahlen",
+      nameOnCard: "Name auf der Karte",
+      cardNumber: "Kartennummer",
+      cardNumberPlaceholder: "0000 0000 0000 0000",
+      expiryDate: "Ablaufdatum",
+      expiryDatePlaceholder: "MM/JJ",
+      cvc: "CVC",
+      cvcPlaceholder: "123",
+      payAtPropertyInfo: "Sie müssen bei der Ankunft aus Sicherheitsgründen eine gültige Kreditkarte vorlegen, aber die Zahlung wird während Ihres Aufenthalts eingezogen."
+    },
+    summary: {
+      title: "Buchungszusammenfassung",
+      checkIn: "Check-in",
+      checkOut: "Check-out",
+      guests: "Gäste",
+      night: "Nacht",
+      nights: "Nächte",
+      cleaningFee: "Reinigungsgebühr",
+      serviceFee: "Servicegebühr",
+      total: "Gesamt"
+    },
+    confirmation: {
+      title: "Buchungsdetails Überprüfen",
+      accommodationDetails: "Unterkunftsdetails",
+      guestDetails: "Gästedetails",
+      name: "Name",
+      email: "E-Mail",
+      phone: "Telefon",
+      address: "Adresse",
+      city: "Stadt",
+      country: "Land",
+      specialRequests: "Sonderwünsche",
+      paymentMethod: "Zahlungsmethode",
+      creditCard: "Kreditkarte",
+      priceSummary: "Preiszusammenfassung",
+      termsAgree: "Ich stimme den",
+      termsLink: "Geschäftsbedingungen",
+      privacyLink: "Datenschutzrichtlinien",
+      cancellationInfo: "Ich verstehe, dass meine Buchung den Stornierungsbedingungen der Unterkunft unterliegt.",
+      back: "Zurück",
+      confirmBooking: "Buchung Bestätigen",
+      success: "Buchung Bestätigt!",
+      emailSent: "Ihre Reservierung wurde erfolgreich bestätigt. Eine Bestätigungs-E-Mail wurde gesendet an",
+      bookingReference: "Buchungsreferenz",
+      returnToHome: "Zurück zur Startseite"
+    }
+  },
+  contact: {
+    title: "Kontaktieren Sie Uns",
+    subtitle: "Wir sind hier, um Ihr Tour-Erlebnis unvergesslich zu machen. Kontaktieren Sie uns bei Fragen oder Buchungsanfragen.",
+    getInTouch: "Kontakt Aufnehmen",
+    address: "Adresse",
+    phone: "Telefon",
+    email: "E-Mail",
+    socialMedia: "Folgen Sie Uns",
+    receptionHours: "Bürozeiten",
+    checkInTime: "Check-in: Nach 15:00 Uhr",
+    checkOutTime: "Check-out: Vor 11:00 Uhr",
+    sendMessage: "Senden Sie Uns eine Nachricht",
+    fullName: "Vollständiger Name",
+    phoneNumber: "Telefonnummer",
+    subject: "Betreff",
+    message: "Nachricht",
+    howCanWeHelp: "Wie können wir Ihnen helfen?",
+    send: "Nachricht Senden",
+    messageSent: "Nachricht Gesendet!",
+    thankYou: "Vielen Dank für Ihre Kontaktaufnahme. Wir werden Ihre Nachricht so schnell wie möglich beantworten.",
+    faq: "Häufig Gestellte Fragen",
+    faqSubtitle: "Finden Sie schnelle Antworten auf häufig gestellte Fragen zu unseren Unterkünften und Dienstleistungen.",
+    questions: {
+      checkInOut: {
+        question: "Was sind Ihre Check-in- und Check-out-Zeiten?",
+        answer: "Check-in ist ab 15:00 Uhr, und Check-out ist bis 11:00 Uhr. Früher Check-in oder später Check-out können je nach Verfügbarkeit arrangiert werden."
+      },
+      parking: {
+        question: "Gibt es Parkplätze an der Unterkunft?",
+        answer: "Ja, wir bieten kostenloses Parken für alle Gäste. Valet-Parking ist ebenfalls gegen Aufpreis verfügbar."
+      },
+      pets: {
+        question: "Sind Haustiere in den Apartments erlaubt?",
+        answer: "Wir heißen Haustiere in ausgewiesenen haustierfreundlichen Apartments willkommen. Bitte informieren Sie uns im Voraus, da zusätzliche Gebühren anfallen können."
+      },
+      breakfast: {
+        question: "Ist das Frühstück im Zimmerpreis inbegriffen?",
+        answer: "Frühstück ist in ausgewählten Paketen inbegriffen. Sie können die Einbeziehung während des Buchungsvorgangs überprüfen."
+      },
+      transfers: {
+        question: "Bieten Sie Flughafentransfers an?",
+        answer: "Ja, wir bieten Flughafentransfers gegen Aufpreis an. Bitte kontaktieren Sie unseren Concierge mindestens 48 Stunden vor Ihrer Ankunft."
+      },
+      amenities: {
+        question: "Welche Annehmlichkeiten sind in der Unterkunft verfügbar?",
+        answer: "Unsere Unterkunft verfügt über Schwimmbäder, Spa, Restaurants, Strandbar, Fitnesscenter und direkten Strandzugang. Alle Apartments verfügen über WLAN, Klimaanlage und moderne Geräte."
+      }
+    }
+  },
+  apartmentDescriptions: {
+    "1": {
+      name: "Deluxe Meerblick Suite",
+      description: "Luxuriöse Suite mit Panorama-Meerblick, modernen Annehmlichkeiten und privatem Balkon."
+    },
+    "2": {
+      name: "Premium Familien-Apartment",
+      description: "Geräumiges Apartment ideal für Familien, mit kompletter Küche und atemberaubendem Küstenblick."
+    },
+    "3": {
+      name: "Executive Beach Studio",
+      description: "Elegantes Studio mit direktem Strandzugang, modernem Design und Premium-Ausstattung."
+    },
+    "4": {
+      name: "Luxus Penthouse Suite",
+      description: "Exklusive Suite im obersten Stockwerk mit weitläufiger Terrasse und Panorama-Meerblick."
+    },
+    "5": {
+      name: "Klassisches Doppelzimmer",
+      description: "Komfortables Hotelzimmer mit modernen Annehmlichkeiten und teilweisem Meerblick."
+    },
+    "6": {
+      name: "Gartenblick-Apartment",
+      description: "Ruhiges Apartment umgeben von üppigen Gärten, nur wenige Schritte vom Strand entfernt."
+    }
+  },
+  amenitiesPage: {
+    title: "Unsere Annehmlichkeiten",
+    subtitle: "Entdecken Sie die luxuriösen Annehmlichkeiten und Dienstleistungen, die Ihren Aufenthalt unvergesslich machen.",
+    description: "Bei MareSereno widmen wir uns der Bereitstellung eines umfassenden und luxuriösen Aufenthaltserlebnisses.",
+    categories: {
+      wellness: {
+        title: "Wellness & Entspannung",
+        description: "Gönnen Sie sich unsere Wellness-Dienstleistungen, die darauf ausgelegt sind, Körper und Geist zu verjüngen.",
+        items: [
+          {
+            title: "Luxus-Spa",
+            description: "Unser Spa bietet eine vollständige Palette von Behandlungen, von traditionellen Therapien bis zu modernsten Schönheitsbehandlungen."
+          },
+          {
+            title: "Fitnesscenter",
+            description: "Halten Sie Ihre Fitnessroutine mit unserem hochmodernen Fitnessstudio mit Panorama-Meerblick aufrecht."
+          },
+          {
+            title: "Infinity Pool",
+            description: "Tauchen Sie ein in unseren Infinity-Pool, während Sie den endlosen Horizont des Meeres bewundern."
+          },
+          {
+            title: "Strand-Yoga",
+            description: "Nehmen Sie an unseren morgendlichen Yoga-Sitzungen am Strand für ein revitalisierendes Erwachen teil."
+          }
+        ]
+      },
+      dining: {
+        title: "Gastronomie",
+        description: "Entdecken Sie das Beste der lokalen und internationalen Küche in unseren Restaurants und Bars.",
+        items: [
+          {
+            title: "Gourmet-Restaurant",
+            description: "Genießen Sie feine Gerichte, die von unseren Köchen mit frischen lokalen Zutaten zubereitet werden."
+          },
+          {
+            title: "Strandbar",
+            description: "Genießen Sie erfrischende Cocktails und leichte Snacks mit den Füßen im Sand."
+          },
+          {
+            title: "Lounge Bar",
+            description: "Entspannen Sie sich mit einer Auswahl an edlen Weinen und Spirituosen in elegantem Ambiente."
+          },
+          {
+            title: "Zimmerservice",
+            description: "Genießen Sie Gourmet-Mahlzeiten in der Privatsphäre Ihres Apartments, rund um die Uhr verfügbar."
+          }
+        ]
+      },
+      services: {
+        title: "Zusätzliche Dienstleistungen",
+        description: "Nutzen Sie unsere zusätzlichen Dienstleistungen für einen problemlosen Aufenthalt.",
+        items: [
+          {
+            title: "24/7 Concierge",
+            description: "Unser Concierge-Team steht Ihnen jederzeit zur Verfügung, um Sie bei jeder Anfrage zu unterstützen."
+          },
+          {
+            title: "Flughafentransfers",
+            description: "Reisen Sie bequem zum und vom Flughafen mit unserem privaten Transferservice."
+          },
+          {
+            title: "Autovermietung",
+            description: "Erkunden Sie die Gegend mit unserer Flotte von Premium-Fahrzeugen, die zur Miete verfügbar sind."
+          },
+          {
+            title: "Geführte Ausflüge",
+            description: "Entdecken Sie lokale Sehenswürdigkeiten mit unseren personalisierten Expertenführungen."
+          }
+        ]
+      },
+      entertainment: {
+        title: "Unterhaltung",
+        description: "Genießen Sie eine Vielzahl von Freizeitaktivitäten für jeden Geschmack.",
+        items: [
+          {
+            title: "Wassersport",
+            description: "Probieren Sie eine breite Palette von Wassersportarten aus, vom Paddleboarding bis zum Jetski."
+          },
+          {
+            title: "Kinderspielplatz",
+            description: "Die Kleinen können sich auf unserem sicheren und beaufsichtigten Spielplatz vergnügen."
+          },
+          {
+            title: "Themenabende",
+            description: "Nehmen Sie an unseren wöchentlichen Themenabenden mit Live-Musik und Unterhaltung teil."
+          },
+          {
+            title: "Bibliothek & Spielzimmer",
+            description: "Entspannen Sie sich mit einem guten Buch oder genießen Sie Brettspiele in unserem Gemeinschaftsraum."
+          }
+        ]
+      }
+    }
+  }
+};
