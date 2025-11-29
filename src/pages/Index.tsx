@@ -1,91 +1,75 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import BookingForm from "@/components/BookingForm";
-import TestimonialsSection from "@/components/TestimonialsSection";
-import ApartmentCard, { ApartmentProps } from "@/components/ApartmentCard";
+import TourCard, { TourProps } from "@/components/TourCard";
+import ReviewsSection from "@/components/ReviewsSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Wifi, Utensils, Waves, LifeBuoy, MapPin, Coffee } from "lucide-react";
+import { ArrowRight, Compass, Shield, Award, Users, MapPin, Clock } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-
-// Sample apartments data
-const featuredApartments: ApartmentProps[] = [
-  {
-    id: "1",
-    name: "Deluxe Sea View Suite",
-    description: "Luxurious suite with panoramic sea views, modern amenities, and a private balcony.",
-    price: 180,
-    capacity: 2,
-    size: 45,
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop",
-    location: "Beachfront",
-    features: ["Wi-Fi", "Kitchen", "Bathroom", "Air Conditioning", "TV", "Balcony"]
-  },
-  {
-    id: "2",
-    name: "Premium Family Apartment",
-    description: "Spacious apartment ideal for families, with full kitchen and stunning coastal views.",
-    price: 250,
-    capacity: 4,
-    size: 75,
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
-    location: "Second row",
-    features: ["Wi-Fi", "Kitchen", "Bathroom", "Air Conditioning", "TV", "Washing Machine"]
-  },
-  {
-    id: "3",
-    name: "Executive Beach Studio",
-    description: "Elegant studio with direct beach access, modern design, and premium finishes.",
-    price: 150,
-    capacity: 2,
-    size: 35,
-    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&h=600&fit=crop",
-    location: "Beachfront",
-    features: ["Wi-Fi", "Kitchenette", "Bathroom", "Air Conditioning", "TV"]
-  }
-];
+import { supabase } from "@/integrations/supabase/client";
 
 export default function Index() {
   const { t } = useLanguage();
+  const [featuredTours, setFeaturedTours] = useState<TourProps[]>([]);
+  const [loading, setLoading] = useState(true);
   
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
+    
+    const fetchTours = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('tours')
+          .select('*')
+          .eq('available', true)
+          .limit(3);
+        
+        if (error) throw error;
+        setFeaturedTours(data || []);
+      } catch (error) {
+        console.error('Error fetching tours:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    fetchTours();
   }, []);
   
   // Feature items
   const features = [
     {
-      icon: <Waves className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.beachfront.title,
-      description: t.home.amenities.features.beachfront.description
+      icon: <Compass className="h-8 w-8 text-primary" />,
+      title: "Expert Guides",
+      description: "Local experts with deep knowledge of every destination"
     },
     {
-      icon: <LifeBuoy className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.pools.title,
-      description: t.home.amenities.features.pools.description
+      icon: <Shield className="h-8 w-8 text-primary" />,
+      title: "Safe & Secure",
+      description: "Your safety is our priority with comprehensive insurance"
     },
     {
-      icon: <Utensils className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.restaurant.title,
-      description: t.home.amenities.features.restaurant.description
+      icon: <Award className="h-8 w-8 text-primary" />,
+      title: "Award Winning",
+      description: "Recognized for excellence in tour experiences"
     },
     {
-      icon: <Wifi className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.wifi.title,
-      description: t.home.amenities.features.wifi.description
-    },
-    {
-      icon: <Coffee className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.bar.title,
-      description: t.home.amenities.features.bar.description
+      icon: <Users className="h-8 w-8 text-primary" />,
+      title: "Small Groups",
+      description: "Intimate group sizes for personalized attention"
     },
     {
       icon: <MapPin className="h-8 w-8 text-primary" />,
-      title: t.home.amenities.features.location.title,
-      description: t.home.amenities.features.location.description
+      title: "Best Locations",
+      description: "Carefully selected destinations and hidden gems"
+    },
+    {
+      icon: <Clock className="h-8 w-8 text-primary" />,
+      title: "Flexible Timing",
+      description: "Multiple departure times to suit your schedule"
     }
   ];
   
@@ -185,7 +169,7 @@ export default function Index() {
           </div>
         </section>
         
-        {/* Featured Apartments */}
+        {/* Featured Tours */}
         <section className="section">
           <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
@@ -200,26 +184,38 @@ export default function Index() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredApartments.map((apartment, index) => (
-                <div key={apartment.id} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
-                  <ApartmentCard apartment={apartment} />
+            {loading ? (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">Loading tours...</p>
+              </div>
+            ) : featuredTours.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {featuredTours.map((tour, index) => (
+                    <div key={tour.id} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
+                      <TourCard tour={tour} />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-            
-            <div className="text-center mt-12">
-              <Button asChild className="btn-primary">
-                <Link to="/apartments">
-                  {t.home.featuredApartments.viewAll} <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-            </div>
+                
+                <div className="text-center mt-12">
+                  <Button asChild className="btn-primary">
+                    <Link to="/apartments">
+                      {t.home.featuredApartments.viewAll} <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">No tours available at the moment.</p>
+              </div>
+            )}
           </div>
         </section>
         
-        {/* Testimonials Section */}
-        <TestimonialsSection />
+        {/* Reviews Section */}
+        <ReviewsSection />
         
         {/* Features Section */}
         <section className="section bg-card">

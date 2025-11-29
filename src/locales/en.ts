@@ -1,22 +1,22 @@
 export const en = {
   nav: {
     home: "Home",
-    apartments: "Apartments",
+    apartments: "Tours",
     amenities: "Amenities",
     gallery: "Gallery",
     contact: "Contact",
-    bookNow: "Book Now"
+    bookNow: "Book Tour"
   },
   hero: {
-    subtitle: "BEACHFRONT LUXURY ACCOMMODATION",
-    title: "Experience Seaside Tranquility",
-    description: "Discover our exclusive collection of luxury beachfront apartments and hotel rooms, offering unparalleled comfort and breathtaking sea views.",
-    bookStay: "Book Your Stay",
-    exploreApartments: "Explore Apartments",
+    subtitle: "UNFORGETTABLE TOUR EXPERIENCES",
+    title: "Discover Amazing Adventures",
+    description: "Explore breathtaking destinations with our expertly curated tours. From cultural excursions to thrilling outdoor adventures, we create unforgettable experiences.",
+    bookStay: "Book Your Tour",
+    exploreApartments: "Explore Tours",
     scrollDown: "Scroll Down"
   },
   footer: {
-    description: "Luxurious beachfront apartments and hotel rooms with stunning sea views, offering the perfect blend of comfort and elegance for your dream vacation.",
+    description: "Experience unforgettable adventures with our expertly guided tours. We specialize in creating memorable experiences that connect you with amazing destinations.",
     quickLinks: "Quick Links",
     contact: "Contact",
     newsletter: "Newsletter",
@@ -26,9 +26,9 @@ export const en = {
     allRights: "All rights reserved."
   },
   bookingForm: {
-    title: "Book Your Stay",
-    checkIn: "Check-in Date",
-    checkOut: "Check-out Date",
+    title: "Book Your Tour",
+    checkIn: "Tour Date",
+    checkOut: "Return Date",
     adults: "Adults",
     children: "Children",
     adult: "Adult",
@@ -48,23 +48,23 @@ export const en = {
   },
   home: {
     welcome: {
-      subtitle: "Welcome to MareSereno",
-      title: "Luxury Seaside Accommodations",
-      description1: "Nestled on the pristine Mediterranean coastline, MareSereno offers an exquisite collection of luxury apartments and hotel rooms. Our beachfront accommodations combine elegant design with modern comfort, creating the perfect setting for an unforgettable seaside getaway.",
-      description2: "Whether you're seeking a romantic escape, a family vacation, or a peaceful retreat, our diverse range of accommodations caters to every preference and need. Each space is thoughtfully designed to provide panoramic sea views and direct beach access.",
+      subtitle: "Welcome to Adventure Tours",
+      title: "Expertly Curated Tour Experiences",
+      description1: "We specialize in creating unforgettable travel experiences that connect you with the world's most amazing destinations. Our expertly guided tours combine cultural immersion, adventure, and comfort to deliver memories that last a lifetime.",
+      description2: "Whether you're seeking thrilling outdoor adventures, cultural discoveries, or relaxing escapes, our diverse range of tours caters to every travel style and interest. Each experience is carefully crafted by local experts who know the destinations intimately.",
       learnMore: "Learn More"
     },
     booking: {
-      subtitle: "Book Your Stay",
-      title: "Reserve Your Perfect Getaway",
-      description: "Take the first step towards your dream vacation by checking availability and securing your preferred dates. Our simple booking process ensures a seamless experience from reservation to arrival.",
-      benefits: ["Instant confirmation", "Best rate guarantee", "Flexible cancellation options", "Secure payment"]
+      subtitle: "Book Your Adventure",
+      title: "Reserve Your Perfect Tour",
+      description: "Start planning your next adventure by exploring our available tours and booking your preferred experience. Our streamlined booking process makes it easy to secure your spot.",
+      benefits: ["Instant confirmation", "Expert local guides", "Flexible cancellation", "Secure payment"]
     },
     featuredApartments: {
-      subtitle: "Our Accommodations",
-      title: "Featured Apartments",
-      description: "Discover our most popular accommodation options, each offering a perfect blend of comfort, style, and breathtaking sea views.",
-      viewAll: "View All Apartments"
+      subtitle: "Popular Tours",
+      title: "Featured Experiences",
+      description: "Discover our most popular tour packages, each offering unique experiences and unforgettable adventures.",
+      viewAll: "View All Tours"
     },
     amenities: {
       subtitle: "Hotel Amenities",
@@ -98,14 +98,14 @@ export const en = {
       }
     },
     cta: {
-      title: "Ready for Your Dream Vacation?",
-      description: "Book your stay today and experience the perfect blend of luxury, comfort, and stunning sea views.",
-      bookNow: "Book Now"
+      title: "Ready for Your Next Adventure?",
+      description: "Book your tour today and experience unforgettable moments with expert guides in breathtaking locations.",
+      bookNow: "Book Tour Now"
     }
   },
   apartments: {
-    title: "Our Apartments & Rooms",
-    subtitle: "Discover our selection of premium accommodations, ranging from cozy studios to luxurious penthouses.",
+    title: "Our Tours & Experiences",
+    subtitle: "Discover our selection of expertly guided tours, from cultural excursions to thrilling adventures.",
     filters: {
       guests: "Guests",
       anyGuests: "Any number of guests",
