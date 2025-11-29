@@ -24,6 +24,7 @@ const languages: Language[] = [
   { code: "de", name: "Deutsch", flag: "🇩🇪" },
   { code: "zh", name: "中文", flag: "🇨🇳" },
   { code: "ja", name: "日本語", flag: "🇯🇵" },
+  { code: "ru", name: "Русский", flag: "🇷🇺" },
 ];
 
 export default function LanguageSelector() {
