@@ -16,7 +16,7 @@ export default function Navbar() {
   const navLinks = [
     { name: t.nav.home, path: "/" },
     { name: t.nav.about, path: "/about" },
-    { name: t.nav.apartments, path: "/apartments" },
+    { name: t.nav.apartments, path: "/tours" },
     { name: t.nav.amenities, path: "/amenities" },
     { name: t.nav.gallery, path: "/gallery" },
     { name: t.nav.contact, path: "/contact" }
