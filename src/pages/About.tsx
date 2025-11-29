@@ -57,26 +57,26 @@ export default function About() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[70vh] overflow-hidden">
+        <section className="relative h-[75vh] overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: `url(${founderImage})`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/75" />
           
-          <div className="relative h-full flex flex-col justify-end pb-16 px-4">
+          <div className="relative h-full flex flex-col justify-end pb-12 px-4">
             <div className="container animate-fade-in">
-              <div className="max-w-3xl">
-                <span className="inline-block text-sm text-primary-foreground/90 font-medium uppercase tracking-wider mb-3 bg-primary/80 px-4 py-1.5 rounded-full">
+              <div className="max-w-2xl">
+                <span className="inline-block text-xs md:text-sm text-primary-foreground/90 font-medium uppercase tracking-wider mb-2 bg-primary/80 px-3 py-1 rounded-full">
                   Meet The Founder
                 </span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-                  Born on Mafia Island,<br />Sharing Its Wonders
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
+                  Born on Mafia Island
                 </h1>
-                <p className="text-xl text-white/90 max-w-2xl">
-                  A lifetime of island knowledge turned into unforgettable adventures for travelers from around the world
+                <p className="text-base md:text-lg text-white/90">
+                  A lifetime of island knowledge, shared with the world
                 </p>
               </div>
             </div>
