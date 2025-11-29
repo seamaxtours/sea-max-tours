@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapPin, Phone, Mail, Clock, Send, Check } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Check, Instagram, Facebook } from "lucide-react";
+import { SiTiktok } from "react-icons/si";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -92,9 +93,9 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold mb-1">{t.contact.address}</h3>
                       <p className="text-muted-foreground">
-                        123 Seaside Boulevard<br />
-                        Costa Bella, 12345<br />
-                        Italy
+                        61701<br />
+                        Kilindoni, Mafia Island<br />
+                        Tanzania
                       </p>
                     </div>
                   </div>
@@ -105,8 +106,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">{t.contact.phone}</h3>
-                      <p className="text-muted-foreground">+39 123 4567 890</p>
-                      <p className="text-muted-foreground">+39 098 7654 321 (Reservations)</p>
+                      <a href="tel:+255715333801" className="text-muted-foreground hover:text-primary transition-colors">
+                        +255 715 333 801
+                      </a>
                     </div>
                   </div>
                   
@@ -116,8 +118,9 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">{t.contact.email}</h3>
-                      <p className="text-muted-foreground">info@maresereno.com</p>
-                      <p className="text-muted-foreground">reservations@maresereno.com</p>
+                      <a href="mailto:seamaxtours@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        seamaxtours@gmail.com
+                      </a>
                     </div>
                   </div>
                   
@@ -126,19 +129,43 @@ export default function Contact() {
                       <Clock className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">{t.contact.receptionHours}</h3>
-                      <p className="text-muted-foreground">
-                        Monday - Sunday: 24 hours<br />
-                        {t.contact.checkInTime}<br />
-                        {t.contact.checkOutTime}
-                      </p>
+                      <h3 className="font-semibold mb-1">{t.contact.socialMedia}</h3>
+                      <div className="flex gap-4 mt-2">
+                        <a 
+                          href="https://instagram.com/seamaxtours" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                          aria-label="Instagram"
+                        >
+                          <Instagram className="h-5 w-5" />
+                        </a>
+                        <a 
+                          href="https://facebook.com/seamaxtours" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                          aria-label="Facebook"
+                        >
+                          <Facebook className="h-5 w-5" />
+                        </a>
+                        <a 
+                          href="https://tiktok.com/@seamaxtours" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-muted-foreground hover:text-primary transition-colors"
+                          aria-label="TikTok"
+                        >
+                          <SiTiktok className="h-5 w-5" />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </div>
                 
                 <div className="aspect-video rounded-xl overflow-hidden">
                   <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387191.03606358136!2d14.165818971864153!3d40.85529294646443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x133b0a3c328d896b%3A0x309e11f99628150!2sGulf%20of%20Naples!5e0!3m2!1sen!2sus!4v1628613152777!5m2!1sen!2sus" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.04587850144!2d39.67586397910155!3d-7.929452900000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185d5f3e9c5f3b7d%3A0x3e4b7e0b5f5c0b8d!2sKilindoni%2C%20Tanzania!5e0!3m2!1sen!2sus!4v1628613152777!5m2!1sen!2sus" 
                     width="100%" 
                     height="100%" 
                     style={{ border: 0 }} 
