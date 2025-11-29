@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Award, Users, Heart, Anchor, Fish, Waves } from "lucide-react";
 import whaleSharkImage from "@/assets/about-whale-shark.jpg";
 import beachImage from "@/assets/about-beach.jpg";
+import lighthouseImage from "@/assets/about-lighthouse.jpg";
+import swimmingImage from "@/assets/about-swimming.jpg";
 
 export default function About() {
   const values = [
@@ -109,15 +111,15 @@ export default function About() {
               <div className="relative animate-fade-in [animation-delay:200ms]">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop"
-                    alt="Team on beach" 
+                    src={lighthouseImage}
+                    alt="Mafia Island landmark" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-6 -right-6 w-2/3 rounded-2xl overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop"
-                    alt="Diving experience" 
+                    src={swimmingImage}
+                    alt="Swimming in crystal clear waters" 
                     className="w-full h-full object-cover"
                   />
                 </div>
