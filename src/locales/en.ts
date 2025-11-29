@@ -48,10 +48,10 @@ export const en = {
   },
   home: {
     welcome: {
-      subtitle: "Welcome to Adventure Tours",
-      title: "Expertly Curated Tour Experiences",
-      description1: "We specialize in creating unforgettable travel experiences that connect you with the world's most amazing destinations. Our expertly guided tours combine cultural immersion, adventure, and comfort to deliver memories that last a lifetime.",
-      description2: "Whether you're seeking thrilling outdoor adventures, cultural discoveries, or relaxing escapes, our diverse range of tours caters to every travel style and interest. Each experience is carefully crafted by local experts who know the destinations intimately.",
+      subtitle: "Welcome to Sea Max Tours",
+      title: "Discover Mafia Island Paradise",
+      description1: "Mafia Island is a hidden gem off the coast of Tanzania, renowned for its pristine beaches, vibrant coral reefs, and incredible marine life. Our expertly guided tours showcase the best of this tropical paradise, from swimming with whale sharks to exploring ancient ruins and untouched mangrove forests.",
+      description2: "Experience unforgettable adventures around Mafia Island including world-class diving and snorkeling, cultural village tours, sandbank picnics, and dhow sailing. Each tour is carefully crafted by local experts who know every secret spot and hidden treasure of this extraordinary island destination.",
       learnMore: "Learn More"
     },
     booking: {
