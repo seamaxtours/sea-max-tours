@@ -85,10 +85,10 @@ export default function About() {
                   Sharing Mafia Island's Magic
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  Sea Max Tours was founded by a group of passionate locals who grew up exploring 
+                  Sea Max Tours was founded by a passionate local who grew up exploring 
                   every corner of Mafia Island. From childhood days swimming in crystal-clear lagoons 
-                  to diving the legendary Chole Bay, we've lived and breathed this island paradise 
-                  our entire lives.
+                  to diving the legendary Chole Bay, he lived and breathed this island paradise 
+                  his entire life.
                 </p>
                 <p className="text-muted-foreground mb-6">
                   What started as sharing our favorite spots with visiting friends has grown into a 
