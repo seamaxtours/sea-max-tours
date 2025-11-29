@@ -5,6 +5,8 @@ import { it } from '../locales/it';
 import { fr } from '../locales/fr';
 import { es } from '../locales/es';
 import { de } from '../locales/de';
+import { zh } from '../locales/zh';
+import { ja } from '../locales/ja';
 
 type Translations = typeof en;
 
@@ -19,7 +21,9 @@ const translations: Record<string, Translations> = {
   it,
   fr,
   es,
-  de
+  de,
+  zh,
+  ja
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
