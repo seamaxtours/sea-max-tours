@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import BookingFormWidget from "@/components/BookingFormWidget";
 import { MapPin, Phone, Mail, Clock, Send, Check, Instagram, Facebook } from "lucide-react";
 import { SiTiktok } from "react-icons/si";
 import { Button } from "@/components/ui/button";
@@ -77,6 +78,21 @@ export default function Contact() {
           </div>
         </section>
         
+        {/* Quick Booking Section */}
+        <section className="section bg-muted/50">
+          <div className="container">
+            <div className="max-w-2xl mx-auto text-center mb-12 animate-fade-in">
+              <h2 className="text-3xl font-bold mb-4">Quick Booking via WhatsApp</h2>
+              <p className="text-muted-foreground">
+                Send us a booking request directly through WhatsApp for the fastest response!
+              </p>
+            </div>
+            <div className="max-w-2xl mx-auto animate-fade-in [animation-delay:200ms]">
+              <BookingFormWidget />
+            </div>
+          </div>
+        </section>
+
         {/* Contact Information & Form */}
         <section className="section">
           <div className="container">
