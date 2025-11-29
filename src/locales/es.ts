@@ -251,28 +251,28 @@ export const es = {
     faqSubtitle: "Encuentra respuestas rápidas a las preguntas más comunes sobre nuestros alojamientos y servicios.",
     questions: {
       checkInOut: {
-        question: "¿Cuáles son sus horarios de entrada y salida?",
-        answer: "La entrada es a partir de las 15:00, y la salida es hasta las 11:00. La entrada anticipada o salida tardía pueden organizarse según disponibilidad."
+        question: "¿Cuál es la mejor época para visitar la isla de Mafia?",
+        answer: "De octubre a marzo es ideal para encuentros con tiburones ballena y buceo. La temporada seca (junio-octubre) ofrece un clima excelente. Cada temporada trae oportunidades únicas de vida marina."
       },
       parking: {
-        question: "¿Hay estacionamiento disponible en la propiedad?",
-        answer: "Sí, ofrecemos estacionamiento gratuito para todos los huéspedes. También está disponible el servicio de valet por un cargo adicional."
+        question: "¿Cuándo puedo ver tiburones ballena?",
+        answer: "Los tiburones ballena se observan con mayor frecuencia de octubre a marzo, con temporada alta de noviembre a febrero. Tenemos una tasa de éxito estimada del 80-90% durante estos meses."
       },
       pets: {
-        question: "¿Se permiten mascotas en los apartamentos?",
-        answer: "Damos la bienvenida a mascotas en apartamentos designados. Por favor infórmanos con anticipación, ya que pueden aplicar cargos adicionales."
+        question: "¿Necesito certificación de buceo?",
+        answer: "Para tours de buceo, se requiere certificación PADI o equivalente. Ofrecemos tours de snorkel para principiantes que no requieren certificación. También están disponibles cursos Discover Scuba."
       },
       breakfast: {
-        question: "¿Está incluido el desayuno en la tarifa de la habitación?",
-        answer: "El desayuno está incluido en paquetes selectos. Puedes verificar la inclusión durante el proceso de reserva."
+        question: "¿Qué debo traer en los tours?",
+        answer: "Traiga protector solar (seguro para arrecifes), sombrero, gafas de sol, traje de baño, toalla y cámara impermeable. Proporcionamos equipo de snorkel, chalecos salvavidas y refrescos en todos los tours."
       },
       transfers: {
-        question: "¿Ofrecen traslados al aeropuerto?",
-        answer: "Sí, ofrecemos traslados al aeropuerto por un cargo adicional. Por favor contacta a nuestra conserjería al menos 48 horas antes de tu llegada."
+        question: "¿Cómo llego a la isla de Mafia?",
+        answer: "La isla de Mafia es accesible mediante vuelos diarios desde Dar es Salaam (30 minutos) o Zanzíbar (45 minutos). Podemos organizar traslados al aeropuerto y recomendar operadores de vuelos confiables."
       },
       amenities: {
-        question: "¿Qué servicios están disponibles en la propiedad?",
-        answer: "Nuestra propiedad cuenta con piscinas, spa, restaurantes, bar de playa, gimnasio y acceso directo a la playa. Todos los apartamentos incluyen Wi-Fi, aire acondicionado y electrodomésticos modernos."
+        question: "¿Están incluidas las tarifas del parque marino?",
+        answer: "Las tarifas del parque marino ($20-25 por persona por día) son separadas y se pagan directamente en la oficina del parque marino. Estas tarifas apoyan los esfuerzos de conservación en el Parque Marino de la Isla de Mafia."
       }
     }
   },

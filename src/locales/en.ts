@@ -251,28 +251,28 @@ export const en = {
     faqSubtitle: "Find quick answers to commonly asked questions about our accommodations and services.",
     questions: {
       checkInOut: {
-        question: "What are your check-in and check-out times?",
-        answer: "Check-in is from 3:00 PM onwards, and check-out is until 11:00 AM. Early check-in or late check-out may be arranged based on availability."
+        question: "When is the best time to visit Mafia Island?",
+        answer: "October to March is ideal for whale shark encounters and diving. The dry season (June-October) offers excellent weather. Each season brings unique marine life opportunities."
       },
       parking: {
-        question: "Is parking available at the property?",
-        answer: "Yes, we offer complimentary parking for all guests. Valet parking service is also available for an additional fee."
+        question: "When can I see whale sharks?",
+        answer: "Whale sharks are most commonly spotted from October to March, with peak season from November to February. We have an estimated 80-90% success rate during these months."
       },
       pets: {
-        question: "Are pets allowed in the apartments?",
-        answer: "We welcome pets in designated pet-friendly apartments. Please inform us in advance if you plan to bring a pet, as additional charges may apply."
+        question: "Do I need diving certification?",
+        answer: "For diving tours, PADI or equivalent certification is required. We offer beginner-friendly snorkeling tours that require no certification. Discover Scuba courses are also available."
       },
       breakfast: {
-        question: "Is breakfast included in the room rate?",
-        answer: "Breakfast is included in select room packages. You can check the inclusion during the booking process or add it to your reservation at any time."
+        question: "What should I bring on the tours?",
+        answer: "Bring sunscreen (reef-safe), hat, sunglasses, swimwear, towel, and waterproof camera. We provide snorkeling equipment, life jackets, and refreshments on all tours."
       },
       transfers: {
-        question: "Do you offer airport transfers?",
-        answer: "Yes, we offer airport transfers for an additional fee. Please contact our concierge at least 48 hours before your arrival to arrange transportation."
+        question: "How do I get to Mafia Island?",
+        answer: "Mafia Island is accessible via daily flights from Dar es Salaam (30 minutes) or Zanzibar (45 minutes). We can arrange airport transfers and recommend reliable flight operators."
       },
       amenities: {
-        question: "What amenities are available at the property?",
-        answer: "Our property features swimming pools, a spa, restaurants, a beach bar, fitness center, and direct beach access. All apartments include Wi-Fi, air conditioning, and modern appliances."
+        question: "Are marine park fees included?",
+        answer: "Marine park fees ($20-25 per person per day) are separate and paid directly at the marine park office. These fees support conservation efforts in Mafia Island Marine Park."
       }
     }
   },

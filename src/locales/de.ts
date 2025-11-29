@@ -251,28 +251,28 @@ export const de = {
     faqSubtitle: "Finden Sie schnelle Antworten auf häufig gestellte Fragen zu unseren Unterkünften und Dienstleistungen.",
     questions: {
       checkInOut: {
-        question: "Was sind Ihre Check-in- und Check-out-Zeiten?",
-        answer: "Check-in ist ab 15:00 Uhr, und Check-out ist bis 11:00 Uhr. Früher Check-in oder später Check-out können je nach Verfügbarkeit arrangiert werden."
+        question: "Wann ist die beste Zeit, um die Mafia-Insel zu besuchen?",
+        answer: "Oktober bis März ist ideal für Walhai-Begegnungen und Tauchen. Die Trockenzeit (Juni-Oktober) bietet ausgezeichnetes Wetter. Jede Saison bringt einzigartige Meereslebewesen-Möglichkeiten."
       },
       parking: {
-        question: "Gibt es Parkplätze an der Unterkunft?",
-        answer: "Ja, wir bieten kostenloses Parken für alle Gäste. Valet-Parking ist ebenfalls gegen Aufpreis verfügbar."
+        question: "Wann kann ich Walhaie sehen?",
+        answer: "Walhaie werden am häufigsten von Oktober bis März gesichtet, mit Hochsaison von November bis Februar. Wir haben eine geschätzte Erfolgsquote von 80-90% während dieser Monate."
       },
       pets: {
-        question: "Sind Haustiere in den Apartments erlaubt?",
-        answer: "Wir heißen Haustiere in ausgewiesenen haustierfreundlichen Apartments willkommen. Bitte informieren Sie uns im Voraus, da zusätzliche Gebühren anfallen können."
+        question: "Benötige ich eine Tauchzertifizierung?",
+        answer: "Für Tauchtouren ist eine PADI- oder gleichwertige Zertifizierung erforderlich. Wir bieten anfängerfreundliche Schnorcheltouren an, die keine Zertifizierung erfordern. Discover Scuba-Kurse sind ebenfalls verfügbar."
       },
       breakfast: {
-        question: "Ist das Frühstück im Zimmerpreis inbegriffen?",
-        answer: "Frühstück ist in ausgewählten Paketen inbegriffen. Sie können die Einbeziehung während des Buchungsvorgangs überprüfen."
+        question: "Was sollte ich auf den Touren mitbringen?",
+        answer: "Bringen Sie Sonnencreme (riffsicher), Hut, Sonnenbrille, Badeanzug, Handtuch und wasserfeste Kamera mit. Wir stellen Schnorchelausrüstung, Schwimmwesten und Erfrischungen auf allen Touren bereit."
       },
       transfers: {
-        question: "Bieten Sie Flughafentransfers an?",
-        answer: "Ja, wir bieten Flughafentransfers gegen Aufpreis an. Bitte kontaktieren Sie unseren Concierge mindestens 48 Stunden vor Ihrer Ankunft."
+        question: "Wie komme ich zur Mafia-Insel?",
+        answer: "Die Mafia-Insel ist über tägliche Flüge von Dar es Salaam (30 Minuten) oder Sansibar (45 Minuten) erreichbar. Wir können Flughafentransfers arrangieren und zuverlässige Flugbetreiber empfehlen."
       },
       amenities: {
-        question: "Welche Annehmlichkeiten sind in der Unterkunft verfügbar?",
-        answer: "Unsere Unterkunft verfügt über Schwimmbäder, Spa, Restaurants, Strandbar, Fitnesscenter und direkten Strandzugang. Alle Apartments verfügen über WLAN, Klimaanlage und moderne Geräte."
+        question: "Sind Meeresparkgebühren enthalten?",
+        answer: "Meeresparkgebühren ($20-25 pro Person pro Tag) sind separat und werden direkt im Meeresparkbüro bezahlt. Diese Gebühren unterstützen Naturschutzmaßnahmen im Mafia Island Marine Park."
       }
     }
   },
