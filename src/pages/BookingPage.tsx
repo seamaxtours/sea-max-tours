@@ -23,52 +23,33 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ApartmentProps } from "@/components/ApartmentCard";
-
-// Sample apartments data
-const apartmentsData: ApartmentProps[] = [
-  {
-    id: "1",
-    name: "Deluxe Sea View Suite",
-    description: "Luxurious suite with panoramic sea views, modern amenities, and a private balcony.",
-    price: 180,
-    capacity: 2,
-    size: 45,
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop",
-    location: "Beachfront",
-    features: ["Wi-Fi", "Kitchen", "Bathroom", "Air Conditioning", "TV", "Balcony"]
-  },
-  {
-    id: "2",
-    name: "Premium Family Apartment",
-    description: "Spacious apartment ideal for families, with full kitchen and stunning coastal views.",
-    price: 250,
-    capacity: 4,
-    size: 75,
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
-    location: "Second row",
-    features: ["Wi-Fi", "Kitchen", "Bathroom", "Air Conditioning", "TV", "Washing Machine"]
-  },
-  {
-    id: "3",
-    name: "Executive Beach Studio",
-    description: "Elegant studio with direct beach access, modern design, and premium finishes.",
-    price: 150,
-    capacity: 2,
-    size: 35,
-    image: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=800&h=600&fit=crop",
-    location: "Beachfront",
-    features: ["Wi-Fi", "Kitchenette", "Bathroom", "Air Conditioning", "TV"]
-  },
-];
+import { TourProps } from "@/components/TourCard";
+import { supabase } from "@/integrations/supabase/client";
+import { getTourImage } from "@/lib/tourImages";
 
 export default function BookingPage() {
+  const [toursData, setToursData] = useState<TourProps[]>([]);
   const [startDate, setStartDate] = useState<Date | undefined>(new Date());
   const [endDate, setEndDate] = useState<Date | undefined>(addDays(new Date(), 7));
   const [adults, setAdults] = useState("2");
   const [children, setChildren] = useState("0");
-  const [selectedApartment, setSelectedApartment] = useState<ApartmentProps | null>(null);
+  const [selectedApartment, setSelectedApartment] = useState<TourProps | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
+  
+  // Fetch tours from database
+  useEffect(() => {
+    const fetchTours = async () => {
+      const { data } = await supabase
+        .from('tours')
+        .select('*')
+        .eq('available', true);
+      
+      if (data) {
+        setToursData(data);
+      }
+    };
+    fetchTours();
+  }, []);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -330,10 +311,10 @@ export default function BookingPage() {
                   </div>
                 </div>
                 
-                {/* Apartments Selection */}
-                <h2 className="text-xl font-semibold mb-4">Select Your Accommodation</h2>
+                {/* Tours Selection */}
+                <h2 className="text-xl font-semibold mb-4">Select Your Tour</h2>
                 <div className="space-y-6">
-                  {apartmentsData.map((apartment) => (
+                  {toursData.map((apartment) => (
                     <div 
                       key={apartment.id}
                       className={cn(
@@ -345,7 +326,7 @@ export default function BookingPage() {
                     >
                       <div className="md:w-1/3 h-48 md:h-auto relative">
                         <img 
-                          src={apartment.image} 
+                          src={getTourImage(apartment.image_url)} 
                           alt={apartment.name}
                           className="w-full h-full object-cover"
                         />
@@ -356,10 +337,10 @@ export default function BookingPage() {
                           <p className="text-muted-foreground mb-4">{apartment.description}</p>
                           <div className="flex flex-wrap gap-2 mb-4">
                             <div className="text-sm bg-muted px-3 py-1 rounded-full">
-                              {apartment.capacity} Guests
+                              {apartment.max_participants} Max Participants
                             </div>
                             <div className="text-sm bg-muted px-3 py-1 rounded-full">
-                              {apartment.size} m²
+                              {apartment.duration_hours} hours
                             </div>
                             <div className="text-sm bg-muted px-3 py-1 rounded-full">
                               {apartment.location}
@@ -369,7 +350,7 @@ export default function BookingPage() {
                         <div className="flex items-center justify-between mt-4">
                           <div>
                             <span className="text-xl font-bold">${apartment.price}</span>
-                            <span className="text-muted-foreground text-sm"> / night</span>
+                            <span className="text-muted-foreground text-sm"> / person</span>
                           </div>
                           <Button 
                             variant={selectedApartment?.id === apartment.id ? "default" : "outline"}
@@ -676,7 +657,7 @@ export default function BookingPage() {
                             <div className="space-y-4">
                               <div className="rounded-lg overflow-hidden">
                                 <img 
-                                  src={selectedApartment.image} 
+                                  src={getTourImage(selectedApartment.image_url)} 
                                   alt={selectedApartment.name}
                                   className="w-full h-48 object-cover"
                                 />
