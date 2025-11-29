@@ -3,6 +3,7 @@ export const en = {
     home: "Home",
     about: "About",
     apartments: "Tours",
+    blog: "Blog",
     amenities: "Amenities",
     gallery: "Gallery",
     contact: "Contact",

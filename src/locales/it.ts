@@ -3,6 +3,7 @@ export const it = {
     home: "Home",
     about: "Chi Siamo",
     apartments: "Tour",
+    blog: "Blog",
     amenities: "Servizi",
     gallery: "Galleria",
     contact: "Contatti",
