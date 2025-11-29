@@ -5,11 +5,26 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
-import heroImage from "@/assets/mafia-island-hero.jpg";
+import heroBeach from "@/assets/hero-beach.jpg";
+import heroWhaleShark from "@/assets/hero-whale-shark.jpg";
+import heroFood from "@/assets/hero-food.jpg";
+import heroBeachPicnic from "@/assets/hero-beach-picnic.jpg";
+import heroCoralReef from "@/assets/hero-coral-reef.jpg";
+import heroAerialView from "@/assets/hero-aerial-view.jpg";
+
+const heroImages = [
+  heroBeach,
+  heroWhaleShark,
+  heroFood,
+  heroBeachPicnic,
+  heroCoralReef,
+  heroAerialView
+];
 
 export default function HeroSection() {
   const { t } = useLanguage();
   const [scrollY, setScrollY] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +34,14 @@ export default function HeroSection() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000); // Change image every 5 seconds
+    
+    return () => clearInterval(interval);
+  }, []);
   
   // Calculate parallax effect
   const backgroundY = scrollY * 0.5;
@@ -26,15 +49,21 @@ export default function HeroSection() {
   
   return (
     <section className="relative h-screen overflow-hidden">
-      {/* Background image with parallax */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          transform: `translateY(${backgroundY}px)`,
-          backgroundPosition: `center ${50 + scrollY * 0.05}%`
-        }}
-      />
+      {/* Background images with slideshow */}
+      {heroImages.map((image, index) => (
+        <div
+          key={index}
+          className={cn(
+            "absolute inset-0 bg-cover bg-center transition-opacity duration-1000",
+            index === currentImageIndex ? "opacity-100" : "opacity-0"
+          )}
+          style={{
+            backgroundImage: `url(${image})`,
+            transform: `translateY(${backgroundY}px)`,
+            backgroundPosition: `center ${50 + scrollY * 0.05}%`
+          }}
+        />
+      ))}
       
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60" />
