@@ -54,15 +54,24 @@ export default function HeroSection() {
         <div
           key={index}
           className={cn(
-            "absolute inset-0 bg-cover bg-center transition-opacity duration-1000",
-            index === currentImageIndex ? "opacity-100" : "opacity-0"
+            "absolute inset-0 transition-opacity duration-1000"
           )}
           style={{
-            backgroundImage: `url(${image})`,
-            transform: `translateY(${backgroundY}px)`,
-            backgroundPosition: `center ${50 + scrollY * 0.05}%`
+            opacity: index === currentImageIndex ? 1 : 0,
+            transform: `translateY(${backgroundY}px)`
           }}
-        />
+        >
+          <div
+            className={cn(
+              "absolute inset-0 bg-cover bg-center",
+              index === currentImageIndex && "animate-zoom"
+            )}
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundPosition: `center ${50 + scrollY * 0.05}%`
+            }}
+          />
+        </div>
       ))}
       
       {/* Gradient overlay */}
