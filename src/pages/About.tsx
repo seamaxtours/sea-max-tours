@@ -3,6 +3,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Users, Heart, Anchor, Fish, Waves } from "lucide-react";
+import whaleSharkImage from "@/assets/about-whale-shark.jpg";
+import beachImage from "@/assets/about-beach.jpg";
 
 export default function About() {
   const values = [
@@ -56,7 +58,7 @@ export default function About() {
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&h=1080&fit=crop')",
+              backgroundImage: `url(${whaleSharkImage})`,
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70" />
@@ -164,14 +166,14 @@ export default function About() {
               <div className="relative animate-fade-in order-2 lg:order-1">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=800&h=600&fit=crop"
+                    src={beachImage}
                     alt="Mafia Island beach" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -top-6 -left-6 w-1/2 rounded-2xl overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=400&h=300&fit=crop"
+                    src={whaleSharkImage}
                     alt="Marine life" 
                     className="w-full h-full object-cover"
                   />
