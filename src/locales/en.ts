@@ -9,8 +9,8 @@ export const en = {
   },
   hero: {
     subtitle: "UNFORGETTABLE TOUR EXPERIENCES",
-    title: "Discover Amazing Adventures",
-    description: "Explore breathtaking destinations with our expertly curated tours. From cultural excursions to thrilling outdoor adventures, we create unforgettable experiences.",
+    title: "Discover Amazing Mafia Island",
+    description: "Explore breathtaking destinations with our curated tours. From cultural excursions to water adventures, we create unforgettable experiences.",
     bookStay: "Book Your Tour",
     exploreApartments: "Explore Tours",
     scrollDown: "Scroll Down"
