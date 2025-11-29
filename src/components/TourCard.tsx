@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { MapPin, Clock, Users, Star } from "lucide-react";
+import { getTourImage } from "@/lib/tourImages";
 
 export interface TourProps {
   id: string;
@@ -29,7 +30,7 @@ export default function TourCard({ tour }: TourCardProps) {
       <CardHeader className="p-0 relative overflow-hidden">
         <div className="aspect-[4/3] overflow-hidden">
           <img 
-            src={tour.image_url} 
+            src={getTourImage(tour.image_url)} 
             alt={tour.name}
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
