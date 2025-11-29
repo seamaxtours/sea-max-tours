@@ -1,18 +1,18 @@
 export const it = {
   nav: {
     home: "Home",
-    apartments: "Appartamenti",
+    apartments: "Tour",
     amenities: "Servizi",
     gallery: "Galleria",
     contact: "Contatti",
-    bookNow: "Prenota Ora"
+    bookNow: "Prenota Tour"
   },
   hero: {
-    subtitle: "ALLOGGI DI LUSSO SUL MARE",
-    title: "Vivi la Tranquillità del Mare",
-    description: "Scopri la nostra esclusiva collezione di appartamenti di lusso e camere d'albergo sul mare, che offrono comfort impareggiabile e viste mozzafiato sul mare.",
-    bookStay: "Prenota il tuo Soggiorno",
-    exploreApartments: "Esplora gli Appartamenti",
+    subtitle: "ESPERIENZE DI TOUR INDIMENTICABILI",
+    title: "Scopri Avventure Straordinarie",
+    description: "Esplora destinazioni mozzafiato con i nostri tour curati da esperti. Dalle escursioni culturali alle emozionanti avventure all'aria aperta, creiamo esperienze indimenticabili.",
+    bookStay: "Prenota il tuo Tour",
+    exploreApartments: "Esplora i Tour",
     scrollDown: "Scorri Giù"
   },
   footer: {
@@ -47,8 +47,8 @@ export const it = {
     returnHome: "Torna alla Home"
   },
   apartments: {
-    title: "I Nostri Appartamenti e Camere",
-    subtitle: "Scopri la nostra selezione di alloggi premium, dalle accoglienti mansarde ai lussuosi attici.",
+    title: "I Nostri Tour ed Esperienze",
+    subtitle: "Scopri la nostra selezione di tour guidati da esperti, dalle escursioni culturali alle avventure emozionanti.",
     filters: {
       guests: "Ospiti",
       anyGuests: "Qualsiasi numero di ospiti",
