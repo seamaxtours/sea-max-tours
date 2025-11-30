@@ -11,6 +11,9 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Compass, Shield, Award, Users, MapPin, Clock } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
+import welcomeLagoon from "@/assets/welcome-lagoon.jpg";
+import welcomeWhaleShark from "@/assets/welcome-whale-shark.jpg";
+import welcomeBeach from "@/assets/welcome-beach.jpg";
 
 export default function Index() {
   const { t } = useLanguage();
@@ -109,22 +112,22 @@ export default function Index() {
               <div className="relative animate-fade-in [animation-delay:300ms]">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden">
                   <img 
-                    src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800&h=600&fit=crop"
-                    alt="Seaside view" 
+                    src={welcomeLagoon}
+                    alt="Turquoise lagoon swimming spot" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-6 -left-6 w-2/3 rounded-2xl overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1545579133-99bb5ab189bd?w=400&h=300&fit=crop"
-                    alt="Luxury apartment interior" 
+                    src={welcomeWhaleShark}
+                    alt="Whale shark encounter" 
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -top-6 -right-6 w-1/2 rounded-2xl overflow-hidden shadow-xl">
                   <img 
-                    src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=400&h=300&fit=crop"
-                    alt="Pool view" 
+                    src={welcomeBeach}
+                    alt="Mafia Island beach" 
                     className="w-full h-full object-cover"
                   />
                 </div>
