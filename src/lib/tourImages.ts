@@ -11,6 +11,7 @@ import picnicImage from "@/assets/tour-picnic.jpg";
 import tripNorthImage from "@/assets/tour-trip-north.jpg";
 import turtleHatchingImage from "@/assets/tour-turtle-hatching.jpg";
 import choleBayImage from "@/assets/tour-chole-bay.jpg";
+import divingAdventureImage from "@/assets/tour-diving-adventure.jpg";
 
 // Map database image URLs to imported images
 export const tourImageMap: Record<string, string> = {
@@ -26,6 +27,7 @@ export const tourImageMap: Record<string, string> = {
   '/src/assets/tour-trip-north.jpg': tripNorthImage,
   '/src/assets/tour-turtle-hatching.jpg': turtleHatchingImage,
   '/src/assets/tour-chole-bay.jpg': choleBayImage,
+  '/src/assets/tour-diving-adventure.jpg': divingAdventureImage,
 };
 
 // Helper function to get the correct image
