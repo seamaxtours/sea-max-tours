@@ -141,10 +141,10 @@ export default function BookingPage() {
           <div className="container relative z-10">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                Book Your Stay
+                Book Your Tour
               </h1>
               <p className="text-muted-foreground text-lg">
-                Complete your reservation in a few simple steps.
+                Choose your adventure and reserve your spot in just a few steps.
               </p>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function BookingPage() {
                         : "text-muted-foreground"
                     )}
                   >
-                    {step === 1 ? "Choose Room" : step === 2 ? "Guest Details" : "Confirmation"}
+                    {step === 1 ? "Choose Tour" : step === 2 ? "Your Details" : "Confirmation"}
                   </span>
                 </div>
               ))}
@@ -205,17 +205,17 @@ export default function BookingPage() {
               <div className="max-w-4xl mx-auto">
                 {/* Date and Guests Selection */}
                 <div className="glass-card p-6 mb-8">
-                  <h2 className="text-xl font-semibold mb-4">Select Dates and Guests</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                    {/* Check-in Date */}
+                  <h2 className="text-xl font-semibold mb-4">Select Tour Date & Participants</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {/* Tour Date */}
                     <div className="space-y-2">
-                      <label htmlFor="check-in" className="block text-sm font-medium">
-                        Check-in Date
+                      <label htmlFor="tour-date" className="block text-sm font-medium">
+                        Tour Date
                       </label>
                       <Popover>
                         <PopoverTrigger asChild>
                           <Button
-                            id="check-in"
+                            id="tour-date"
                             variant="outline"
                             className={cn(
                               "w-full justify-start text-left font-normal",
@@ -239,39 +239,7 @@ export default function BookingPage() {
                       </Popover>
                     </div>
                     
-                    {/* Check-out Date */}
-                    <div className="space-y-2">
-                      <label htmlFor="check-out" className="block text-sm font-medium">
-                        Check-out Date
-                      </label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            id="check-out"
-                            variant="outline"
-                            className={cn(
-                              "w-full justify-start text-left font-normal",
-                              !endDate && "text-muted-foreground"
-                            )}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {endDate ? format(endDate, "PPP") : <span>Select date</span>}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={endDate}
-                            onSelect={setEndDate}
-                            initialFocus
-                            disabled={(date) => date < (startDate || new Date())}
-                            className="pointer-events-auto"
-                          />
-                        </PopoverContent>
-                      </Popover>
-                    </div>
-                    
-                    {/* Adults */}
+                    {/* Number of Participants */}
                     <div className="space-y-2">
                       <label htmlFor="adults" className="block text-sm font-medium">
                         Adults
@@ -281,7 +249,7 @@ export default function BookingPage() {
                           <SelectValue placeholder="Select" />
                         </SelectTrigger>
                         <SelectContent>
-                          {[1, 2, 3, 4, 5, 6].map((num) => (
+                          {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                             <SelectItem key={num} value={num.toString()}>
                               {num} {num === 1 ? "Adult" : "Adults"}
                             </SelectItem>
