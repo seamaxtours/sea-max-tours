@@ -57,16 +57,16 @@ export default function About() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-[75vh] overflow-hidden">
+        <section className="relative h-[85vh] overflow-hidden">
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-top"
             style={{
               backgroundImage: `url(${founderImage})`,
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
           
-          <div className="relative h-full flex flex-col justify-end pb-12 px-4">
+          <div className="relative h-full flex flex-col justify-end pb-16 px-4">
             <div className="container animate-fade-in">
               <div className="max-w-2xl">
                 <span className="inline-block text-xs md:text-sm text-primary-foreground/90 font-medium uppercase tracking-wider mb-2 bg-primary/80 px-3 py-1 rounded-full">
