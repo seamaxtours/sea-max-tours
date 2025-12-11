@@ -10,7 +10,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Slider } from "@/components/ui/slider";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { TourProps } from "@/components/TourCard";
@@ -22,7 +21,6 @@ export default function Tours() {
   const [categoryFilter, setCategoryFilter] = useState<string>("all");
   const [difficultyFilter, setDifficultyFilter] = useState<string>("all");
   const [participantsFilter, setParticipantsFilter] = useState<string>("all");
-  const [priceRange, setPriceRange] = useState<number[]>([50, 200]);
   const [loading, setLoading] = useState(true);
   
   // Fetch tours from database
@@ -39,13 +37,6 @@ export default function Tours() {
       } else if (data) {
         setAllTours(data);
         setFilteredTours(data);
-        // Set initial price range based on actual tour prices
-        if (data.length > 0) {
-          const prices = data.map(tour => Number(tour.price));
-          const minPrice = Math.min(...prices);
-          const maxPrice = Math.max(...prices);
-          setPriceRange([Math.floor(minPrice), Math.ceil(maxPrice)]);
-        }
       }
       setLoading(false);
     };
@@ -78,22 +69,12 @@ export default function Tours() {
       result = result.filter(tour => tour.max_participants >= participants);
     }
     
-    // Filter by price range
-    result = result.filter(tour => {
-      const tourPrice = Number(tour.price);
-      return tourPrice >= priceRange[0] && tourPrice <= priceRange[1];
-    });
-    
     setFilteredTours(result);
-  }, [categoryFilter, difficultyFilter, participantsFilter, priceRange, allTours]);
+  }, [categoryFilter, difficultyFilter, participantsFilter, allTours]);
   
   // Get unique categories and difficulties for filters
   const categories = ["all", ...new Set(allTours.map(tour => tour.category).filter(Boolean))];
   const difficulties = ["all", ...new Set(allTours.map(tour => tour.difficulty).filter(Boolean))];
-  
-  // Calculate min and max prices for slider
-  const minPrice = allTours.length > 0 ? Math.min(...allTours.map(t => Number(t.price))) : 50;
-  const maxPrice = allTours.length > 0 ? Math.max(...allTours.map(t => Number(t.price))) : 200;
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -123,7 +104,7 @@ export default function Tours() {
         {/* Filter Section */}
         <section className="py-8 border-b">
           <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 animate-fade-in">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
               {/* Category Filter */}
               <div>
                 <label className="block text-sm font-medium mb-2">
@@ -183,22 +164,6 @@ export default function Tours() {
                   </SelectContent>
                 </Select>
               </div>
-              
-              {/* Price Range Filter */}
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.apartments.filters.priceRange}: ${priceRange[0]} - ${priceRange[1]}
-                </label>
-                <Slider
-                  defaultValue={[minPrice, maxPrice]}
-                  min={Math.floor(minPrice)}
-                  max={Math.ceil(maxPrice)}
-                  step={10}
-                  value={priceRange}
-                  onValueChange={setPriceRange}
-                  className="my-4"
-                />
-              </div>
             </div>
             
             <div className="flex justify-between items-center mt-6 animate-fade-in [animation-delay:200ms]">
@@ -211,7 +176,6 @@ export default function Tours() {
                   setCategoryFilter("all");
                   setDifficultyFilter("all");
                   setParticipantsFilter("all");
-                  setPriceRange([Math.floor(minPrice), Math.ceil(maxPrice)]);
                 }}
               >
                 {t.apartments.filters.resetFilters}
@@ -245,7 +209,6 @@ export default function Tours() {
                     setCategoryFilter("all");
                     setDifficultyFilter("all");
                     setParticipantsFilter("all");
-                    setPriceRange([Math.floor(minPrice), Math.ceil(maxPrice)]);
                   }}
                 >
                   {t.apartments.filters.resetFilters}
