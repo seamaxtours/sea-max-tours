@@ -53,15 +53,20 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				sea: {
-					light: '#E0F2F7',
-					DEFAULT: '#1E88E5',
-					dark: '#0D47A1'
+				ocean: {
+					DEFAULT: 'hsl(var(--ocean))',
+				},
+				teal: {
+					DEFAULT: 'hsl(var(--teal))',
 				},
 				sand: {
-					light: '#F5F5DC',
-					DEFAULT: '#E6D2B5',
-					dark: '#D2B48C'
+					DEFAULT: 'hsl(var(--sand))',
+				},
+				coral: {
+					DEFAULT: 'hsl(var(--coral))',
+				},
+				lagoon: {
+					DEFAULT: 'hsl(var(--lagoon))',
 				}
 			},
 			borderRadius: {
