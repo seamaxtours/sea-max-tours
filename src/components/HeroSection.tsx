@@ -114,21 +114,44 @@ export default function HeroSection() {
         </a>
       </div>
       
-      {/* Animated wave */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden">
+      {/* Animated waves */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 overflow-hidden">
+        {/* Wave layer 1 - back */}
         <svg 
-          className="absolute bottom-0 w-full h-24 fill-white dark:fill-background"
+          className="absolute bottom-0 w-[200%] h-20 animate-[wave_15s_linear_infinite]"
           preserveAspectRatio="none"
           viewBox="0 0 1440 74"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path 
             d="M0,37.1L40,34.5C80,32,160,27,240,29.6C320,32,400,42,480,42.9C560,44,640,35,720,32.1C800,30,880,34,960,40.8C1040,47,1120,56,1200,56.6C1280,57,1360,48,1400,43.3L1440,39.1L1440,74L1400,74C1360,74,1280,74,1200,74C1120,74,1040,74,960,74C880,74,800,74,720,74C640,74,560,74,480,74C400,74,320,74,240,74C160,74,80,74,40,74L0,74Z"
-            className="animate-wave opacity-50"
+            className="fill-primary/30"
           />
+        </svg>
+        
+        {/* Wave layer 2 - middle */}
+        <svg 
+          className="absolute bottom-0 w-[200%] h-24 animate-[wave_10s_linear_infinite_reverse]"
+          preserveAspectRatio="none"
+          viewBox="0 0 1440 74"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path 
-            d="M0,37.1L40,34.5C80,32,160,27,240,29.6C320,32,400,42,480,42.9C560,44,640,35,720,32.1C800,30,880,34,960,40.8C1040,47,1120,56,1200,56.6C1280,57,1360,48,1400,43.3L1440,39.1L1440,74L1400,74C1360,74,1280,74,1200,74C1120,74,1040,74,960,74C880,74,800,74,720,74C640,74,560,74,480,74C400,74,320,74,240,74C160,74,80,74,40,74L0,74Z"
-            className="animate-wave opacity-100 [animation-delay:-4s]"
+            d="M0,50L48,47.7C96,45,192,40,288,37.2C384,35,480,35,576,38.5C672,42,768,50,864,51.8C960,54,1056,50,1152,45.3C1248,40,1344,35,1392,32.2L1440,30L1440,74L1392,74C1344,74,1248,74,1152,74C1056,74,960,74,864,74C768,74,672,74,576,74C480,74,384,74,288,74C192,74,96,74,48,74L0,74Z"
+            className="fill-accent/40"
+          />
+        </svg>
+        
+        {/* Wave layer 3 - front */}
+        <svg 
+          className="absolute bottom-0 w-[200%] h-28 animate-[wave_8s_linear_infinite]"
+          preserveAspectRatio="none"
+          viewBox="0 0 1440 74"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path 
+            d="M0,42L60,44.3C120,47,240,51,360,49.3C480,47,600,39,720,35.7C840,32,960,32,1080,35C1200,38,1320,44,1380,46.8L1440,50L1440,74L1380,74C1320,74,1200,74,1080,74C960,74,840,74,720,74C600,74,480,74,360,74C240,74,120,74,60,74L0,74Z"
+            className="fill-background"
           />
         </svg>
       </div>
