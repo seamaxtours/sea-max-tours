@@ -92,7 +92,7 @@ export default function About() {
                 <div className="aspect-[3/4] max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-2xl">
                   <img 
                     src={founderImage}
-                    alt="Founder of Sea Max Tours" 
+                    alt="Makame Kombo - Founder of Sea Max Tours" 
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
@@ -102,9 +102,10 @@ export default function About() {
                 <span className="text-sm text-primary font-medium uppercase tracking-wider">
                   The Heart Behind Sea Max Tours
                 </span>
-                <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-                  Meet Our Founder
+                <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-2">
+                  Makame Kombo
                 </h2>
+                <p className="text-lg text-primary font-medium mb-6">Widely known as "Max B"</p>
                 <blockquote className="relative pl-6 border-l-4 border-primary mb-6">
                   <p className="text-xl md:text-2xl italic text-foreground/90 leading-relaxed">
                     "Mafia Island isn't just where I work—it's where my heart belongs. Every wave, 
@@ -113,13 +114,13 @@ export default function About() {
                   </p>
                 </blockquote>
                 <p className="text-muted-foreground mb-4">
-                  Born and raised on Mafia Island, our founder spent his childhood exploring every 
+                  Born and raised on Mafia Island, Makame spent his childhood exploring every 
                   hidden cove, learning traditional dhow sailing from his father, and diving into 
                   the crystal-clear waters that would become his life's passion.
                 </p>
                 <p className="text-muted-foreground">
                   With over 15 years of experience guiding visitors through the island's wonders, 
-                  he founded Sea Max Tours to share authentic Mafia Island experiences while 
+                  Max B founded Sea Max Tours to share authentic Mafia Island experiences while 
                   preserving the pristine environment he calls home.
                 </p>
               </div>
