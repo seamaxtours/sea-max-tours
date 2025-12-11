@@ -6,8 +6,83 @@ import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Gallery images - add your photos here
-const galleryImages: { id: number; src: string; alt: string; category: string }[] = [];
+// Import gallery images
+import galleryBeach1 from "@/assets/gallery/gallery-beach-1.jpg";
+import galleryBeach2 from "@/assets/gallery/gallery-beach-2.jpg";
+import galleryBeach3 from "@/assets/gallery/gallery-beach-3.jpg";
+import galleryTours1 from "@/assets/gallery/gallery-tours-1.jpg";
+import galleryTours2 from "@/assets/gallery/gallery-tours-2.jpg";
+import galleryTours3 from "@/assets/gallery/gallery-tours-3.jpg";
+import galleryTours4 from "@/assets/gallery/gallery-tours-4.jpg";
+import galleryBoats1 from "@/assets/gallery/gallery-boats-1.jpg";
+import galleryBoats2 from "@/assets/gallery/gallery-boats-2.jpg";
+import gallerySnorkeling1 from "@/assets/gallery/gallery-snorkeling-1.jpg";
+
+// Gallery images with categories
+const galleryImages = [
+  {
+    id: 1,
+    src: galleryBeach1,
+    alt: "Beautiful beach walk on Mafia Island",
+    category: "beach"
+  },
+  {
+    id: 2,
+    src: galleryTours1,
+    alt: "Tour group gathering on the beach",
+    category: "tours"
+  },
+  {
+    id: 3,
+    src: galleryTours2,
+    alt: "Island exploration through nature trails",
+    category: "tours"
+  },
+  {
+    id: 4,
+    src: galleryBeach2,
+    alt: "Dancing on the beach with local guides",
+    category: "beach"
+  },
+  {
+    id: 5,
+    src: galleryTours3,
+    alt: "Tour briefing with guests",
+    category: "tours"
+  },
+  {
+    id: 6,
+    src: galleryTours4,
+    alt: "Guide explaining tour details",
+    category: "tours"
+  },
+  {
+    id: 7,
+    src: galleryBoats1,
+    alt: "Boarding the tour boat",
+    category: "boats"
+  },
+  {
+    id: 8,
+    src: galleryBoats2,
+    alt: "Traditional dhow boat excursion",
+    category: "boats"
+  },
+  {
+    id: 9,
+    src: galleryBeach3,
+    alt: "Happy guests after snorkeling adventure",
+    category: "beach"
+  },
+  {
+    id: 10,
+    src: gallerySnorkeling1,
+    alt: "Snorkeling in crystal clear lagoon",
+    category: "snorkeling"
+  },
+];
+
+const categories = ["all", "beach", "tours", "boats", "snorkeling"];
 
 export default function Gallery() {
   const { t } = useLanguage();
@@ -64,6 +139,17 @@ export default function Gallery() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedImage, filteredImages]);
+
+  const getCategoryLabel = (category: string) => {
+    switch (category) {
+      case "all": return t.gallery.filters.all;
+      case "beach": return "Beach";
+      case "tours": return "Tours";
+      case "boats": return "Boats";
+      case "snorkeling": return "Snorkeling";
+      default: return category;
+    }
+  };
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -94,24 +180,18 @@ export default function Gallery() {
         <section className="py-8">
           <div className="container">
             <div className="flex flex-wrap justify-center gap-2 mb-8 animate-fade-in">
-              {["all", "exterior", "rooms", "amenities"].map((category) => (
+              {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => filterGallery(category)}
                   className={cn(
-                    "px-6 py-2 rounded-full transition-all",
+                    "px-6 py-2 rounded-full transition-all capitalize",
                     activeFilter === category
                       ? "bg-primary text-white shadow-lg"
                       : "bg-card hover:bg-muted"
                   )}
                 >
-                  {category === "all" 
-                    ? t.gallery.filters.all 
-                    : category === "exterior" 
-                      ? t.gallery.filters.exterior 
-                      : category === "rooms" 
-                        ? t.gallery.filters.rooms 
-                        : t.gallery.filters.amenities}
+                  {getCategoryLabel(category)}
                 </button>
               ))}
             </div>
