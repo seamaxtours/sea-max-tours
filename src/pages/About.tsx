@@ -83,6 +83,49 @@ export default function About() {
           </div>
         </section>
 
+        {/* Founder Spotlight */}
+        <section className="section bg-card">
+          <div className="container">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              <div className="animate-fade-in">
+                <div className="aspect-[3/4] max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden shadow-2xl">
+                  <img 
+                    src={founderImage}
+                    alt="Founder of Sea Max Tours" 
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+              </div>
+              
+              <div className="animate-fade-in [animation-delay:200ms]">
+                <span className="text-sm text-primary font-medium uppercase tracking-wider">
+                  The Heart Behind Sea Max Tours
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
+                  Meet Our Founder
+                </h2>
+                <blockquote className="relative pl-6 border-l-4 border-primary mb-6">
+                  <p className="text-xl md:text-2xl italic text-foreground/90 leading-relaxed">
+                    "Mafia Island isn't just where I work—it's where my heart belongs. Every wave, 
+                    every coral reef, every whale shark has been my teacher. Now I want to share 
+                    these lessons with the world."
+                  </p>
+                </blockquote>
+                <p className="text-muted-foreground mb-4">
+                  Born and raised on Mafia Island, our founder spent his childhood exploring every 
+                  hidden cove, learning traditional dhow sailing from his father, and diving into 
+                  the crystal-clear waters that would become his life's passion.
+                </p>
+                <p className="text-muted-foreground">
+                  With over 15 years of experience guiding visitors through the island's wonders, 
+                  he founded Sea Max Tours to share authentic Mafia Island experiences while 
+                  preserving the pristine environment he calls home.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Our Story */}
         <section className="section">
           <div className="container">
