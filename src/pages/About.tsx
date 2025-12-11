@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Users, Heart, Anchor, Fish, Waves } from "lucide-react";
 import founderImage from "@/assets/founder-hero.jpg";
+import aboutHeroImage from "@/assets/about-hero.jpg";
 import whaleSharkImage from "@/assets/about-whale-shark.jpg";
 import beachImage from "@/assets/about-beach.jpg";
 import lighthouseImage from "@/assets/about-lighthouse.jpg";
@@ -61,7 +62,7 @@ export default function About() {
           <div
             className="absolute inset-0 bg-cover bg-top"
             style={{
-              backgroundImage: `url(${founderImage})`,
+              backgroundImage: `url(${aboutHeroImage})`,
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
