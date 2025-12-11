@@ -10,6 +10,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import galleryBeach1 from "@/assets/gallery/gallery-beach-1.jpg";
 import galleryBeach2 from "@/assets/gallery/gallery-beach-2.jpg";
 import galleryBeach3 from "@/assets/gallery/gallery-beach-3.jpg";
+import galleryBeach4 from "@/assets/gallery/gallery-beach-4.jpg";
 import galleryTours1 from "@/assets/gallery/gallery-tours-1.jpg";
 import galleryTours2 from "@/assets/gallery/gallery-tours-2.jpg";
 import galleryTours3 from "@/assets/gallery/gallery-tours-3.jpg";
@@ -17,6 +18,8 @@ import galleryTours4 from "@/assets/gallery/gallery-tours-4.jpg";
 import galleryBoats1 from "@/assets/gallery/gallery-boats-1.jpg";
 import galleryBoats2 from "@/assets/gallery/gallery-boats-2.jpg";
 import gallerySnorkeling1 from "@/assets/gallery/gallery-snorkeling-1.jpg";
+import galleryFood1 from "@/assets/gallery/gallery-food-1.jpg";
+import galleryFood2 from "@/assets/gallery/gallery-food-2.jpg";
 
 // Gallery images with categories
 const galleryImages = [
@@ -80,9 +83,27 @@ const galleryImages = [
     alt: "Snorkeling in crystal clear lagoon",
     category: "snorkeling"
   },
+  {
+    id: 11,
+    src: galleryBeach4,
+    alt: "Relaxing on the sandbank with shade",
+    category: "beach"
+  },
+  {
+    id: 12,
+    src: galleryFood1,
+    alt: "Fresh grilled fish with tropical fruits",
+    category: "food"
+  },
+  {
+    id: 13,
+    src: galleryFood2,
+    alt: "Tropical fruit platter with fresh coconut",
+    category: "food"
+  },
 ];
 
-const categories = ["all", "beach", "tours", "boats", "snorkeling"];
+const categories = ["all", "beach", "tours", "boats", "snorkeling", "food"];
 
 export default function Gallery() {
   const { t } = useLanguage();
@@ -147,6 +168,7 @@ export default function Gallery() {
       case "tours": return "Tours";
       case "boats": return "Boats";
       case "snorkeling": return "Snorkeling";
+      case "food": return "Food";
       default: return category;
     }
   };
