@@ -1,4 +1,4 @@
-
+// Language context for internationalization
 import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import { en } from '../locales/en';
 import { it } from '../locales/it';
