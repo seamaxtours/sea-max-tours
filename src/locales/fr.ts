@@ -405,5 +405,74 @@ export const fr = {
         ]
       }
     }
+  },
+  about: {
+    hero: {
+      badge: "Rencontrez le Fondateur",
+      title: "Né sur l'Île de Mafia",
+      subtitle: "Une vie de connaissance de l'île, partagée avec le monde"
+    },
+    founder: {
+      subtitle: "Le Cœur Derrière Sea Max Tours",
+      name: "Makame Kombo",
+      nickname: 'Connu sous le nom de "Max B"',
+      quote: "L'Île de Mafia n'est pas seulement où je travaille—c'est là où mon cœur appartient. Chaque vague, chaque récif corallien, chaque requin-baleine a été mon professeur. Maintenant je veux partager ces leçons avec le monde.",
+      bio1: "Né et élevé sur l'Île de Mafia, Makame a passé son enfance à explorer chaque crique cachée, apprenant la navigation traditionnelle en dhow de son père, et plongeant dans les eaux cristallines qui deviendraient la passion de sa vie.",
+      bio2: "Avec plus de 15 ans d'expérience à guider les visiteurs à travers les merveilles de l'île, Max B a fondé Sea Max Tours pour partager des expériences authentiques de l'Île de Mafia tout en préservant l'environnement vierge qu'il appelle chez lui."
+    },
+    story: {
+      subtitle: "L'Histoire de Sea Max Tours",
+      title: "Une Vie sur l'Île de Mafia",
+      paragraph1: "Sea Max Tours est née d'une simple histoire d'amour—l'amour d'un insulaire local pour sa maison. Notre fondateur a grandi sur l'Île de Mafia, passant son enfance à plonger dans des lagons cristallins, apprenant à naviguer par les étoiles à bord des dhows traditionnels, et découvrant des endroits secrets où les requins-baleines se rassemblent chaque saison.",
+      paragraph2: "Ce qui a commencé comme montrer occasionnellement les joyaux cachés de l'île à des amis a évolué en quelque chose de plus grand. Les visiteurs revenaient sans cesse, non seulement pour les plages vierges et la vie marine, mais pour la connexion authentique avec l'Île de Mafia que seul un vrai local pouvait fournir. C'est alors que Sea Max Tours est née—un pont entre ce paradis intact et les voyageurs à la recherche d'expériences authentiques.",
+      paragraph3: "Aujourd'hui, nous sommes fiers d'être l'un des opérateurs touristiques les plus fiables de l'Île de Mafia, offrant tout, des rencontres avec les requins-baleines aux visites de villages culturels. Chaque tour est guidé par des locaux qui connaissent intimement ces eaux, récifs et communautés—parce que ce n'est pas seulement notre lieu de travail, c'est notre maison."
+    },
+    values: {
+      subtitle: "Nos Valeurs",
+      title: "Ce Qui Nous Anime",
+      description: "Ces principes fondamentaux guident chaque décision que nous prenons et chaque tour que nous créons",
+      passion: {
+        title: "Passion pour l'Océan",
+        description: "Notre amour pour les eaux vierges de l'Île de Mafia guide tout ce que nous faisons."
+      },
+      expertise: {
+        title: "Expertise Locale",
+        description: "Nos guides sont nés et ont grandi sur l'Île de Mafia, connaissant chaque endroit secret."
+      },
+      sustainable: {
+        title: "Tourisme Durable",
+        description: "Nous nous engageons à préserver la beauté naturelle de l'île pour les générations futures."
+      },
+      safety: {
+        title: "Sécurité d'Abord",
+        description: "Tous nos tours priorisent votre sécurité avec un équipement professionnel et un personnel formé."
+      }
+    },
+    whyMafia: {
+      subtitle: "Pourquoi l'Île de Mafia",
+      title: "Le Trésor Caché de la Tanzanie",
+      paragraph1: "Alors que Zanzibar attire les foules, l'Île de Mafia reste merveilleusement inexplorée par le tourisme de masse. Cet archipel vierge au large de la côte sud de la Tanzanie abrite certaines des biodiversités marines les plus spectaculaires du monde, y compris le Parc Marin protégé de l'Île de Mafia.",
+      paragraph2: "L'emplacement isolé de l'île a préservé son charme authentique. Ici, vous trouverez des villages swahili traditionnels où la construction de dhows continue comme depuis des siècles, d'anciens baobabs montant la garde sur des plages vierges, et des récifs coralliens si vibrants qu'ils rivalisent avec n'importe lesquels au monde.",
+      experiences: {
+        whaleShark: {
+          title: "Rencontres avec les Requins-Baleines",
+          description: "Nagez aux côtés des géants doux dans leur habitat naturel d'octobre à mars."
+        },
+        diving: {
+          title: "Plongée de Classe Mondiale",
+          description: "Explorez des récifs coralliens vibrants regorgeant de vie marine sur des sites de plongée vierges."
+        },
+        dhow: {
+          title: "Navigation Traditionnelle en Dhow",
+          description: "Découvrez le patrimoine maritime de l'île à bord d'authentiques dhows en bois."
+        }
+      }
+    },
+    cta: {
+      title: "Prêt à Explorer l'Île de Mafia?",
+      description: "Laissez nos guides locaux expérimentés vous montrer la magie de ce paradis intact. Des rencontres avec les requins-baleines aux visites de villages culturels, nous créons des souvenirs qui durent toute une vie.",
+      exploreTours: "Explorer les Tours",
+      contactUs: "Contactez-Nous"
+    }
   }
 };

@@ -405,5 +405,74 @@ export const sw = {
         ]
       }
     }
+  },
+  about: {
+    hero: {
+      badge: "Kutana na Mwanzilishi",
+      title: "Alizaliwa Kisiwa cha Mafia",
+      subtitle: "Ujuzi wa kisiwa wa maisha yote, unashirikiwa na ulimwengu"
+    },
+    founder: {
+      subtitle: "Moyo Nyuma ya Sea Max Tours",
+      name: "Makame Kombo",
+      nickname: 'Anajulikana kama "Max B"',
+      quote: "Kisiwa cha Mafia si mahali ninapofanya kazi tu—ni mahali moyo wangu unapohusiana. Kila wimbi, kila mwamba wa matumbawe, kila papa nyangumi amekuwa mwalimu wangu. Sasa nataka kushiriki masomo haya na ulimwengu.",
+      bio1: "Alizaliwa na kukulia Kisiwa cha Mafia, Makame alitumia utoto wake kuchunguza kila ghuba iliyofichwa, kujifunza kusafiri kwa dhow za jadi kutoka kwa baba yake, na kupiga mbizi katika maji safi ambayo yangekuwa shauku yake ya maisha.",
+      bio2: "Akiwa na uzoefu wa zaidi ya miaka 15 wa kuongoza wageni kupitia maajabu ya kisiwa, Max B alianzisha Sea Max Tours kushiriki uzoefu halisi wa Kisiwa cha Mafia huku akihifadhi mazingira safi anayoita nyumbani."
+    },
+    story: {
+      subtitle: "Hadithi ya Sea Max Tours",
+      title: "Maisha Yote Kisiwa cha Mafia",
+      paragraph1: "Sea Max Tours ilizaliwa kutoka kwa hadithi rahisi ya upendo—upendo wa mkaaji wa ndani kwa nyumbani kwake. Mwanzilishi wetu alikulia Kisiwa cha Mafia, akitumia utoto wake kupiga mbizi katika laguni safi, kujifunza kusafiri kwa nyota ukiwa kwenye dhow za jadi, na kugundua sehemu za siri ambapo papa nyangumi hukusanyika kila msimu.",
+      paragraph2: "Kilichoanza kama kuonyesha marafiki vito vilivyofichwa vya kisiwa kimebadilika kuwa kitu kikubwa zaidi. Wageni waliendelea kurudi, si kwa fukwe safi na viumbe vya baharini tu, bali kwa uhusiano halisi na Kisiwa cha Mafia ambao mkaaji wa ndani pekee angeweza kutoa. Ndipo Sea Max Tours ilizaliwa—daraja kati ya paradiso hii isiyoguswa na wasafiri wanaotafuta uzoefu wa kweli.",
+      paragraph3: "Leo, tunajivunia kuwa moja ya waendeshaji safari wanaoaminiwa zaidi wa Kisiwa cha Mafia, tukitoa kila kitu kutoka kukutana na papa nyangumi hadi ziara za vijiji vya kitamaduni. Kila safari inaongozwa na wenyeji wanaojua maji haya, miamba, na jamii kwa karibu—kwa sababu hii si mahali petu pa kazi tu, ni nyumbani kwetu."
+    },
+    values: {
+      subtitle: "Maadili Yetu",
+      title: "Kinachotusukuma",
+      description: "Kanuni hizi za msingi zinaongoza kila uamuzi tunaoufanya na kila safari tunayounda",
+      passion: {
+        title: "Shauku ya Bahari",
+        description: "Upendo wetu kwa maji safi ya Kisiwa cha Mafia unasukuma kila tunachofanya."
+      },
+      expertise: {
+        title: "Ujuzi wa Ndani",
+        description: "Waongozaji wetu walizaliwa na kukulia Kisiwa cha Mafia, wakijua kila sehemu ya siri."
+      },
+      sustainable: {
+        title: "Utalii Endelevu",
+        description: "Tumejitolea kuhifadhi uzuri wa asili wa kisiwa kwa vizazi vijavyo."
+      },
+      safety: {
+        title: "Usalama Kwanza",
+        description: "Safari zetu zote zinatanguliza usalama wako na vifaa vya kitaalamu na wafanyakazi waliofunzwa."
+      }
+    },
+    whyMafia: {
+      subtitle: "Kwa Nini Kisiwa cha Mafia",
+      title: "Hazina Iliyofichwa ya Tanzania",
+      paragraph1: "Wakati Zanzibar inavutia umati, Kisiwa cha Mafia kinabaki bila kugunduliwa na utalii mkubwa. Visiwa hivi safi kutoka pwani ya kusini ya Tanzania ni makazi ya bioanuwai ya baharini ya ajabu zaidi ulimwenguni, ikiwa ni pamoja na Hifadhi ya Bahari ya Kisiwa cha Mafia inayolindwa.",
+      paragraph2: "Eneo la mbali la kisiwa limehifadhi mvuto wake halisi. Hapa, utapata vijiji vya jadi vya Kiswahili ambapo ujenzi wa dhow unaendelea kama ilivyokuwa kwa karne nyingi, miti ya kale ya mbuyu inayosimama mlinzi juu ya fukwe safi, na miamba ya matumbawe yenye nguvu ambayo inashindana na yoyote ulimwenguni.",
+      experiences: {
+        whaleShark: {
+          title: "Kukutana na Papa Nyangumi",
+          description: "Ogelea pamoja na majitu makubwa laini katika makazi yao ya asili kutoka Oktoba hadi Machi."
+        },
+        diving: {
+          title: "Kupiga Mbizi wa Daraja la Dunia",
+          description: "Chunguza miamba ya matumbawe yenye nguvu inayojaa viumbe vya baharini katika maeneo safi ya kupiga mbizi."
+        },
+        dhow: {
+          title: "Kusafiri kwa Dhow ya Jadi",
+          description: "Pata uzoefu wa urithi wa baharini wa kisiwa ukiwa kwenye dhow halisi za mbao."
+        }
+      }
+    },
+    cta: {
+      title: "Uko Tayari Kuchunguza Kisiwa cha Mafia?",
+      description: "Waache waongozaji wetu wa ndani wenye uzoefu wakuonyeshe uchawi wa paradiso hii isiyoguswa. Kutoka kukutana na papa nyangumi hadi ziara za vijiji vya kitamaduni, tunaunda kumbukumbu zinazodumu maisha yote.",
+      exploreTours: "Chunguza Safari",
+      contactUs: "Wasiliana Nasi"
+    }
   }
 };

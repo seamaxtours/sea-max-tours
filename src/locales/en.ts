@@ -405,5 +405,74 @@ export const en = {
         ]
       }
     }
+  },
+  about: {
+    hero: {
+      badge: "Meet The Founder",
+      title: "Born on Mafia Island",
+      subtitle: "A lifetime of island knowledge, shared with the world"
+    },
+    founder: {
+      subtitle: "The Heart Behind Sea Max Tours",
+      name: "Makame Kombo",
+      nickname: 'Widely known as "Max B"',
+      quote: "Mafia Island isn't just where I work—it's where my heart belongs. Every wave, every coral reef, every whale shark has been my teacher. Now I want to share these lessons with the world.",
+      bio1: "Born and raised on Mafia Island, Makame spent his childhood exploring every hidden cove, learning traditional dhow sailing from his father, and diving into the crystal-clear waters that would become his life's passion.",
+      bio2: "With over 15 years of experience guiding visitors through the island's wonders, Max B founded Sea Max Tours to share authentic Mafia Island experiences while preserving the pristine environment he calls home."
+    },
+    story: {
+      subtitle: "The Sea Max Tours Story",
+      title: "A Lifetime on Mafia Island",
+      paragraph1: "Sea Max Tours was born from a simple love story—the love of a local islander for his home. Our founder grew up on Mafia Island, spending his childhood diving into crystal-clear lagoons, learning to navigate by the stars aboard traditional dhows, and discovering secret spots where whale sharks gather each season.",
+      paragraph2: "What began as casually showing friends the island's hidden gems evolved into something greater. Visitors kept returning, not just for the pristine beaches and marine life, but for the authentic connection to Mafia Island that only a true local could provide. That's when Sea Max Tours was born—a bridge between this untouched paradise and travelers seeking genuine experiences.",
+      paragraph3: "Today, we're proud to be one of Mafia Island's most trusted tour operators, offering everything from whale shark encounters to cultural village visits. Every tour is guided by locals who know these waters, reefs, and communities intimately—because this isn't just our workplace, it's our home."
+    },
+    values: {
+      subtitle: "Our Values",
+      title: "What Drives Us",
+      description: "These core principles guide every decision we make and every tour we create",
+      passion: {
+        title: "Passion for the Ocean",
+        description: "Our love for Mafia Island's pristine waters drives everything we do."
+      },
+      expertise: {
+        title: "Local Expertise",
+        description: "Our guides are born and raised on Mafia Island, knowing every secret spot."
+      },
+      sustainable: {
+        title: "Sustainable Tourism",
+        description: "We're committed to preserving the island's natural beauty for future generations."
+      },
+      safety: {
+        title: "Safety First",
+        description: "All our tours prioritize your safety with professional equipment and trained staff."
+      }
+    },
+    whyMafia: {
+      subtitle: "Why Mafia Island",
+      title: "Tanzania's Hidden Treasure",
+      paragraph1: "While Zanzibar attracts crowds, Mafia Island remains blissfully undiscovered by mass tourism. This pristine archipelago off Tanzania's southern coast is home to some of the world's most spectacular marine biodiversity, including the protected Mafia Island Marine Park.",
+      paragraph2: "The island's remote location has preserved its authentic charm. Here, you'll find traditional Swahili villages where dhow building continues as it has for centuries, ancient baobab trees standing sentinel over pristine beaches, and coral reefs so vibrant they rival any in the world.",
+      experiences: {
+        whaleShark: {
+          title: "Whale Shark Encounters",
+          description: "Swim alongside gentle giants in their natural habitat from October to March."
+        },
+        diving: {
+          title: "World-Class Diving",
+          description: "Explore vibrant coral reefs teeming with marine life at pristine dive sites."
+        },
+        dhow: {
+          title: "Traditional Dhow Sailing",
+          description: "Experience the island's maritime heritage aboard authentic wooden dhows."
+        }
+      }
+    },
+    cta: {
+      title: "Ready to Explore Mafia Island?",
+      description: "Let our experienced local guides show you the magic of this untouched paradise. From whale shark encounters to cultural village tours, we create memories that last a lifetime.",
+      exploreTours: "Explore Tours",
+      contactUs: "Contact Us"
+    }
   }
 };
