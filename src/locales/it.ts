@@ -405,5 +405,74 @@ export const it = {
       name: "Appartamento Vista Giardino",
       description: "Appartamento tranquillo circondato da rigogliosi giardini, a breve distanza dalla spiaggia."
     }
+  },
+  about: {
+    hero: {
+      badge: "Incontra il Fondatore",
+      title: "Nato sull'Isola di Mafia",
+      subtitle: "Una vita di conoscenza dell'isola, condivisa con il mondo"
+    },
+    founder: {
+      subtitle: "Il Cuore Dietro Sea Max Tours",
+      name: "Makame Kombo",
+      nickname: 'Conosciuto come "Max B"',
+      quote: "L'Isola di Mafia non è solo dove lavoro—è dove appartiene il mio cuore. Ogni onda, ogni barriera corallina, ogni squalo balena è stato il mio maestro. Ora voglio condividere queste lezioni con il mondo.",
+      bio1: "Nato e cresciuto sull'Isola di Mafia, Makame ha trascorso la sua infanzia esplorando ogni insenatura nascosta, imparando la navigazione tradizionale in dhow da suo padre, e tuffandosi nelle acque cristalline che sarebbero diventate la passione della sua vita.",
+      bio2: "Con oltre 15 anni di esperienza nel guidare i visitatori attraverso le meraviglie dell'isola, Max B ha fondato Sea Max Tours per condividere autentiche esperienze dell'Isola di Mafia preservando l'ambiente incontaminato che chiama casa."
+    },
+    story: {
+      subtitle: "La Storia di Sea Max Tours",
+      title: "Una Vita sull'Isola di Mafia",
+      paragraph1: "Sea Max Tours è nata da una semplice storia d'amore—l'amore di un isolano locale per la sua casa. Il nostro fondatore è cresciuto sull'Isola di Mafia, trascorrendo la sua infanzia a tuffarsi nelle lagune cristalline, imparando a navigare seguendo le stelle a bordo dei dhow tradizionali, e scoprendo luoghi segreti dove gli squali balena si radunano ogni stagione.",
+      paragraph2: "Ciò che è iniziato mostrando casualmente agli amici le gemme nascoste dell'isola si è evoluto in qualcosa di più grande. I visitatori continuavano a tornare, non solo per le spiagge incontaminate e la vita marina, ma per la connessione autentica con l'Isola di Mafia che solo un vero locale poteva fornire. È così che è nata Sea Max Tours—un ponte tra questo paradiso incontaminato e i viaggiatori in cerca di esperienze genuine.",
+      paragraph3: "Oggi, siamo orgogliosi di essere uno degli operatori turistici più affidabili dell'Isola di Mafia, offrendo tutto, dagli incontri con gli squali balena alle visite ai villaggi culturali. Ogni tour è guidato da locali che conoscono intimamente queste acque, barriere coralline e comunità—perché questo non è solo il nostro posto di lavoro, è la nostra casa."
+    },
+    values: {
+      subtitle: "I Nostri Valori",
+      title: "Cosa Ci Guida",
+      description: "Questi principi fondamentali guidano ogni decisione che prendiamo e ogni tour che creiamo",
+      passion: {
+        title: "Passione per l'Oceano",
+        description: "Il nostro amore per le acque incontaminate dell'Isola di Mafia guida tutto ciò che facciamo."
+      },
+      expertise: {
+        title: "Competenza Locale",
+        description: "Le nostre guide sono nate e cresciute sull'Isola di Mafia, conoscendo ogni angolo segreto."
+      },
+      sustainable: {
+        title: "Turismo Sostenibile",
+        description: "Ci impegniamo a preservare la bellezza naturale dell'isola per le generazioni future."
+      },
+      safety: {
+        title: "Sicurezza Prima di Tutto",
+        description: "Tutti i nostri tour danno priorità alla tua sicurezza con attrezzature professionali e personale qualificato."
+      }
+    },
+    whyMafia: {
+      subtitle: "Perché l'Isola di Mafia",
+      title: "Il Tesoro Nascosto della Tanzania",
+      paragraph1: "Mentre Zanzibar attira folle, l'Isola di Mafia rimane beatamente inesplorata dal turismo di massa. Questo arcipelago incontaminato al largo della costa meridionale della Tanzania ospita alcune delle più spettacolari biodiversità marine del mondo, incluso il Parco Marino protetto dell'Isola di Mafia.",
+      paragraph2: "La posizione remota dell'isola ha preservato il suo fascino autentico. Qui troverai villaggi swahili tradizionali dove la costruzione dei dhow continua come da secoli, antichi baobab che fanno la guardia su spiagge incontaminate, e barriere coralline così vibranti da rivaleggiare con qualsiasi altra al mondo.",
+      experiences: {
+        whaleShark: {
+          title: "Incontri con Squali Balena",
+          description: "Nuota accanto ai giganti gentili nel loro habitat naturale da ottobre a marzo."
+        },
+        diving: {
+          title: "Immersioni di Livello Mondiale",
+          description: "Esplora vibranti barriere coralline ricche di vita marina in siti di immersione incontaminati."
+        },
+        dhow: {
+          title: "Navigazione Tradizionale in Dhow",
+          description: "Vivi il patrimonio marittimo dell'isola a bordo di autentici dhow in legno."
+        }
+      }
+    },
+    cta: {
+      title: "Pronto a Esplorare l'Isola di Mafia?",
+      description: "Lascia che le nostre guide locali esperte ti mostrino la magia di questo paradiso incontaminato. Dagli incontri con gli squali balena ai tour dei villaggi culturali, creiamo ricordi che durano una vita.",
+      exploreTours: "Esplora i Tour",
+      contactUs: "Contattaci"
+    }
   }
 };

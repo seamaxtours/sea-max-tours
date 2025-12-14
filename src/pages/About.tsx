@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Award, Users, Heart, Anchor, Fish, Waves } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import founderImage from "@/assets/founder-hero.jpg";
 import aboutHeroImage from "@/assets/about-hero.jpg";
 import whaleSharkImage from "@/assets/about-whale-shark.jpg";
@@ -11,44 +12,46 @@ import lighthouseImage from "@/assets/about-lighthouse.jpg";
 import swimmingImage from "@/assets/about-swimming.jpg";
 
 export default function About() {
+  const { t } = useLanguage();
+
   const values = [
     {
       icon: <Heart className="h-8 w-8 text-primary" />,
-      title: "Passion for the Ocean",
-      description: "Our love for Mafia Island's pristine waters drives everything we do."
+      title: t.about.values.passion.title,
+      description: t.about.values.passion.description
     },
     {
       icon: <Users className="h-8 w-8 text-primary" />,
-      title: "Local Expertise",
-      description: "Our guides are born and raised on Mafia Island, knowing every secret spot."
+      title: t.about.values.expertise.title,
+      description: t.about.values.expertise.description
     },
     {
       icon: <Award className="h-8 w-8 text-primary" />,
-      title: "Sustainable Tourism",
-      description: "We're committed to preserving the island's natural beauty for future generations."
+      title: t.about.values.sustainable.title,
+      description: t.about.values.sustainable.description
     },
     {
       icon: <Anchor className="h-8 w-8 text-primary" />,
-      title: "Safety First",
-      description: "All our tours prioritize your safety with professional equipment and trained staff."
+      title: t.about.values.safety.title,
+      description: t.about.values.safety.description
     }
   ];
 
   const experiences = [
     {
       icon: <Fish className="h-6 w-6" />,
-      title: "Whale Shark Encounters",
-      description: "Swim alongside gentle giants in their natural habitat from October to March."
+      title: t.about.whyMafia.experiences.whaleShark.title,
+      description: t.about.whyMafia.experiences.whaleShark.description
     },
     {
       icon: <Waves className="h-6 w-6" />,
-      title: "World-Class Diving",
-      description: "Explore vibrant coral reefs teeming with marine life at pristine dive sites."
+      title: t.about.whyMafia.experiences.diving.title,
+      description: t.about.whyMafia.experiences.diving.description
     },
     {
       icon: <Anchor className="h-6 w-6" />,
-      title: "Traditional Dhow Sailing",
-      description: "Experience the island's maritime heritage aboard authentic wooden dhows."
+      title: t.about.whyMafia.experiences.dhow.title,
+      description: t.about.whyMafia.experiences.dhow.description
     }
   ];
 
@@ -71,13 +74,13 @@ export default function About() {
             <div className="container animate-fade-in">
               <div className="max-w-2xl">
                 <span className="inline-block text-xs md:text-sm text-primary-foreground/90 font-medium uppercase tracking-wider mb-2 bg-primary/80 px-3 py-1 rounded-full">
-                  Meet The Founder
+                  {t.about.hero.badge}
                 </span>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-                  Born on Mafia Island
+                  {t.about.hero.title}
                 </h1>
                 <p className="text-base md:text-lg text-white/90">
-                  A lifetime of island knowledge, shared with the world
+                  {t.about.hero.subtitle}
                 </p>
               </div>
             </div>
@@ -100,28 +103,22 @@ export default function About() {
               
               <div className="animate-fade-in [animation-delay:200ms]">
                 <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                  The Heart Behind Sea Max Tours
+                  {t.about.founder.subtitle}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-2">
-                  Makame Kombo
+                  {t.about.founder.name}
                 </h2>
-                <p className="text-lg text-primary font-medium mb-6">Widely known as "Max B"</p>
+                <p className="text-lg text-primary font-medium mb-6">{t.about.founder.nickname}</p>
                 <blockquote className="relative pl-6 border-l-4 border-primary mb-6">
                   <p className="text-xl md:text-2xl italic text-foreground/90 leading-relaxed">
-                    "Mafia Island isn't just where I work—it's where my heart belongs. Every wave, 
-                    every coral reef, every whale shark has been my teacher. Now I want to share 
-                    these lessons with the world."
+                    "{t.about.founder.quote}"
                   </p>
                 </blockquote>
                 <p className="text-muted-foreground mb-4">
-                  Born and raised on Mafia Island, Makame spent his childhood exploring every 
-                  hidden cove, learning traditional dhow sailing from his father, and diving into 
-                  the crystal-clear waters that would become his life's passion.
+                  {t.about.founder.bio1}
                 </p>
                 <p className="text-muted-foreground">
-                  With over 15 years of experience guiding visitors through the island's wonders, 
-                  Max B founded Sea Max Tours to share authentic Mafia Island experiences while 
-                  preserving the pristine environment he calls home.
+                  {t.about.founder.bio2}
                 </p>
               </div>
             </div>
@@ -134,29 +131,19 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in">
                 <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                  The Sea Max Tours Story
+                  {t.about.story.subtitle}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-                  A Lifetime on Mafia Island
+                  {t.about.story.title}
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  Sea Max Tours was born from a simple love story—the love of a local islander for 
-                  his home. Our founder grew up on Mafia Island, spending his childhood diving into 
-                  crystal-clear lagoons, learning to navigate by the stars aboard traditional dhows, 
-                  and discovering secret spots where whale sharks gather each season.
+                  {t.about.story.paragraph1}
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  What began as casually showing friends the island's hidden gems evolved into something 
-                  greater. Visitors kept returning, not just for the pristine beaches and marine life, 
-                  but for the authentic connection to Mafia Island that only a true local could provide. 
-                  That's when Sea Max Tours was born—a bridge between this untouched paradise and 
-                  travelers seeking genuine experiences.
+                  {t.about.story.paragraph2}
                 </p>
                 <p className="text-muted-foreground">
-                  Today, we're proud to be one of Mafia Island's most trusted tour operators, offering 
-                  everything from whale shark encounters to cultural village visits. Every tour is guided 
-                  by locals who know these waters, reefs, and communities intimately—because this isn't 
-                  just our workplace, it's our home.
+                  {t.about.story.paragraph3}
                 </p>
               </div>
               
@@ -185,13 +172,13 @@ export default function About() {
           <div className="container">
             <div className="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
               <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                Our Values
+                {t.about.values.subtitle}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-4">
-                What Drives Us
+                {t.about.values.title}
               </h2>
               <p className="text-muted-foreground">
-                These core principles guide every decision we make and every tour we create
+                {t.about.values.description}
               </p>
             </div>
             
@@ -236,22 +223,16 @@ export default function About() {
 
               <div className="animate-fade-in order-1 lg:order-2 [animation-delay:200ms]">
                 <span className="text-sm text-primary font-medium uppercase tracking-wider">
-                  Why Mafia Island
+                  {t.about.whyMafia.subtitle}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold mt-2 mb-6">
-                  Tanzania's Hidden Treasure
+                  {t.about.whyMafia.title}
                 </h2>
                 <p className="text-muted-foreground mb-6">
-                  While Zanzibar attracts crowds, Mafia Island remains blissfully undiscovered by 
-                  mass tourism. This pristine archipelago off Tanzania's southern coast is home to 
-                  some of the world's most spectacular marine biodiversity, including the protected 
-                  Mafia Island Marine Park.
+                  {t.about.whyMafia.paragraph1}
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  The island's remote location has preserved its authentic charm. Here, you'll find 
-                  traditional Swahili villages where dhow building continues as it has for centuries, 
-                  ancient baobab trees standing sentinel over pristine beaches, and coral reefs so 
-                  vibrant they rival any in the world.
+                  {t.about.whyMafia.paragraph2}
                 </p>
                 
                 <div className="space-y-4">
@@ -277,18 +258,17 @@ export default function About() {
           <div className="container">
             <div className="max-w-3xl mx-auto text-center animate-fade-in">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Ready to Explore Mafia Island?
+                {t.about.cta.title}
               </h2>
               <p className="text-muted-foreground mb-8">
-                Let our experienced local guides show you the magic of this untouched paradise. 
-                From whale shark encounters to cultural village tours, we create memories that last a lifetime.
+                {t.about.cta.description}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button asChild size="lg" className="btn-primary min-w-[200px]">
-                  <Link to="/apartments">Explore Tours</Link>
+                  <Link to="/tours">{t.about.cta.exploreTours}</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="min-w-[200px]">
-                  <Link to="/contact">Contact Us</Link>
+                  <Link to="/contact">{t.about.cta.contactUs}</Link>
                 </Button>
               </div>
             </div>

@@ -405,5 +405,74 @@ export const es = {
         ]
       }
     }
+  },
+  about: {
+    hero: {
+      badge: "Conoce al Fundador",
+      title: "Nacido en la Isla de Mafia",
+      subtitle: "Una vida de conocimiento de la isla, compartida con el mundo"
+    },
+    founder: {
+      subtitle: "El Corazón Detrás de Sea Max Tours",
+      name: "Makame Kombo",
+      nickname: 'Conocido como "Max B"',
+      quote: "La Isla de Mafia no es solo donde trabajo—es donde pertenece mi corazón. Cada ola, cada arrecife de coral, cada tiburón ballena ha sido mi maestro. Ahora quiero compartir estas lecciones con el mundo.",
+      bio1: "Nacido y criado en la Isla de Mafia, Makame pasó su infancia explorando cada cala escondida, aprendiendo la navegación tradicional en dhow de su padre, y buceando en las aguas cristalinas que se convertirían en la pasión de su vida.",
+      bio2: "Con más de 15 años de experiencia guiando a visitantes a través de las maravillas de la isla, Max B fundó Sea Max Tours para compartir experiencias auténticas de la Isla de Mafia mientras preserva el ambiente prístino que llama hogar."
+    },
+    story: {
+      subtitle: "La Historia de Sea Max Tours",
+      title: "Una Vida en la Isla de Mafia",
+      paragraph1: "Sea Max Tours nació de una simple historia de amor—el amor de un isleño local por su hogar. Nuestro fundador creció en la Isla de Mafia, pasando su infancia buceando en lagunas cristalinas, aprendiendo a navegar por las estrellas a bordo de dhows tradicionales, y descubriendo lugares secretos donde los tiburones ballena se reúnen cada temporada.",
+      paragraph2: "Lo que comenzó como mostrar casualmente a amigos las joyas ocultas de la isla evolucionó en algo más grande. Los visitantes seguían regresando, no solo por las playas prístinas y la vida marina, sino por la conexión auténtica con la Isla de Mafia que solo un verdadero local podía proporcionar. Fue entonces cuando nació Sea Max Tours—un puente entre este paraíso intacto y los viajeros que buscan experiencias genuinas.",
+      paragraph3: "Hoy, estamos orgullosos de ser uno de los operadores turísticos más confiables de la Isla de Mafia, ofreciendo todo, desde encuentros con tiburones ballena hasta visitas a aldeas culturales. Cada tour es guiado por locales que conocen íntimamente estas aguas, arrecifes y comunidades—porque este no es solo nuestro lugar de trabajo, es nuestro hogar."
+    },
+    values: {
+      subtitle: "Nuestros Valores",
+      title: "Lo Que Nos Impulsa",
+      description: "Estos principios fundamentales guían cada decisión que tomamos y cada tour que creamos",
+      passion: {
+        title: "Pasión por el Océano",
+        description: "Nuestro amor por las aguas prístinas de la Isla de Mafia impulsa todo lo que hacemos."
+      },
+      expertise: {
+        title: "Experiencia Local",
+        description: "Nuestros guías nacieron y crecieron en la Isla de Mafia, conociendo cada rincón secreto."
+      },
+      sustainable: {
+        title: "Turismo Sostenible",
+        description: "Estamos comprometidos a preservar la belleza natural de la isla para las generaciones futuras."
+      },
+      safety: {
+        title: "Seguridad Primero",
+        description: "Todos nuestros tours priorizan tu seguridad con equipo profesional y personal capacitado."
+      }
+    },
+    whyMafia: {
+      subtitle: "Por Qué la Isla de Mafia",
+      title: "El Tesoro Oculto de Tanzania",
+      paragraph1: "Mientras Zanzíbar atrae multitudes, la Isla de Mafia permanece felizmente sin descubrir por el turismo masivo. Este archipiélago prístino frente a la costa sur de Tanzania alberga algunas de las biodiversidades marinas más espectaculares del mundo, incluyendo el Parque Marino protegido de la Isla de Mafia.",
+      paragraph2: "La ubicación remota de la isla ha preservado su encanto auténtico. Aquí encontrarás aldeas swahili tradicionales donde la construcción de dhows continúa como lo ha hecho durante siglos, antiguos baobabs haciendo guardia sobre playas prístinas, y arrecifes de coral tan vibrantes que rivalizan con cualquiera en el mundo.",
+      experiences: {
+        whaleShark: {
+          title: "Encuentros con Tiburones Ballena",
+          description: "Nada junto a gigantes gentiles en su hábitat natural de octubre a marzo."
+        },
+        diving: {
+          title: "Buceo de Clase Mundial",
+          description: "Explora vibrantes arrecifes de coral repletos de vida marina en sitios de buceo prístinos."
+        },
+        dhow: {
+          title: "Navegación Tradicional en Dhow",
+          description: "Experimenta el patrimonio marítimo de la isla a bordo de auténticos dhows de madera."
+        }
+      }
+    },
+    cta: {
+      title: "¿Listo para Explorar la Isla de Mafia?",
+      description: "Deja que nuestros experimentados guías locales te muestren la magia de este paraíso intacto. Desde encuentros con tiburones ballena hasta tours de aldeas culturales, creamos recuerdos que duran toda la vida.",
+      exploreTours: "Explorar Tours",
+      contactUs: "Contáctanos"
+    }
   }
 };

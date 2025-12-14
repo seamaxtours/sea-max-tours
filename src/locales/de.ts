@@ -405,5 +405,74 @@ export const de = {
         ]
       }
     }
+  },
+  about: {
+    hero: {
+      badge: "Treffen Sie den Gründer",
+      title: "Geboren auf der Insel Mafia",
+      subtitle: "Ein Leben voller Inselwissen, geteilt mit der Welt"
+    },
+    founder: {
+      subtitle: "Das Herz Hinter Sea Max Tours",
+      name: "Makame Kombo",
+      nickname: 'Weithin bekannt als "Max B"',
+      quote: "Die Insel Mafia ist nicht nur mein Arbeitsplatz—es ist dort, wo mein Herz hingehört. Jede Welle, jedes Korallenriff, jeder Walhai war mein Lehrer. Jetzt möchte ich diese Lektionen mit der Welt teilen.",
+      bio1: "Auf der Insel Mafia geboren und aufgewachsen, verbrachte Makame seine Kindheit damit, jede versteckte Bucht zu erkunden, traditionelles Dhow-Segeln von seinem Vater zu lernen und in die kristallklaren Gewässer zu tauchen, die zur Leidenschaft seines Lebens werden sollten.",
+      bio2: "Mit über 15 Jahren Erfahrung in der Führung von Besuchern durch die Wunder der Insel gründete Max B Sea Max Tours, um authentische Erfahrungen der Insel Mafia zu teilen und gleichzeitig die unberührte Umgebung zu bewahren, die er sein Zuhause nennt."
+    },
+    story: {
+      subtitle: "Die Geschichte von Sea Max Tours",
+      title: "Ein Leben auf der Insel Mafia",
+      paragraph1: "Sea Max Tours wurde aus einer einfachen Liebesgeschichte geboren—der Liebe eines einheimischen Inselbewohners zu seiner Heimat. Unser Gründer wuchs auf der Insel Mafia auf und verbrachte seine Kindheit damit, in kristallklare Lagunen zu tauchen, das Navigieren nach den Sternen an Bord traditioneller Dhows zu lernen und geheime Orte zu entdecken, wo sich Walhaie jede Saison versammeln.",
+      paragraph2: "Was als gelegentliches Zeigen der versteckten Schätze der Insel an Freunde begann, entwickelte sich zu etwas Größerem. Besucher kamen immer wieder zurück, nicht nur wegen der unberührten Strände und des Meereslebens, sondern wegen der authentischen Verbindung zur Insel Mafia, die nur ein echter Einheimischer bieten konnte. So wurde Sea Max Tours geboren—eine Brücke zwischen diesem unberührten Paradies und Reisenden, die echte Erfahrungen suchen.",
+      paragraph3: "Heute sind wir stolz darauf, einer der vertrauenswürdigsten Reiseveranstalter der Insel Mafia zu sein und alles anzubieten, von Walhai-Begegnungen bis hin zu Besuchen in kulturellen Dörfern. Jede Tour wird von Einheimischen geleitet, die diese Gewässer, Riffe und Gemeinschaften genau kennen—denn dies ist nicht nur unser Arbeitsplatz, es ist unser Zuhause."
+    },
+    values: {
+      subtitle: "Unsere Werte",
+      title: "Was Uns Antreibt",
+      description: "Diese Kernprinzipien leiten jede Entscheidung, die wir treffen, und jede Tour, die wir erstellen",
+      passion: {
+        title: "Leidenschaft für den Ozean",
+        description: "Unsere Liebe zu den unberührten Gewässern der Insel Mafia treibt alles an, was wir tun."
+      },
+      expertise: {
+        title: "Lokale Expertise",
+        description: "Unsere Guides sind auf der Insel Mafia geboren und aufgewachsen und kennen jeden geheimen Ort."
+      },
+      sustainable: {
+        title: "Nachhaltiger Tourismus",
+        description: "Wir sind dem Erhalt der natürlichen Schönheit der Insel für zukünftige Generationen verpflichtet."
+      },
+      safety: {
+        title: "Sicherheit Zuerst",
+        description: "Alle unsere Touren priorisieren Ihre Sicherheit mit professioneller Ausrüstung und geschultem Personal."
+      }
+    },
+    whyMafia: {
+      subtitle: "Warum die Insel Mafia",
+      title: "Tansanias Verborgener Schatz",
+      paragraph1: "Während Sansibar Menschenmassen anzieht, bleibt die Insel Mafia vom Massentourismus wunderbar unentdeckt. Dieser unberührte Archipel vor der Südküste Tansanias beherbergt einige der spektakulärsten marinen Biodiversitäten der Welt, einschließlich des geschützten Mafia Island Marine Park.",
+      paragraph2: "Die abgelegene Lage der Insel hat ihren authentischen Charme bewahrt. Hier finden Sie traditionelle Swahili-Dörfer, wo der Dhow-Bau wie seit Jahrhunderten fortgesetzt wird, uralte Affenbrotbäume, die Wache über unberührte Strände halten, und Korallenriffe, die so lebendig sind, dass sie mit jedem anderen auf der Welt konkurrieren können.",
+      experiences: {
+        whaleShark: {
+          title: "Walhai-Begegnungen",
+          description: "Schwimmen Sie von Oktober bis März neben sanften Riesen in ihrem natürlichen Lebensraum."
+        },
+        diving: {
+          title: "Weltklasse-Tauchen",
+          description: "Erkunden Sie lebendige Korallenriffe voller Meeresleben an unberührten Tauchplätzen."
+        },
+        dhow: {
+          title: "Traditionelles Dhow-Segeln",
+          description: "Erleben Sie das maritime Erbe der Insel an Bord authentischer hölzerner Dhows."
+        }
+      }
+    },
+    cta: {
+      title: "Bereit, die Insel Mafia zu Erkunden?",
+      description: "Lassen Sie unsere erfahrenen lokalen Guides Ihnen die Magie dieses unberührten Paradieses zeigen. Von Walhai-Begegnungen bis hin zu kulturellen Dorftouren schaffen wir Erinnerungen, die ein Leben lang halten.",
+      exploreTours: "Touren Erkunden",
+      contactUs: "Kontaktieren Sie Uns"
+    }
   }
 };
