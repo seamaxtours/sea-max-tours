@@ -143,9 +143,11 @@ export const es = {
     subtitle: "Explora nuestro paraíso costero a través de imágenes cautivadoras.",
     filters: {
       all: "Todo",
-      exterior: "Exterior",
-      rooms: "Habitaciones",
-      amenities: "Servicios"
+      beach: "Playa",
+      tours: "Tours",
+      boats: "Barcos",
+      snorkeling: "Snorkel",
+      food: "Comida"
     }
   },
   booking: {

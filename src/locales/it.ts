@@ -86,9 +86,11 @@ export const it = {
     subtitle: "Esplora il nostro paradiso sul mare attraverso immagini suggestive.",
     filters: {
       all: "Tutti",
-      exterior: "Esterno",
-      rooms: "Camere",
-      amenities: "Servizi"
+      beach: "Spiaggia",
+      tours: "Tour",
+      boats: "Barche",
+      snorkeling: "Snorkeling",
+      food: "Cibo"
     }
   },
   booking: {

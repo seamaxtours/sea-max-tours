@@ -143,9 +143,11 @@ export const ja = {
     subtitle: "魅力的な画像を通じて私たちの海辺の楽園を探索してください。",
     filters: {
       all: "すべて",
-      exterior: "外観",
-      rooms: "部屋",
-      amenities: "アメニティ"
+      beach: "ビーチ",
+      tours: "ツアー",
+      boats: "ボート",
+      snorkeling: "シュノーケリング",
+      food: "料理"
     }
   },
   booking: {

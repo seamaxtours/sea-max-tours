@@ -143,9 +143,11 @@ export const ru = {
     subtitle: "Исследуйте наш прибрежный рай через захватывающие изображения.",
     filters: {
       all: "Все",
-      exterior: "Экстерьер",
-      rooms: "Номера",
-      amenities: "Удобства"
+      beach: "Пляж",
+      tours: "Туры",
+      boats: "Лодки",
+      snorkeling: "Снорклинг",
+      food: "Еда"
     }
   },
   booking: {
