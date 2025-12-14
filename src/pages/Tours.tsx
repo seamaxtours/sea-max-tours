@@ -108,14 +108,14 @@ export default function Tours() {
               {/* Category Filter */}
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Category
+                  {t.apartments.filters.category}
                 </label>
                 <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select category" />
+                    <SelectValue placeholder={t.apartments.filters.allCategories} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Categories</SelectItem>
+                    <SelectItem value="all">{t.apartments.filters.allCategories}</SelectItem>
                     {categories.filter(cat => cat !== "all").map(category => (
                       <SelectItem key={category} value={category as string} className="capitalize">
                         {category}
@@ -128,14 +128,14 @@ export default function Tours() {
               {/* Difficulty Filter */}
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  Difficulty
+                  {t.apartments.filters.difficulty}
                 </label>
                 <Select value={difficultyFilter} onValueChange={setDifficultyFilter}>
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder="Select difficulty" />
+                    <SelectValue placeholder={t.apartments.filters.allLevels} />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Levels</SelectItem>
+                    <SelectItem value="all">{t.apartments.filters.allLevels}</SelectItem>
                     {difficulties.filter(diff => diff !== "all").map(difficulty => (
                       <SelectItem key={difficulty} value={difficulty as string} className="capitalize">
                         {difficulty}
@@ -148,7 +148,7 @@ export default function Tours() {
               {/* Participants Filter */}
               <div>
                 <label className="block text-sm font-medium mb-2">
-                  {t.apartments.filters.guests}
+                  {t.apartments.filters.participants}
                 </label>
                 <Select value={participantsFilter} onValueChange={setParticipantsFilter}>
                   <SelectTrigger className="w-full">
@@ -159,8 +159,8 @@ export default function Tours() {
                     <SelectItem value="1">{t.apartments.filters.onePlus}</SelectItem>
                     <SelectItem value="2">{t.apartments.filters.twoPlus}</SelectItem>
                     <SelectItem value="4">{t.apartments.filters.fourPlus}</SelectItem>
-                    <SelectItem value="8">8+ participants</SelectItem>
-                    <SelectItem value="10">10+ participants</SelectItem>
+                    <SelectItem value="8">{t.apartments.filters.eightPlus}</SelectItem>
+                    <SelectItem value="10">{t.apartments.filters.tenPlus}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -168,7 +168,7 @@ export default function Tours() {
             
             <div className="flex justify-between items-center mt-6 animate-fade-in [animation-delay:200ms]">
               <p className="text-muted-foreground">
-                {t.apartments.filters.showing} {filteredTours.length} {t.apartments.filters.of} {allTours.length} tours
+                {t.apartments.filters.showing} {filteredTours.length} {t.apartments.filters.of} {allTours.length} {t.apartments.filters.tours}
               </p>
               <Button 
                 variant="outline" 
@@ -189,7 +189,7 @@ export default function Tours() {
           <div className="container">
             {loading ? (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">Loading tours...</p>
+                <p className="text-muted-foreground">{t.apartments.filters.loading}</p>
               </div>
             ) : filteredTours.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -201,7 +201,7 @@ export default function Tours() {
               </div>
             ) : (
               <div className="text-center py-12 animate-fade-in">
-                <h3 className="text-xl font-semibold mb-2">No tours match your filters</h3>
+                <h3 className="text-xl font-semibold mb-2">{t.apartments.filters.noMatch}</h3>
                 <p className="text-muted-foreground mb-6">{t.apartments.filters.adjustFilters}</p>
                 <Button 
                   variant="outline" 

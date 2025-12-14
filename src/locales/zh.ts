@@ -109,6 +109,13 @@ export const zh = {
     title: "我们的旅游和体验",
     subtitle: "探索我们精选的专业导游旅游，从文化游览到惊险冒险。",
     filters: {
+      category: "类别",
+      allCategories: "所有类别",
+      difficulty: "难度",
+      allLevels: "所有级别",
+      participants: "参与者",
+      eightPlus: "8+参与者",
+      tenPlus: "10+参与者",
       guests: "客人",
       anyGuests: "任何人数的客人",
       onePlus: "1+客人",
@@ -120,13 +127,15 @@ export const zh = {
       priceRange: "价格范围",
       showing: "显示",
       of: "的",
+      tours: "旅游",
       accommodations: "住宿",
       resetFilters: "重置筛选器",
-      noMatch: "没有与您的筛选器匹配的公寓",
+      noMatch: "没有与您的筛选器匹配的旅游",
       adjustFilters: "尝试调整您的筛选标准以查看更多选项。",
       viewDetails: "查看详情",
       features: "功能",
-      more: "更多"
+      more: "更多",
+      loading: "正在加载旅游..."
     }
   },
   gallery: {
