@@ -164,11 +164,11 @@ export default function Gallery() {
   const getCategoryLabel = (category: string) => {
     switch (category) {
       case "all": return t.gallery.filters.all;
-      case "beach": return "Beach";
-      case "tours": return "Tours";
-      case "boats": return "Boats";
-      case "snorkeling": return "Snorkeling";
-      case "food": return "Food";
+      case "beach": return t.gallery.filters.beach;
+      case "tours": return t.gallery.filters.tours;
+      case "boats": return t.gallery.filters.boats;
+      case "snorkeling": return t.gallery.filters.snorkeling;
+      case "food": return t.gallery.filters.food;
       default: return category;
     }
   };

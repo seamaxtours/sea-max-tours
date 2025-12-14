@@ -143,9 +143,11 @@ export const en = {
     subtitle: "Explore our seaside paradise through captivating imagery.",
     filters: {
       all: "All",
-      exterior: "Exterior",
-      rooms: "Rooms",
-      amenities: "Amenities"
+      beach: "Beach",
+      tours: "Tours",
+      boats: "Boats",
+      snorkeling: "Snorkeling",
+      food: "Food"
     }
   },
   booking: {

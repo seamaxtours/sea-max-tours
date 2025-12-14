@@ -143,9 +143,11 @@ export const sw = {
     subtitle: "Chunguza paradiso yetu ya pwani kupitia picha za kuvutia.",
     filters: {
       all: "Zote",
-      exterior: "Nje",
-      rooms: "Vyumba",
-      amenities: "Huduma"
+      beach: "Ufuko",
+      tours: "Ziara",
+      boats: "Boti",
+      snorkeling: "Kupiga mbizi",
+      food: "Chakula"
     }
   },
   booking: {

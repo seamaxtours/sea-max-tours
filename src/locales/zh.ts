@@ -143,9 +143,11 @@ export const zh = {
     subtitle: "通过迷人的图像探索我们的海滨天堂。",
     filters: {
       all: "全部",
-      exterior: "外观",
-      rooms: "房间",
-      amenities: "设施"
+      beach: "海滩",
+      tours: "旅游",
+      boats: "船只",
+      snorkeling: "浮潜",
+      food: "美食"
     }
   },
   booking: {

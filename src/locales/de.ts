@@ -143,9 +143,11 @@ export const de = {
     subtitle: "Erkunden Sie unser Küstenparadies durch fesselnde Bilder.",
     filters: {
       all: "Alle",
-      exterior: "Außenbereich",
-      rooms: "Zimmer",
-      amenities: "Annehmlichkeiten"
+      beach: "Strand",
+      tours: "Touren",
+      boats: "Boote",
+      snorkeling: "Schnorcheln",
+      food: "Essen"
     }
   },
   booking: {

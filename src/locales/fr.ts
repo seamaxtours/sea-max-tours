@@ -143,9 +143,11 @@ export const fr = {
     subtitle: "Explorez notre paradis balnéaire à travers des images captivantes.",
     filters: {
       all: "Tout",
-      exterior: "Extérieur",
-      rooms: "Chambres",
-      amenities: "Services"
+      beach: "Plage",
+      tours: "Excursions",
+      boats: "Bateaux",
+      snorkeling: "Plongée",
+      food: "Nourriture"
     }
   },
   booking: {
