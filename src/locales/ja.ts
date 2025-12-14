@@ -109,6 +109,13 @@ export const ja = {
     title: "私たちのツアーと体験",
     subtitle: "文化的な遠足からスリリングな冒険まで、専門のガイドツアーのセレクションを発見してください。",
     filters: {
+      category: "カテゴリー",
+      allCategories: "すべてのカテゴリー",
+      difficulty: "難易度",
+      allLevels: "すべてのレベル",
+      participants: "参加者",
+      eightPlus: "8+参加者",
+      tenPlus: "10+参加者",
       guests: "ゲスト",
       anyGuests: "任意の数のゲスト",
       onePlus: "1+ゲスト",
@@ -120,13 +127,15 @@ export const ja = {
       priceRange: "価格帯",
       showing: "表示中",
       of: "の",
+      tours: "ツアー",
       accommodations: "宿泊施設",
       resetFilters: "フィルターをリセット",
-      noMatch: "フィルターに一致するアパートメントがありません",
+      noMatch: "フィルターに一致するツアーがありません",
       adjustFilters: "フィルター基準を調整して、より多くのオプションを表示してください。",
       viewDetails: "詳細を見る",
       features: "機能",
-      more: "もっと"
+      more: "もっと",
+      loading: "ツアーを読み込み中..."
     }
   },
   gallery: {

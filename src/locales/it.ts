@@ -52,6 +52,13 @@ export const it = {
     title: "I Nostri Tour ed Esperienze",
     subtitle: "Scopri la nostra selezione di tour guidati da esperti, dalle escursioni culturali alle avventure emozionanti.",
     filters: {
+      category: "Categoria",
+      allCategories: "Tutte le Categorie",
+      difficulty: "Difficoltà",
+      allLevels: "Tutti i Livelli",
+      participants: "Partecipanti",
+      eightPlus: "8+ partecipanti",
+      tenPlus: "10+ partecipanti",
       guests: "Ospiti",
       anyGuests: "Qualsiasi numero di ospiti",
       onePlus: "1+ ospiti",
@@ -63,13 +70,15 @@ export const it = {
       priceRange: "Fascia di Prezzo",
       showing: "Visualizzando",
       of: "di",
+      tours: "tour",
       accommodations: "alloggi",
       resetFilters: "Reimposta Filtri",
-      noMatch: "Nessun appartamento corrisponde ai tuoi filtri",
+      noMatch: "Nessun tour corrisponde ai tuoi filtri",
       adjustFilters: "Prova a modificare i criteri di filtro per vedere più opzioni.",
       viewDetails: "Visualizza Dettagli",
       features: "caratteristiche",
-      more: "altro"
+      more: "altro",
+      loading: "Caricamento tour..."
     }
   },
   gallery: {

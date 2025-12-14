@@ -109,6 +109,13 @@ export const sw = {
     title: "Safari na Uzoefu Wetu",
     subtitle: "Gundua chaguo letu la safari zinazoongozwa na wataalamu, kutoka matembezi ya kitamaduni hadi matukio ya kusisimua.",
     filters: {
+      category: "Aina",
+      allCategories: "Aina Zote",
+      difficulty: "Ugumu",
+      allLevels: "Viwango Vyote",
+      participants: "Washiriki",
+      eightPlus: "8+ washiriki",
+      tenPlus: "10+ washiriki",
       guests: "Wageni",
       anyGuests: "Idadi yoyote ya wageni",
       onePlus: "1+ wageni",
@@ -120,13 +127,15 @@ export const sw = {
       priceRange: "Kiwango cha Bei",
       showing: "Inaonyesha",
       of: "ya",
+      tours: "safari",
       accommodations: "malazi",
       resetFilters: "Weka Upya Vichujio",
-      noMatch: "Hakuna vyumba vinavyolingana na vichujio vyako",
+      noMatch: "Hakuna safari zinazolingana na vichujio vyako",
       adjustFilters: "Jaribu kurekebisha vigezo vyako vya kuchuja kuona chaguo zaidi.",
       viewDetails: "Tazama Maelezo",
       features: "sifa",
-      more: "zaidi"
+      more: "zaidi",
+      loading: "Inapakia safari..."
     }
   },
   gallery: {
