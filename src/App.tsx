@@ -11,8 +11,10 @@ import BookingPage from "./pages/BookingPage";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "@/contexts/LanguageContext";
+import { AuthProvider } from "@/contexts/AuthContext";
 import WhatsAppButton from "./components/WhatsAppButton";
 
 // Create a react-query client
@@ -22,25 +24,28 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <LanguageProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/tours" element={<Tours />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/booking" element={<BookingPage />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/contact" element={<Contact />} />
-            {/* Redirect old amenities route to blog */}
-            <Route path="/amenities" element={<Navigate to="/blog" replace />} />
-            <Route path="/apartments" element={<Navigate to="/tours" replace />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <WhatsAppButton />
-        </BrowserRouter>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/tours" element={<Tours />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/booking" element={<BookingPage />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/auth" element={<Auth />} />
+              {/* Redirect old amenities route to blog */}
+              <Route path="/amenities" element={<Navigate to="/blog" replace />} />
+              <Route path="/apartments" element={<Navigate to="/tours" replace />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <WhatsAppButton />
+          </BrowserRouter>
+        </AuthProvider>
       </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
