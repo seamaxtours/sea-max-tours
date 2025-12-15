@@ -22,7 +22,7 @@ const blogPosts: BlogPost[] = [
   {
     id: "1",
     title: "Swimming with Whale Sharks: Mafia Island's Greatest Adventure",
-    excerpt: "Discover the magic of swimming with the gentle giants in the open waters outside the marine park. From October to March, whale sharks gather near Mafia Island, offering an unforgettable snorkeling experience in crystal-clear waters.",
+    excerpt: "Discover the magic of swimming with the gentle giants in the open waters outside the marine park. From September to March, whale sharks gather near Mafia Island, offering an unforgettable snorkeling experience in crystal-clear waters.",
     category: "Marine Life",
     date: "November 15, 2024",
     author: "Max B",
@@ -32,7 +32,7 @@ const blogPosts: BlogPost[] = [
   {
     id: "2",
     title: "Best Time to Visit Mafia Island: A Complete Seasonal Guide",
-    excerpt: "Plan your perfect Mafia Island trip with our guide. Whale shark season runs October to March, while June to October offers the best diving conditions. Each season brings unique experiences and marine encounters.",
+    excerpt: "Plan your perfect Mafia Island trip with our guide. Whale shark season runs September to March, while June to October offers the best diving conditions. Each season brings unique experiences and marine encounters.",
     category: "Travel Tips",
     date: "November 10, 2024",
     author: "Sea Max Tours",
