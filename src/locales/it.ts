@@ -419,8 +419,8 @@ export const it = {
       name: "Makame Kombo",
       nickname: 'Conosciuto come "Max B"',
       quote: "L'Isola di Mafia non è solo dove lavoro—è dove appartiene il mio cuore. Ogni onda, ogni barriera corallina, ogni squalo balena è stato il mio maestro. Ora voglio condividere queste lezioni con il mondo.",
-      bio1: "Nato e cresciuto sull'Isola di Mafia, Makame ha trascorso la sua infanzia esplorando ogni insenatura nascosta, imparando la navigazione tradizionale in dhow da suo padre, e tuffandosi nelle acque cristalline che sarebbero diventate la passione della sua vita.",
-      bio2: "Con oltre 15 anni di esperienza nel guidare i visitatori attraverso le meraviglie dell'isola, Max B ha fondato Sea Max Tours per condividere autentiche esperienze dell'Isola di Mafia preservando l'ambiente incontaminato che chiama casa."
+      bio1: "Sono nato a Zanzibar ma mi sono trasferito sull'Isola di Mafia dopo i miei studi quando ero un ragazzino. Vivo qui da allora – più di 20 anni imparando tutto e conoscendo ogni cosa su questa bellissima isola.",
+      bio2: "Questo profondo legame con Mafia ha plasmato la mia visione di creare esperienze autentiche che permettano ai visitatori di scoprire i tesori nascosti dell'isola supportando le comunità locali e gli sforzi di conservazione. Sea Max Tours è nata da questa passione."
     },
     story: {
       subtitle: "La Storia di Sea Max Tours",
