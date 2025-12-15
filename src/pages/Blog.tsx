@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import blogTurtleHatching from "@/assets/blog-turtle-hatching.jpg";
 
 interface BlogPost {
   id: string;
@@ -66,7 +67,7 @@ const blogPosts: BlogPost[] = [
     category: "Conservation",
     date: "October 20, 2024",
     author: "Max B",
-    image: "https://images.unsplash.com/photo-1582967788606-a171c1080cb0?w=800&h=600&fit=crop",
+    image: blogTurtleHatching,
     readTime: "6 min read"
   },
   {
