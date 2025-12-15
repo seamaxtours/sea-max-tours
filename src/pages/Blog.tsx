@@ -7,6 +7,7 @@ import { Calendar, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import blogTurtleHatching from "@/assets/blog-turtle-hatching.jpg";
+import blogWhaleShark from "@/assets/blog-whale-shark.jpg";
 
 interface BlogPost {
   id: string;
@@ -27,7 +28,7 @@ const blogPosts: BlogPost[] = [
     category: "Marine Life",
     date: "November 15, 2024",
     author: "Max B",
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
+    image: blogWhaleShark,
     readTime: "5 min read"
   },
   {
