@@ -411,7 +411,7 @@ export const ja = {
   about: {
     hero: {
       badge: "創業者に会う",
-      title: "マフィア島生まれ",
+      title: "マフィア島に暮らす",
       subtitle: "生涯の島の知識を世界と共有"
     },
     founder: {

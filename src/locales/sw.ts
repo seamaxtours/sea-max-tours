@@ -411,7 +411,7 @@ export const sw = {
   about: {
     hero: {
       badge: "Kutana na Mwanzilishi",
-      title: "Alizaliwa Kisiwa cha Mafia",
+      title: "Anaishi Kisiwa cha Mafia",
       subtitle: "Ujuzi wa kisiwa wa maisha yote, unashirikiwa na ulimwengu"
     },
     founder: {
