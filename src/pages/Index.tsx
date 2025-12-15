@@ -6,6 +6,7 @@ import BookingForm from "@/components/BookingForm";
 import BookingFormWidget from "@/components/BookingFormWidget";
 import TourCard, { TourProps } from "@/components/TourCard";
 import ReviewsSection from "@/components/ReviewsSection";
+import GoogleReviewsSection from "@/components/GoogleReviewsSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight, Compass, Shield, Award, Users, MapPin, Clock } from "lucide-react";
@@ -218,8 +219,8 @@ export default function Index() {
           </div>
         </section>
         
-        {/* Reviews Section */}
-        <ReviewsSection />
+        {/* Google Reviews Section */}
+        <GoogleReviewsSection />
         
         {/* WhatsApp Booking Section */}
         <section className="relative py-20 bg-gradient-to-r from-primary/5 to-sea-light/20 dark:from-primary/10 dark:to-sea-dark/20 overflow-hidden">
