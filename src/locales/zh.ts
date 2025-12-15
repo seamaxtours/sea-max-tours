@@ -135,7 +135,9 @@ export const zh = {
       viewDetails: "查看详情",
       features: "功能",
       more: "更多",
-      loading: "正在加载旅游..."
+      loading: "正在加载旅游...",
+      readMore: "阅读更多",
+      readLess: "收起"
     }
   },
   gallery: {

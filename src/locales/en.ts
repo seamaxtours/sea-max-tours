@@ -135,7 +135,9 @@ export const en = {
       viewDetails: "View Details",
       features: "features",
       more: "more",
-      loading: "Loading tours..."
+      loading: "Loading tours...",
+      readMore: "Read more",
+      readLess: "Read less"
     }
   },
   gallery: {

@@ -78,7 +78,9 @@ export const it = {
       viewDetails: "Visualizza Dettagli",
       features: "caratteristiche",
       more: "altro",
-      loading: "Caricamento tour..."
+      loading: "Caricamento tour...",
+      readMore: "Leggi di più",
+      readLess: "Leggi meno"
     }
   },
   gallery: {

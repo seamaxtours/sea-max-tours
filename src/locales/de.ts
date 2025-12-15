@@ -135,7 +135,9 @@ export const de = {
       viewDetails: "Details Anzeigen",
       features: "Merkmale",
       more: "mehr",
-      loading: "Touren werden geladen..."
+      loading: "Touren werden geladen...",
+      readMore: "Mehr lesen",
+      readLess: "Weniger lesen"
     }
   },
   gallery: {
