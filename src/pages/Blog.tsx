@@ -227,29 +227,6 @@ export default function Blog() {
               </div>
             </div>
 
-            {/* Newsletter Section */}
-            <div className="mt-16 animate-fade-in [animation-delay:400ms]">
-              <Card className="bg-gradient-to-r from-primary/10 to-sea-light/10 border-primary/20">
-                <CardContent className="p-8 md:p-12 text-center">
-                  <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                    Stay Updated with Our Latest Stories
-                  </h2>
-                  <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                    Subscribe to our newsletter and get the latest travel tips, tour updates, and exclusive insights delivered directly to your inbox.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      className="flex-1 px-4 py-2 rounded-lg border bg-background"
-                    />
-                    <Button className="btn-primary whitespace-nowrap">
-                      Subscribe Now
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </section>
       </main>
