@@ -419,7 +419,7 @@ export const sw = {
       name: "Makame Kombo",
       nickname: 'Anajulikana kama "Max B"',
       quote: "Kisiwa cha Mafia si mahali ninapofanya kazi tu—ni mahali moyo wangu unapohusiana. Kila wimbi, kila mwamba wa matumbawe, kila papa nyangumi amekuwa mwalimu wangu. Sasa nataka kushiriki masomo haya na ulimwengu.",
-      bio1: "Nilizaliwa Zanzibar lakini nilihamia Kisiwa cha Mafia baada ya masomo yangu nilipokuwa mvulana mdogo sana. Nimekuwa nikiishi hapa tangu wakati huo – zaidi ya miaka 20 nikijifunza kila kitu na kujua yote kuhusu kisiwa hiki kizuri.",
+      bio1: "Nilihamia Kisiwa cha Mafia kutoka Zanzibar baada ya masomo yangu nilipokuwa mvulana mdogo sana. Nimekuwa nikiishi hapa tangu wakati huo – zaidi ya miaka 20 nikijifunza kila kitu na kujua yote kuhusu kisiwa hiki kizuri.",
       bio2: "Uhusiano huu wa kina na Mafia umeunda maono yangu ya kuunda uzoefu halisi unaoruhusu wageni kugundua hazina zilizofichwa za kisiwa huku wakisaidia jamii za mtaa na juhudi za uhifadhi. Sea Max Tours ilizaliwa kutoka kwa shauku hii."
     },
     story: {
