@@ -1,10 +1,12 @@
 
 import { useEffect, useState } from "react";
 import { format, addDays, differenceInDays } from "date-fns";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CalendarIcon, Users, CreditCard, Check, ChevronRight } from "lucide-react";
+import { CalendarIcon, Users, CreditCard, Check, ChevronRight, Loader2 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -28,6 +30,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { getTourImage } from "@/lib/tourImages";
 
 export default function BookingPage() {
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const [toursData, setToursData] = useState<TourProps[]>([]);
   const [startDate, setStartDate] = useState<Date | undefined>(new Date());
   const [endDate, setEndDate] = useState<Date | undefined>(addDays(new Date(), 7));
@@ -35,6 +39,7 @@ export default function BookingPage() {
   const [children, setChildren] = useState("0");
   const [selectedApartment, setSelectedApartment] = useState<TourProps | null>(null);
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   // Fetch tours from database
   useEffect(() => {
@@ -88,48 +93,91 @@ export default function BookingPage() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
+  // Redirect to auth if not logged in
+  useEffect(() => {
+    if (!authLoading && !user) {
+      toast.error("Please log in to book a tour");
+      navigate("/auth");
+    }
+  }, [user, authLoading, navigate]);
+
   // Submit booking
-  const handleSubmitBooking = (e: React.FormEvent) => {
+  const handleSubmitBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real app, this would send the booking data to a server
-    console.log("Booking submitted:", {
-      apartment: selectedApartment,
-      dates: { startDate, endDate },
-      guests: { adults, children },
-      customerInfo: formData
-    });
-    
-    // Show confirmation
-    setIsBookingConfirmed(true);
-    
-    // Reset form after booking is confirmed
-    setTimeout(() => {
-      setCurrentStep(1);
-      setSelectedApartment(null);
-      setStartDate(new Date());
-      setEndDate(addDays(new Date(), 7));
-      setAdults("2");
-      setChildren("0");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        address: "",
-        city: "",
-        zipCode: "",
-        country: "",
-        paymentMethod: "credit-card",
-        cardName: "",
-        cardNumber: "",
-        cardExpiry: "",
-        cardCvc: "",
-        specialRequests: ""
-      });
-      setIsBookingConfirmed(false);
-    }, 5000);
+    if (!user || !selectedApartment || !startDate) {
+      toast.error("Missing required booking information");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const totalParticipants = parseInt(adults) + parseInt(children);
+      const calculatedTotal = selectedApartment.price * totalParticipants;
+
+      const { error } = await supabase
+        .from('bookings')
+        .insert({
+          tour_id: selectedApartment.id,
+          user_id: user.id,
+          booking_date: format(startDate, 'yyyy-MM-dd'),
+          participants: totalParticipants,
+          total_price: calculatedTotal,
+          guest_name: `${formData.firstName} ${formData.lastName}`,
+          guest_email: formData.email,
+          guest_phone: formData.phone || null,
+          special_requests: formData.specialRequests || null,
+          status: 'pending'
+        });
+
+      if (error) throw error;
+
+      toast.success("Booking confirmed successfully!");
+      setIsBookingConfirmed(true);
+      
+      // Reset form after booking is confirmed
+      setTimeout(() => {
+        setCurrentStep(1);
+        setSelectedApartment(null);
+        setStartDate(new Date());
+        setEndDate(addDays(new Date(), 7));
+        setAdults("2");
+        setChildren("0");
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          address: "",
+          city: "",
+          zipCode: "",
+          country: "",
+          paymentMethod: "credit-card",
+          cardName: "",
+          cardNumber: "",
+          cardExpiry: "",
+          cardCvc: "",
+          specialRequests: ""
+        });
+        setIsBookingConfirmed(false);
+      }, 5000);
+    } catch (error: any) {
+      console.error("Booking error:", error);
+      toast.error(error.message || "Failed to create booking. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
+  // Show loading while checking auth
+  if (authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    );
+  }
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -768,8 +816,18 @@ export default function BookingPage() {
                       <Button 
                         className="btn-primary"
                         onClick={handleSubmitBooking}
+                        disabled={isSubmitting}
                       >
-                        Confirm Booking <Check className="ml-2 h-4 w-4" />
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Processing...
+                          </>
+                        ) : (
+                          <>
+                            Confirm Booking <Check className="ml-2 h-4 w-4" />
+                          </>
+                        )}
                       </Button>
                     </div>
                   </>
