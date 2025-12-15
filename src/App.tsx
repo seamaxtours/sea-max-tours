@@ -12,6 +12,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Auth from "./pages/Auth";
+import Reviews from "./pages/Reviews";
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import { AuthProvider } from "@/contexts/AuthContext";
@@ -37,6 +38,7 @@ const App = () => (
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/reviews" element={<Reviews />} />
               {/* Redirect old amenities route to blog */}
               <Route path="/amenities" element={<Navigate to="/blog" replace />} />
               <Route path="/apartments" element={<Navigate to="/tours" replace />} />

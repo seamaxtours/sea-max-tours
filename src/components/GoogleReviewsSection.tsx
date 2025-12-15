@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Star, ArrowRight } from "lucide-react";
 
 interface GoogleReview {
   id: string;
@@ -127,6 +129,14 @@ export default function GoogleReviewsSection() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="text-center mt-10">
+          <Button asChild className="btn-primary">
+            <Link to="/reviews">
+              See All Reviews <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
