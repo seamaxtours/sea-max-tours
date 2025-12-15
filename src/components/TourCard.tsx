@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { MapPin, Clock, Users, Star } from "lucide-react";
 import { getTourImage } from "@/lib/tourImages";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface TourProps {
   id: string;
@@ -25,6 +27,9 @@ interface TourCardProps {
 }
 
 export default function TourCard({ tour }: TourCardProps) {
+  const { t } = useLanguage();
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 group">
       <CardHeader className="p-0 relative overflow-hidden">
@@ -58,9 +63,15 @@ export default function TourCard({ tour }: TourCardProps) {
           </div>
         </div>
         
-        <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+        <p className={`text-muted-foreground text-sm mb-2 ${expanded ? '' : 'line-clamp-2'}`}>
           {tour.description}
         </p>
+        <button 
+          onClick={() => setExpanded(!expanded)} 
+          className="text-primary text-sm font-medium hover:underline mb-4"
+        >
+          {expanded ? t.apartments.filters.readLess : t.apartments.filters.readMore}
+        </button>
         
         <div className="space-y-2 mb-4">
           <div className="flex items-center text-sm text-muted-foreground">

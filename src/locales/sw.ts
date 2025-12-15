@@ -135,7 +135,9 @@ export const sw = {
       viewDetails: "Tazama Maelezo",
       features: "sifa",
       more: "zaidi",
-      loading: "Inapakia safari..."
+      loading: "Inapakia safari...",
+      readMore: "Soma zaidi",
+      readLess: "Soma kidogo"
     }
   },
   gallery: {

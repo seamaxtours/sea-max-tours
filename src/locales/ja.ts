@@ -135,7 +135,9 @@ export const ja = {
       viewDetails: "詳細を見る",
       features: "機能",
       more: "もっと",
-      loading: "ツアーを読み込み中..."
+      loading: "ツアーを読み込み中...",
+      readMore: "続きを読む",
+      readLess: "閉じる"
     }
   },
   gallery: {

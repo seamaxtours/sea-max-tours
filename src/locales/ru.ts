@@ -135,7 +135,9 @@ export const ru = {
       viewDetails: "Подробнее",
       features: "особенности",
       more: "еще",
-      loading: "Загрузка туров..."
+      loading: "Загрузка туров...",
+      readMore: "Читать далее",
+      readLess: "Свернуть"
     }
   },
   gallery: {

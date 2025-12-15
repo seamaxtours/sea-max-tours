@@ -135,7 +135,9 @@ export const fr = {
       viewDetails: "Voir les Détails",
       features: "caractéristiques",
       more: "plus",
-      loading: "Chargement des tours..."
+      loading: "Chargement des tours...",
+      readMore: "Lire plus",
+      readLess: "Lire moins"
     }
   },
   gallery: {
