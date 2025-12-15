@@ -411,7 +411,7 @@ export const zh = {
   about: {
     hero: {
       badge: "认识创始人",
-      title: "出生于马菲亚岛",
+      title: "居住在马菲亚岛",
       subtitle: "一生的岛屿知识，与世界分享"
     },
     founder: {

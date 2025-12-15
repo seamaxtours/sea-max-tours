@@ -411,7 +411,7 @@ export const de = {
   about: {
     hero: {
       badge: "Treffen Sie den Gründer",
-      title: "Geboren auf der Insel Mafia",
+      title: "Lebend auf der Insel Mafia",
       subtitle: "Ein Leben voller Inselwissen, geteilt mit der Welt"
     },
     founder: {
