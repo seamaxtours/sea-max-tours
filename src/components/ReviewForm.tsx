@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -13,8 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Star, Loader2, User } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Star, Loader2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { z } from "zod";
 
@@ -31,7 +29,6 @@ const reviewSchema = z.object({
 });
 
 export default function ReviewForm({ onReviewSubmitted }: { onReviewSubmitted?: () => void }) {
-  const { user } = useAuth();
   const [tours, setTours] = useState<Tour[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -63,15 +60,6 @@ export default function ReviewForm({ onReviewSubmitted }: { onReviewSubmitted?: 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    if (!user) {
-      toast({
-        title: "Authentication required",
-        description: "Please log in to submit a review",
-        variant: "destructive",
-      });
-      return;
-    }
 
     // Validate form data
     const result = reviewSchema.safeParse(formData);
@@ -91,7 +79,6 @@ export default function ReviewForm({ onReviewSubmitted }: { onReviewSubmitted?: 
 
     try {
       const { error } = await supabase.from("reviews").insert({
-        user_id: user.id,
         user_name: formData.userName.trim(),
         tour_id: formData.tourId,
         rating: formData.rating,
@@ -125,27 +112,10 @@ export default function ReviewForm({ onReviewSubmitted }: { onReviewSubmitted?: 
     }
   };
 
-  if (!user) {
-    return (
-      <Card className="border-dashed">
-        <CardContent className="py-12 text-center">
-          <User className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-          <h3 className="text-lg font-semibold mb-2">Share Your Experience</h3>
-          <p className="text-muted-foreground mb-4">
-            Log in to leave a review about your tour experience
-          </p>
-          <Button asChild>
-            <Link to="/auth">Log In to Review</Link>
-          </Button>
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Write a Review</CardTitle>
+        <CardTitle>Share Your Experience</CardTitle>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-6">
