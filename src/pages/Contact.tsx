@@ -134,8 +134,8 @@ export default function Contact() {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">{t.contact.email}</h3>
-                      <a href="mailto:seamaxtours@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
-                        seamaxtours@gmail.com
+                      <a href="mailto:info@seamaxtours.com" className="text-muted-foreground hover:text-primary transition-colors">
+                        info@seamaxtours.com
                       </a>
                     </div>
                   </div>
