@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -11,10 +12,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Star, Loader2 } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { Star, Loader2, LogIn } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { Link } from "react-router-dom";
 
 interface Tour {
   id: string;
@@ -29,6 +31,7 @@ const reviewSchema = z.object({
 });
 
 export default function ReviewForm({ onReviewSubmitted }: { onReviewSubmitted?: () => void }) {
+  const { user, loading: authLoading } = useAuth();
   const [tours, setTours] = useState<Tour[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -83,6 +86,7 @@ export default function ReviewForm({ onReviewSubmitted }: { onReviewSubmitted?: 
         tour_id: formData.tourId,
         rating: formData.rating,
         comment: formData.comment.trim(),
+        user_id: user?.id || null,
       });
 
       if (error) throw error;
@@ -111,6 +115,29 @@ export default function ReviewForm({ onReviewSubmitted }: { onReviewSubmitted?: 
       setIsSubmitting(false);
     }
   };
+
+  // Show login prompt if not authenticated
+  if (!authLoading && !user) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Share Your Experience</CardTitle>
+          <CardDescription>Please log in to submit a review</CardDescription>
+        </CardHeader>
+        <CardContent className="text-center py-8">
+          <p className="text-muted-foreground mb-4">
+            You need to be logged in to leave a review.
+          </p>
+          <Button asChild>
+            <Link to="/auth" className="flex items-center gap-2">
+              <LogIn className="h-4 w-4" />
+              Log In to Review
+            </Link>
+          </Button>
+        </CardContent>
+      </Card>
+    );
+  }
 
   return (
     <Card>

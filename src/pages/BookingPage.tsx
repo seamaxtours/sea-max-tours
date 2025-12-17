@@ -4,7 +4,7 @@ import { format, addDays, differenceInDays } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CalendarIcon, Users, CreditCard, Check, ChevronRight, Loader2 } from "lucide-react";
+import { CalendarIcon, Users, Check, ChevronRight, Loader2, MessageCircle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -64,11 +64,6 @@ export default function BookingPage() {
     city: "",
     zipCode: "",
     country: "",
-    paymentMethod: "credit-card",
-    cardName: "",
-    cardNumber: "",
-    cardExpiry: "",
-    cardCvc: "",
     specialRequests: ""
   });
   const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
@@ -133,7 +128,26 @@ export default function BookingPage() {
 
       if (error) throw error;
 
-      toast.success("Booking confirmed successfully!");
+      // Create WhatsApp message with booking details
+      const totalParticipantsDisplay = parseInt(adults) + parseInt(children);
+      const whatsappMessage = encodeURIComponent(
+        `🏝️ *New Tour Booking Request*\n\n` +
+        `*Tour:* ${selectedApartment.name}\n` +
+        `*Date:* ${format(startDate, 'EEEE, MMMM d, yyyy')}\n` +
+        `*Participants:* ${totalParticipantsDisplay}\n` +
+        `*Total Price:* $${calculatedTotal}\n\n` +
+        `*Guest Details:*\n` +
+        `Name: ${formData.firstName} ${formData.lastName}\n` +
+        `Email: ${formData.email}\n` +
+        `Phone: ${formData.phone || 'Not provided'}\n` +
+        `${formData.specialRequests ? `Special Requests: ${formData.specialRequests}` : ''}\n\n` +
+        `Please confirm my booking. Thank you!`
+      );
+      
+      // Open WhatsApp with pre-filled message
+      window.open(`https://wa.me/255715333801?text=${whatsappMessage}`, '_blank');
+      
+      toast.success("Booking saved! Complete payment via WhatsApp.");
       setIsBookingConfirmed(true);
       
       // Reset form after booking is confirmed
@@ -153,18 +167,12 @@ export default function BookingPage() {
           city: "",
           zipCode: "",
           country: "",
-          paymentMethod: "credit-card",
-          cardName: "",
-          cardNumber: "",
-          cardExpiry: "",
-          cardCvc: "",
           specialRequests: ""
         });
         setIsBookingConfirmed(false);
       }, 5000);
     } catch (error: any) {
-      console.error("Booking error:", error);
-      toast.error(error.message || "Failed to create booking. Please try again.");
+      toast.error("Failed to create booking. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -516,62 +524,16 @@ export default function BookingPage() {
                       </div>
                       
                       <h2 className="text-xl font-semibold mb-4">Payment Information</h2>
-                      <div className="glass-card p-6 space-y-6">
-                        <Tabs defaultValue="credit-card" onValueChange={(value) => handleSelectChange("paymentMethod", value)}>
-                          <TabsList className="grid w-full grid-cols-2">
-                            <TabsTrigger value="credit-card">Credit Card</TabsTrigger>
-                            <TabsTrigger value="pay-at-property">Pay at Property</TabsTrigger>
-                          </TabsList>
-                          <TabsContent value="credit-card" className="space-y-4 mt-4">
-                            <div className="space-y-2">
-                              <Label htmlFor="cardName">Name on Card</Label>
-                              <Input 
-                                id="cardName" 
-                                name="cardName" 
-                                value={formData.cardName} 
-                                onChange={handleInputChange} 
-                              />
-                            </div>
-                            <div className="space-y-2">
-                              <Label htmlFor="cardNumber">Card Number</Label>
-                              <Input 
-                                id="cardNumber" 
-                                name="cardNumber" 
-                                value={formData.cardNumber} 
-                                onChange={handleInputChange}
-                                placeholder="0000 0000 0000 0000" 
-                              />
-                            </div>
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="space-y-2">
-                                <Label htmlFor="cardExpiry">Expiry Date</Label>
-                                <Input 
-                                  id="cardExpiry" 
-                                  name="cardExpiry" 
-                                  value={formData.cardExpiry} 
-                                  onChange={handleInputChange}
-                                  placeholder="MM/YY" 
-                                />
-                              </div>
-                              <div className="space-y-2">
-                                <Label htmlFor="cardCvc">CVC</Label>
-                                <Input 
-                                  id="cardCvc" 
-                                  name="cardCvc" 
-                                  value={formData.cardCvc} 
-                                  onChange={handleInputChange}
-                                  placeholder="123" 
-                                />
-                              </div>
-                            </div>
-                          </TabsContent>
-                          <TabsContent value="pay-at-property" className="mt-4">
-                            <p className="text-muted-foreground">
-                              You will be required to provide a valid credit card upon arrival for security purposes, 
-                              but payment will be collected during your stay at the property.
+                      <div className="glass-card p-6">
+                        <div className="flex items-start gap-4 p-4 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+                          <MessageCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                          <div>
+                            <h4 className="font-medium text-green-800 dark:text-green-200">Pay via WhatsApp</h4>
+                            <p className="text-sm text-green-700 dark:text-green-300 mt-1">
+                              After submitting your booking, you'll be redirected to WhatsApp to confirm your reservation and arrange payment securely with our team.
                             </p>
-                          </TabsContent>
-                        </Tabs>
+                          </div>
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -747,15 +709,9 @@ export default function BookingPage() {
                             
                             <div>
                               <h4 className="font-medium mb-1">Payment Method:</h4>
-                              <p className="text-sm">
-                                {formData.paymentMethod === "credit-card" ? (
-                                  <span className="flex items-center">
-                                    <CreditCard className="h-4 w-4 mr-2" />
-                                    Credit Card (ending in {formData.cardNumber.slice(-4) || "****"})
-                                  </span>
-                                ) : (
-                                  "Pay at Property"
-                                )}
+                              <p className="text-sm flex items-center">
+                                <MessageCircle className="h-4 w-4 mr-2 text-green-600" />
+                                Pay via WhatsApp
                               </p>
                             </div>
                           </div>
