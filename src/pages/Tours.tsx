@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TourCard from "@/components/TourCard";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { TourProps } from "@/components/TourCard";
@@ -10,6 +12,7 @@ export default function Tours() {
   const { t } = useLanguage();
   const [tours, setTours] = useState<TourProps[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
   
   // Fetch tours from database
   useEffect(() => {
@@ -35,6 +38,16 @@ export default function Tours() {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
+
+  const filteredTours = useMemo(() => {
+    if (!searchQuery.trim()) return tours;
+    const query = searchQuery.toLowerCase();
+    return tours.filter(
+      (tour) =>
+        tour.name.toLowerCase().includes(query) ||
+        tour.description.toLowerCase().includes(query)
+    );
+  }, [tours, searchQuery]);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -51,6 +64,18 @@ export default function Tours() {
               <p className="text-muted-foreground text-lg mb-6">
                 {t.apartments.subtitle}
               </p>
+              
+              {/* Search Bar */}
+              <div className="relative max-w-md mx-auto">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input
+                  type="text"
+                  placeholder="Search tours..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 bg-background/80 backdrop-blur-sm"
+                />
+              </div>
             </div>
           </div>
           
@@ -68,9 +93,9 @@ export default function Tours() {
               <div className="text-center py-12">
                 <p className="text-muted-foreground">{t.apartments.filters.loading}</p>
               </div>
-            ) : tours.length > 0 ? (
+            ) : filteredTours.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {tours.map((tour, index) => (
+                {filteredTours.map((tour, index) => (
                   <div key={tour.id} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
                     <TourCard tour={tour} />
                   </div>
