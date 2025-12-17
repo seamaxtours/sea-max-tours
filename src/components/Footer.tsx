@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import logo from "@/assets/logo.png";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -12,7 +13,9 @@ export default function Footer() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div className="animate-fade-in [animation-delay:100ms]">
-            <h4 className="text-xl font-bold mb-4">Sea Max Tours</h4>
+            <Link to="/" className="inline-block mb-4">
+              <img src={logo} alt="Sea Max Tours" className="h-16 w-auto" />
+            </Link>
             <p className="text-muted-foreground mb-4">
               {t.footer.description}
             </p>
