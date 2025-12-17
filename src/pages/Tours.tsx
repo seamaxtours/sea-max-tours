@@ -2,25 +2,13 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import TourCard from "@/components/TourCard";
-import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { supabase } from "@/integrations/supabase/client";
 import { TourProps } from "@/components/TourCard";
 
 export default function Tours() {
   const { t } = useLanguage();
-  const [allTours, setAllTours] = useState<TourProps[]>([]);
-  const [filteredTours, setFilteredTours] = useState<TourProps[]>([]);
-  const [categoryFilter, setCategoryFilter] = useState<string>("all");
-  const [difficultyFilter, setDifficultyFilter] = useState<string>("all");
-  const [participantsFilter, setParticipantsFilter] = useState<string>("all");
+  const [tours, setTours] = useState<TourProps[]>([]);
   const [loading, setLoading] = useState(true);
   
   // Fetch tours from database
@@ -35,8 +23,7 @@ export default function Tours() {
       if (error) {
         console.error('Error fetching tours:', error);
       } else if (data) {
-        setAllTours(data);
-        setFilteredTours(data);
+        setTours(data);
       }
       setLoading(false);
     };
@@ -48,33 +35,6 @@ export default function Tours() {
     // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
-  
-  // Apply filters
-  useEffect(() => {
-    let result = allTours;
-    
-    // Filter by category
-    if (categoryFilter !== "all") {
-      result = result.filter(tour => tour.category === categoryFilter);
-    }
-    
-    // Filter by difficulty
-    if (difficultyFilter !== "all") {
-      result = result.filter(tour => tour.difficulty === difficultyFilter);
-    }
-    
-    // Filter by participants
-    if (participantsFilter !== "all") {
-      const participants = parseInt(participantsFilter);
-      result = result.filter(tour => tour.max_participants >= participants);
-    }
-    
-    setFilteredTours(result);
-  }, [categoryFilter, difficultyFilter, participantsFilter, allTours]);
-  
-  // Get unique categories and difficulties for filters
-  const categories = ["all", ...new Set(allTours.map(tour => tour.category).filter(Boolean))];
-  const difficulties = ["all", ...new Set(allTours.map(tour => tour.difficulty).filter(Boolean))];
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -101,89 +61,6 @@ export default function Tours() {
           </div>
         </section>
         
-        {/* Filter Section */}
-        <section className="py-8 border-b">
-          <div className="container">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-fade-in">
-              {/* Category Filter */}
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.apartments.filters.category}
-                </label>
-                <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t.apartments.filters.allCategories} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">{t.apartments.filters.allCategories}</SelectItem>
-                    {categories.filter(cat => cat !== "all").map(category => (
-                      <SelectItem key={category} value={category as string} className="capitalize">
-                        {category}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              {/* Difficulty Filter */}
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.apartments.filters.difficulty}
-                </label>
-                <Select value={difficultyFilter} onValueChange={setDifficultyFilter}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t.apartments.filters.allLevels} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">{t.apartments.filters.allLevels}</SelectItem>
-                    {difficulties.filter(diff => diff !== "all").map(difficulty => (
-                      <SelectItem key={difficulty} value={difficulty as string} className="capitalize">
-                        {difficulty}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              
-              {/* Participants Filter */}
-              <div>
-                <label className="block text-sm font-medium mb-2">
-                  {t.apartments.filters.participants}
-                </label>
-                <Select value={participantsFilter} onValueChange={setParticipantsFilter}>
-                  <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t.apartments.filters.guests} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all">{t.apartments.filters.anyGuests}</SelectItem>
-                    <SelectItem value="1">{t.apartments.filters.onePlus}</SelectItem>
-                    <SelectItem value="2">{t.apartments.filters.twoPlus}</SelectItem>
-                    <SelectItem value="4">{t.apartments.filters.fourPlus}</SelectItem>
-                    <SelectItem value="8">{t.apartments.filters.eightPlus}</SelectItem>
-                    <SelectItem value="10">{t.apartments.filters.tenPlus}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            
-            <div className="flex justify-between items-center mt-6 animate-fade-in [animation-delay:200ms]">
-              <p className="text-muted-foreground">
-                {t.apartments.filters.showing} {filteredTours.length} {t.apartments.filters.of} {allTours.length} {t.apartments.filters.tours}
-              </p>
-              <Button 
-                variant="outline" 
-                onClick={() => {
-                  setCategoryFilter("all");
-                  setDifficultyFilter("all");
-                  setParticipantsFilter("all");
-                }}
-              >
-                {t.apartments.filters.resetFilters}
-              </Button>
-            </div>
-          </div>
-        </section>
-        
         {/* Tours Grid */}
         <section className="section">
           <div className="container">
@@ -191,9 +68,9 @@ export default function Tours() {
               <div className="text-center py-12">
                 <p className="text-muted-foreground">{t.apartments.filters.loading}</p>
               </div>
-            ) : filteredTours.length > 0 ? (
+            ) : tours.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredTours.map((tour, index) => (
+                {tours.map((tour, index) => (
                   <div key={tour.id} className="animate-fade-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
                     <TourCard tour={tour} />
                   </div>
@@ -202,17 +79,7 @@ export default function Tours() {
             ) : (
               <div className="text-center py-12 animate-fade-in">
                 <h3 className="text-xl font-semibold mb-2">{t.apartments.filters.noMatch}</h3>
-                <p className="text-muted-foreground mb-6">{t.apartments.filters.adjustFilters}</p>
-                <Button 
-                  variant="outline" 
-                  onClick={() => {
-                    setCategoryFilter("all");
-                    setDifficultyFilter("all");
-                    setParticipantsFilter("all");
-                  }}
-                >
-                  {t.apartments.filters.resetFilters}
-                </Button>
+                <p className="text-muted-foreground">{t.apartments.filters.adjustFilters}</p>
               </div>
             )}
           </div>
