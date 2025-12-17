@@ -1,18 +1,16 @@
 
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, User, LogOut } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSelector from "./LanguageSelector";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useAuth } from "@/contexts/AuthContext";
 import logo from "@/assets/logo.png";
 
 export default function Navbar() {
   const { t } = useLanguage();
-  const { user, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   
@@ -57,19 +55,6 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center space-x-2">
           <ThemeToggle />
-          {user ? (
-            <Button variant="outline" size="sm" onClick={() => signOut()} className="flex items-center gap-2">
-              <LogOut className="h-4 w-4" />
-              Sign Out
-            </Button>
-          ) : (
-            <Button asChild variant="outline" size="sm">
-              <Link to="/auth" className="flex items-center gap-2">
-                <User className="h-4 w-4" />
-                Login
-              </Link>
-            </Button>
-          )}
           <Button asChild className="btn-primary">
             <Link to="/booking">{t.nav.bookNow}</Link>
           </Button>
@@ -105,19 +90,6 @@ export default function Navbar() {
             </div>
             
             <div className="space-y-3 mt-6">
-              {user ? (
-                <Button variant="outline" className="w-full" onClick={() => { signOut(); setMobileMenuOpen(false); }}>
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Sign Out
-                </Button>
-              ) : (
-                <Button asChild variant="outline" className="w-full">
-                  <Link to="/auth" onClick={() => setMobileMenuOpen(false)}>
-                    <User className="h-4 w-4 mr-2" />
-                    Login
-                  </Link>
-                </Button>
-              )}
               <Button asChild className="w-full btn-primary">
                 <Link to="/booking" onClick={() => setMobileMenuOpen(false)}>
                   {t.nav.bookNow}
