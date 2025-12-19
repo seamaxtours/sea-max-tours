@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, User, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useToast } from "@/hooks/use-toast";
 import blogTurtleHatching from "@/assets/blog-turtle-hatching.jpg";
 import blogWhaleShark from "@/assets/blog-whale-shark.jpg";
 
@@ -87,10 +88,18 @@ const categories = ["All", "Marine Life", "Travel Tips", "Destinations", "Cultur
 
 export default function Blog() {
   const { t } = useLanguage();
+  const { toast } = useToast();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleReadMore = () => {
+    toast({
+      title: "Coming Soon",
+      description: "Full articles will be available soon. Stay tuned!",
+    });
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -169,7 +178,7 @@ export default function Blog() {
                     <p className="text-muted-foreground mb-6">
                       {blogPosts[0].excerpt}
                     </p>
-                    <Button className="btn-primary w-fit">
+                    <Button className="btn-primary w-fit" onClick={handleReadMore}>
                       Read More <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </CardContent>
@@ -218,7 +227,7 @@ export default function Blog() {
                           <User className="h-4 w-4 text-muted-foreground" />
                           <span className="text-muted-foreground">{post.author}</span>
                         </div>
-                        <Button variant="ghost" size="sm" className="group-hover:text-primary">
+                        <Button variant="ghost" size="sm" className="group-hover:text-primary" onClick={handleReadMore}>
                           Read <ArrowRight className="ml-1 h-3 w-3" />
                         </Button>
                       </div>
