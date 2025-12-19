@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { MapPin, Clock, Users, Star } from "lucide-react";
+import { MapPin, Clock, Users, Star, Calendar } from "lucide-react";
 import { getTourImage } from "@/lib/tourImages";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -86,6 +86,12 @@ export default function TourCard({ tour }: TourCardProps) {
             <Users className="h-4 w-4 mr-2 text-primary" />
             Max {tour.max_participants} participants
           </div>
+          {tour.name.toLowerCase().includes('turtle') && (
+            <div className="flex items-center text-sm text-primary font-medium">
+              <Calendar className="h-4 w-4 mr-2" />
+              Season: June - September
+            </div>
+          )}
         </div>
         
         {tour.features && tour.features.length > 0 && (
