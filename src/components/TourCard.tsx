@@ -104,11 +104,7 @@ export default function TourCard({ tour }: TourCardProps) {
         )}
       </CardContent>
       
-      <CardFooter className="p-6 pt-0 flex items-center justify-between">
-        <div>
-          <span className="text-2xl font-bold text-primary">${tour.price}</span>
-          <span className="text-sm text-muted-foreground ml-1">per person</span>
-        </div>
+      <CardFooter className="p-6 pt-0 flex justify-end">
         <Button asChild className="btn-primary">
           <Link to={`/booking?tour=${tour.id}`}>Book Now</Link>
         </Button>
