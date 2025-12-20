@@ -20,24 +20,26 @@ export default function Footer() {
               {t.footer.description}
             </p>
             <div className="flex space-x-4">
-              <a
-                href="https://www.facebook.com/seamaxtours"
-                target="_top"
-                rel="noreferrer"
+              <button 
+                onClick={() => {
+                  const win = window.top || window;
+                  win.open('https://www.facebook.com/seamaxtours', '_blank');
+                }}
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Facebook"
               >
                 <Facebook size={20} />
-                <span className="sr-only">Facebook</span>
-              </a>
-              <a
-                href="https://www.instagram.com/seamaxtours/"
-                target="_top"
-                rel="noreferrer"
+              </button>
+              <button 
+                onClick={() => {
+                  const win = window.top || window;
+                  win.open('https://www.instagram.com/seamaxtours/', '_blank');
+                }}
                 className="text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Instagram"
               >
                 <Instagram size={20} />
-                <span className="sr-only">Instagram</span>
-              </a>
+              </button>
             </div>
           </div>
           
