@@ -38,15 +38,6 @@ export default function Footer() {
                 <Instagram size={20} />
                 <span className="sr-only">Instagram</span>
               </a>
-              <a 
-                href="https://www.tiktok.com/@seamaxtours" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-muted-foreground hover:text-primary transition-colors"
-              >
-                <Twitter size={20} />
-                <span className="sr-only">TikTok</span>
-              </a>
             </div>
           </div>
           
