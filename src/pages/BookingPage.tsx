@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { CalendarIcon, Users, Check, ChevronRight, Loader2, MessageCircle } from "lucide-react";
+import { CalendarIcon, Check, Loader2, MessageCircle } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
@@ -24,7 +24,6 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { TourProps } from "@/components/TourCard";
 import { supabase } from "@/integrations/supabase/client";
 import { getTourImage } from "@/lib/tourImages";
@@ -36,9 +35,18 @@ export default function BookingPage() {
   const [tourDate, setTourDate] = useState<Date | undefined>(new Date());
   const [adults, setAdults] = useState("2");
   const [children, setChildren] = useState("0");
-  const [selectedApartment, setSelectedApartment] = useState<TourProps | null>(null);
-  const [currentStep, setCurrentStep] = useState(1);
+  const [selectedTour, setSelectedTour] = useState<TourProps | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
+  
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    country: "",
+    specialRequests: ""
+  });
   
   // Fetch tours from database
   useEffect(() => {
@@ -54,33 +62,18 @@ export default function BookingPage() {
     };
     fetchTours();
   }, []);
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    country: "",
-    specialRequests: ""
-  });
-  const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
   
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
   
   // Calculate total price based on participants
   const totalParticipants = parseInt(adults) + parseInt(children);
-  const totalPrice = selectedApartment ? selectedApartment.price * totalParticipants : 0;
+  const totalPrice = selectedTour ? selectedTour.price * totalParticipants : 0;
   
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-  
-  // Handle select changes
-  const handleSelectChange = (name: string, value: string) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
@@ -96,8 +89,13 @@ export default function BookingPage() {
   const handleSubmitBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!user || !selectedApartment || !tourDate) {
-      toast.error("Missing required booking information");
+    if (!user || !selectedTour || !tourDate) {
+      toast.error("Please select a tour and date");
+      return;
+    }
+
+    if (!formData.firstName || !formData.lastName || !formData.email || !formData.phone) {
+      toast.error("Please fill in all required fields");
       return;
     }
 
@@ -105,12 +103,12 @@ export default function BookingPage() {
 
     try {
       const participants = parseInt(adults) + parseInt(children);
-      const calculatedTotal = selectedApartment.price * participants;
+      const calculatedTotal = selectedTour.price * participants;
 
       const { error } = await supabase
         .from('bookings')
         .insert({
-          tour_id: selectedApartment.id,
+          tour_id: selectedTour.id,
           user_id: user.id,
           booking_date: format(tourDate, 'yyyy-MM-dd'),
           participants: totalParticipants,
@@ -125,12 +123,11 @@ export default function BookingPage() {
       if (error) throw error;
 
       // Create WhatsApp message with booking details
-      const totalParticipantsDisplay = parseInt(adults) + parseInt(children);
       const whatsappMessage = encodeURIComponent(
         `🏝️ *New Tour Booking Request*\n\n` +
-        `*Tour:* ${selectedApartment.name}\n` +
+        `*Tour:* ${selectedTour.name}\n` +
         `*Date:* ${format(tourDate, 'EEEE, MMMM d, yyyy')}\n` +
-        `*Participants:* ${totalParticipantsDisplay}\n` +
+        `*Participants:* ${participants}\n` +
         `*Total Price:* $${calculatedTotal}\n\n` +
         `*Guest Details:*\n` +
         `Name: ${formData.firstName} ${formData.lastName}\n` +
@@ -140,16 +137,13 @@ export default function BookingPage() {
         `Please confirm my booking. Thank you!`
       );
       
-      // Open WhatsApp with pre-filled message
       window.open(`https://wa.me/255715333801?text=${whatsappMessage}`, '_blank');
       
       toast.success("Booking saved! Complete payment via WhatsApp.");
       setIsBookingConfirmed(true);
       
-      // Reset form after booking is confirmed
       setTimeout(() => {
-        setCurrentStep(1);
-        setSelectedApartment(null);
+        setSelectedTour(null);
         setTourDate(new Date());
         setAdults("2");
         setChildren("0");
@@ -170,7 +164,6 @@ export default function BookingPage() {
     }
   };
 
-  // Show loading while checking auth
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -192,542 +185,302 @@ export default function BookingPage() {
                 Book Your Tour
               </h1>
               <p className="text-muted-foreground text-lg">
-                Choose your adventure and reserve your spot in just a few steps.
+                Choose your adventure and reserve your spot.
               </p>
             </div>
           </div>
           
-          {/* Decorative elements */}
           <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
             <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-primary/50 blur-3xl" />
             <div className="absolute bottom-10 right-40 w-48 h-48 rounded-full bg-sea-light blur-3xl" />
           </div>
         </section>
         
-        {/* Booking Steps */}
+        {/* Booking Form */}
         <section className="container py-8">
-          <div className="relative animate-fade-in [animation-delay:200ms]">
-            <div className="flex justify-between items-center mb-8">
-              {[1, 2, 3].map((step) => (
-                <div key={step} className="flex flex-col items-center relative z-10">
-                  <div
-                    className={cn(
-                      "w-10 h-10 rounded-full flex items-center justify-center mb-2 transition-colors",
-                      currentStep >= step
-                        ? "bg-primary text-white"
-                        : "bg-muted text-muted-foreground"
-                    )}
-                  >
-                    {currentStep > step ? (
-                      <Check className="h-5 w-5" />
-                    ) : (
-                      <span>{step}</span>
-                    )}
-                  </div>
-                  <span
-                    className={cn(
-                      "text-sm font-medium",
-                      currentStep >= step
-                        ? "text-foreground"
-                        : "text-muted-foreground"
-                    )}
-                  >
-                    {step === 1 ? "Choose Tour" : step === 2 ? "Your Details" : "Confirmation"}
-                  </span>
-                </div>
-              ))}
-            </div>
-            
-            {/* Progress line */}
-            <div className="absolute top-5 left-0 right-0 h-0.5 bg-muted z-0">
-              <div
-                className="h-full bg-primary transition-all duration-300"
-                style={{ width: `${((currentStep - 1) / 2) * 100}%` }}
-              />
-            </div>
-          </div>
-          
-          {/* Step 1: Choose Room */}
-          {currentStep === 1 && (
-            <div className="animate-fade-in [animation-delay:300ms]">
-              <div className="max-w-4xl mx-auto">
-                {/* Date and Guests Selection */}
-                <div className="glass-card p-6 mb-8">
-                  <h2 className="text-xl font-semibold mb-4">Select Tour Date & Participants</h2>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Tour Date */}
-                    <div className="space-y-2">
-                      <label htmlFor="tour-date" className="block text-sm font-medium">
-                        Tour Date
-                      </label>
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button
-                            id="tour-date"
-                            variant="outline"
-                            className={cn(
-                              "w-full justify-start text-left font-normal",
-                              !tourDate && "text-muted-foreground"
-                            )}
-                          >
-                            <CalendarIcon className="mr-2 h-4 w-4" />
-                            {tourDate ? format(tourDate, "PPP") : <span>Select date</span>}
-                          </Button>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0" align="start">
-                          <Calendar
-                            mode="single"
-                            selected={tourDate}
-                            onSelect={setTourDate}
-                            initialFocus
-                            disabled={(date) => date < new Date()}
-                            className="pointer-events-auto"
+          {!isBookingConfirmed ? (
+            <form onSubmit={handleSubmitBooking} className="max-w-5xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                {/* Main Form */}
+                <div className="lg:col-span-2 space-y-8">
+                  {/* Tour Selection */}
+                  <div className="glass-card p-6">
+                    <h2 className="text-xl font-semibold mb-4">Select Your Tour</h2>
+                    <div className="space-y-4">
+                      {toursData.map((tour) => (
+                        <div 
+                          key={tour.id}
+                          className={cn(
+                            "border rounded-lg p-4 cursor-pointer transition-all flex gap-4",
+                            selectedTour?.id === tour.id 
+                              ? "border-primary bg-primary/5" 
+                              : "border-border hover:border-primary/50"
+                          )}
+                          onClick={() => setSelectedTour(tour)}
+                        >
+                          <img 
+                            src={getTourImage(tour.image_url)} 
+                            alt={tour.name}
+                            className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
                           />
-                        </PopoverContent>
-                      </Popover>
-                    </div>
-                    
-                    {/* Number of Participants */}
-                    <div className="space-y-2">
-                      <label htmlFor="adults" className="block text-sm font-medium">
-                        Adults
-                      </label>
-                      <Select value={adults} onValueChange={setAdults}>
-                        <SelectTrigger id="adults" className="w-full">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                            <SelectItem key={num} value={num.toString()}>
-                              {num} {num === 1 ? "Adult" : "Adults"}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    
-                    {/* Children */}
-                    <div className="space-y-2">
-                      <label htmlFor="children" className="block text-sm font-medium">
-                        Children
-                      </label>
-                      <Select value={children} onValueChange={setChildren}>
-                        <SelectTrigger id="children" className="w-full">
-                          <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {[0, 1, 2, 3, 4].map((num) => (
-                            <SelectItem key={num} value={num.toString()}>
-                              {num} {num === 1 ? "Child" : "Children"}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-start justify-between gap-2">
+                              <h3 className="font-semibold">{tour.name}</h3>
+                              {selectedTour?.id === tour.id && (
+                                <Check className="h-5 w-5 text-primary flex-shrink-0" />
+                              )}
+                            </div>
+                            <p className="text-sm text-muted-foreground line-clamp-2">{tour.description}</p>
+                            <div className="flex items-center gap-4 mt-2">
+                              <span className="text-sm text-muted-foreground">{tour.duration_hours}h</span>
+                              <span className="font-semibold text-primary">${tour.price}/person</span>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </div>
-                
-                {/* Tours Selection */}
-                <h2 className="text-xl font-semibold mb-4">Select Your Tour</h2>
-                <div className="space-y-6">
-                  {toursData.map((apartment) => (
-                    <div 
-                      key={apartment.id}
-                      className={cn(
-                        "border rounded-xl overflow-hidden transition-all flex flex-col md:flex-row",
-                        selectedApartment?.id === apartment.id 
-                          ? "border-primary shadow-md" 
-                          : "border-border hover:border-primary/50"
-                      )}
-                    >
-                      <div className="md:w-1/3 h-48 md:h-auto relative">
-                        <img 
-                          src={getTourImage(apartment.image_url)} 
-                          alt={apartment.name}
-                          className="w-full h-full object-cover"
-                        />
+
+                  {/* Date & Participants */}
+                  <div className="glass-card p-6">
+                    <h2 className="text-xl font-semibold mb-4">Date & Participants</h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                      <div className="space-y-2">
+                        <Label>Tour Date</Label>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <Button
+                              variant="outline"
+                              className={cn(
+                                "w-full justify-start text-left font-normal",
+                                !tourDate && "text-muted-foreground"
+                              )}
+                            >
+                              <CalendarIcon className="mr-2 h-4 w-4" />
+                              {tourDate ? format(tourDate, "PPP") : <span>Select date</span>}
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent className="w-auto p-0" align="start">
+                            <Calendar
+                              mode="single"
+                              selected={tourDate}
+                              onSelect={setTourDate}
+                              initialFocus
+                              disabled={(date) => date < new Date()}
+                              className="pointer-events-auto"
+                            />
+                          </PopoverContent>
+                        </Popover>
                       </div>
-                      <div className="p-6 flex-1 flex flex-col">
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold mb-2">{apartment.name}</h3>
-                          <p className="text-muted-foreground mb-4">{apartment.description}</p>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            <div className="text-sm bg-muted px-3 py-1 rounded-full">
-                              {apartment.max_participants} Max Participants
-                            </div>
-                            <div className="text-sm bg-muted px-3 py-1 rounded-full">
-                              {apartment.duration_hours} hours
-                            </div>
-                            <div className="text-sm bg-muted px-3 py-1 rounded-full">
-                              {apartment.location}
-                            </div>
-                          </div>
-                        </div>
-                        <div className="flex items-center justify-between mt-4">
-                          <div>
-                            <span className="text-xl font-bold">${apartment.price}</span>
-                            <span className="text-muted-foreground text-sm"> / person</span>
-                          </div>
-                          <Button 
-                            variant={selectedApartment?.id === apartment.id ? "default" : "outline"}
-                            className={selectedApartment?.id === apartment.id ? "btn-primary" : ""}
-                            onClick={() => setSelectedApartment(apartment)}
-                          >
-                            {selectedApartment?.id === apartment.id ? (
-                              <>
-                                <Check className="mr-2 h-4 w-4" />
-                                Selected
-                              </>
-                            ) : (
-                              "Select"
-                            )}
-                          </Button>
-                        </div>
+                      
+                      <div className="space-y-2">
+                        <Label>Adults</Label>
+                        <Select value={adults} onValueChange={setAdults}>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+                              <SelectItem key={num} value={num.toString()}>
+                                {num} {num === 1 ? "Adult" : "Adults"}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label>Children</Label>
+                        <Select value={children} onValueChange={setChildren}>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {[0, 1, 2, 3, 4].map((num) => (
+                              <SelectItem key={num} value={num.toString()}>
+                                {num} {num === 1 ? "Child" : "Children"}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                       </div>
                     </div>
-                  ))}
-                </div>
-                
-                <div className="flex justify-end mt-8">
-                  <Button 
-                    className="btn-primary"
-                    disabled={!selectedApartment}
-                    onClick={() => setCurrentStep(2)}
-                  >
-                    Continue <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* Step 2: Guest Details */}
-          {currentStep === 2 && (
-            <div className="animate-fade-in [animation-delay:300ms]">
-              <div className="max-w-4xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {/* Guest Information Form */}
-                  <div className="md:col-span-2">
-                    <h2 className="text-xl font-semibold mb-4">Guest Information</h2>
-                    <form className="space-y-6">
-                      <div className="glass-card p-6 space-y-6">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="firstName">First Name</Label>
-                            <Input 
-                              id="firstName" 
-                              name="firstName" 
-                              value={formData.firstName} 
-                              onChange={handleInputChange} 
-                              required 
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="lastName">Last Name</Label>
-                            <Input 
-                              id="lastName" 
-                              name="lastName" 
-                              value={formData.lastName} 
-                              onChange={handleInputChange} 
-                              required 
-                            />
-                          </div>
-                        </div>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="email">Email</Label>
-                            <Input 
-                              id="email" 
-                              name="email" 
-                              type="email" 
-                              value={formData.email} 
-                              onChange={handleInputChange} 
-                              required 
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="phone">Phone</Label>
-                            <Input 
-                              id="phone" 
-                              name="phone" 
-                              value={formData.phone} 
-                              onChange={handleInputChange} 
-                              required 
-                            />
-                          </div>
-                        </div>
-                        
+                  </div>
+
+                  {/* Guest Information */}
+                  <div className="glass-card p-6">
+                    <h2 className="text-xl font-semibold mb-4">Your Details</h2>
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="space-y-2">
-                          <Label htmlFor="country">Country</Label>
+                          <Label htmlFor="firstName">First Name *</Label>
                           <Input 
-                            id="country" 
-                            name="country" 
-                            value={formData.country} 
+                            id="firstName" 
+                            name="firstName" 
+                            value={formData.firstName} 
                             onChange={handleInputChange} 
                             required 
                           />
                         </div>
-                        
                         <div className="space-y-2">
-                          <Label htmlFor="specialRequests">Special Requests</Label>
-                          <textarea 
-                            id="specialRequests" 
-                            name="specialRequests" 
-                            value={formData.specialRequests} 
-                            onChange={handleInputChange}
-                            className="w-full h-24 rounded-md border border-input bg-background px-3 py-2 text-sm"
-                            placeholder="Any special requests or notes for your stay"
+                          <Label htmlFor="lastName">Last Name *</Label>
+                          <Input 
+                            id="lastName" 
+                            name="lastName" 
+                            value={formData.lastName} 
+                            onChange={handleInputChange} 
+                            required 
                           />
                         </div>
                       </div>
                       
-                      <h2 className="text-xl font-semibold mb-4">Payment Information</h2>
-                      <div className="glass-card p-6">
-                        <div className="flex items-start gap-4 p-4 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
-                          <MessageCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
-                          <div>
-                            <h4 className="font-medium text-green-800 dark:text-green-200">Pay via WhatsApp</h4>
-                            <p className="text-sm text-green-700 dark:text-green-300 mt-1">
-                              After submitting your booking, you'll be redirected to WhatsApp to confirm your reservation and arrange payment securely with our team.
-                            </p>
-                          </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="email">Email *</Label>
+                          <Input 
+                            id="email" 
+                            name="email" 
+                            type="email" 
+                            value={formData.email} 
+                            onChange={handleInputChange} 
+                            required 
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="phone">Phone *</Label>
+                          <Input 
+                            id="phone" 
+                            name="phone" 
+                            value={formData.phone} 
+                            onChange={handleInputChange} 
+                            required 
+                          />
                         </div>
                       </div>
-                    </form>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="country">Country</Label>
+                        <Input 
+                          id="country" 
+                          name="country" 
+                          value={formData.country} 
+                          onChange={handleInputChange} 
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="specialRequests">Special Requests</Label>
+                        <textarea 
+                          id="specialRequests" 
+                          name="specialRequests" 
+                          value={formData.specialRequests} 
+                          onChange={handleInputChange}
+                          className="w-full h-24 rounded-md border border-input bg-background px-3 py-2 text-sm"
+                          placeholder="Any special requests or notes"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  
-                  {/* Booking Summary */}
-                  <div className="md:col-span-1">
-                    <h2 className="text-xl font-semibold mb-4">Booking Summary</h2>
-                    <div className="glass-card p-6 sticky top-24">
-                      {selectedApartment && (
-                        <>
-                          <div className="pb-4 border-b">
-                            <h3 className="font-medium mb-1">{selectedApartment.name}</h3>
-                            <p className="text-sm text-muted-foreground">{selectedApartment.location}</p>
-                          </div>
-                          
-                          <div className="py-4 border-b space-y-2">
-                            <div className="flex justify-between items-center">
-                              <span>Tour Date</span>
-                              <span className="font-medium">
-                                {tourDate ? format(tourDate, "EEE, MMM d, yyyy") : "Not selected"}
-                              </span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span>Participants</span>
-                              <span className="font-medium">
-                                {adults} {parseInt(adults) === 1 ? "Adult" : "Adults"}
-                                {parseInt(children) > 0 && `, ${children} ${parseInt(children) === 1 ? "Child" : "Children"}`}
-                              </span>
-                            </div>
-                          </div>
-                          
-                          <div className="py-4 border-b space-y-2">
-                            <div className="flex justify-between items-center">
-                              <span>
-                                ${selectedApartment.price} x {totalParticipants} {totalParticipants === 1 ? "person" : "people"}
-                              </span>
-                              <span className="font-medium">${totalPrice}</span>
-                            </div>
-                          </div>
-                          
-                          <div className="pt-4">
-                            <div className="flex justify-between items-center font-bold">
-                              <span>Total</span>
-                              <span>${totalPrice}</span>
-                            </div>
-                          </div>
-                        </>
-                      )}
+
+                  {/* Payment Info */}
+                  <div className="glass-card p-6">
+                    <div className="flex items-start gap-4 p-4 bg-green-50 dark:bg-green-950/30 rounded-lg border border-green-200 dark:border-green-800">
+                      <MessageCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-0.5" />
+                      <div>
+                        <h4 className="font-medium text-green-800 dark:text-green-200">Pay via WhatsApp</h4>
+                        <p className="text-sm text-green-700 dark:text-green-300 mt-1">
+                          After submitting, you'll be redirected to WhatsApp to confirm your reservation and arrange payment.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-                
-                <div className="flex justify-between mt-8">
-                  <Button 
-                    variant="outline"
-                    onClick={() => setCurrentStep(1)}
-                  >
-                    Back
-                  </Button>
-                  <Button 
-                    className="btn-primary"
-                    onClick={() => setCurrentStep(3)}
-                  >
-                    Review & Confirm <ChevronRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-          )}
-          
-          {/* Step 3: Confirmation */}
-          {currentStep === 3 && (
-            <div className="animate-fade-in [animation-delay:300ms]">
-              <div className="max-w-4xl mx-auto">
-                {!isBookingConfirmed ? (
-                  <>
-                    <h2 className="text-xl font-semibold mb-6">Review Booking Details</h2>
+
+                {/* Booking Summary Sidebar */}
+                <div className="lg:col-span-1">
+                  <div className="glass-card p-6 sticky top-24">
+                    <h2 className="text-xl font-semibold mb-4">Booking Summary</h2>
                     
-                    <div className="glass-card p-6 mb-8">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Tour Details */}
-                        <div>
-                          <h3 className="text-lg font-medium mb-4">Tour Details</h3>
-                          {selectedApartment && (
-                            <div className="space-y-4">
-                              <div className="rounded-lg overflow-hidden">
-                                <img 
-                                  src={getTourImage(selectedApartment.image_url)} 
-                                  alt={selectedApartment.name}
-                                  className="w-full h-48 object-cover"
-                                />
-                              </div>
-                              <div>
-                                <h4 className="font-semibold">{selectedApartment.name}</h4>
-                                <p className="text-sm text-muted-foreground">{selectedApartment.location}</p>
-                              </div>
-                              <div className="space-y-1 text-sm">
-                                <div className="flex justify-between">
-                                  <span>Tour Date:</span>
-                                  <span className="font-medium">
-                                    {tourDate ? format(tourDate, "EEE, MMM d, yyyy") : "Not selected"}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>Participants:</span>
-                                  <span className="font-medium">
-                                    {adults} {parseInt(adults) === 1 ? "Adult" : "Adults"}
-                                    {parseInt(children) > 0 && `, ${children} ${parseInt(children) === 1 ? "Child" : "Children"}`}
-                                  </span>
-                                </div>
-                              </div>
-                            </div>
-                          )}
+                    {selectedTour ? (
+                      <>
+                        <div className="pb-4 border-b">
+                          <img 
+                            src={getTourImage(selectedTour.image_url)} 
+                            alt={selectedTour.name}
+                            className="w-full h-32 object-cover rounded-lg mb-3"
+                          />
+                          <h3 className="font-medium">{selectedTour.name}</h3>
+                          <p className="text-sm text-muted-foreground">{selectedTour.location}</p>
                         </div>
                         
-                        {/* Guest Details */}
-                        <div>
-                          <h3 className="text-lg font-medium mb-4">Guest Details</h3>
-                          <div className="space-y-4">
-                            <div className="space-y-1 text-sm">
-                              <div className="flex justify-between">
-                                <span>Name:</span>
-                                <span className="font-medium">{formData.firstName} {formData.lastName}</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>Email:</span>
-                                <span className="font-medium">{formData.email}</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>Phone:</span>
-                                <span className="font-medium">{formData.phone}</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>Country:</span>
-                                <span className="font-medium">{formData.country}</span>
-                              </div>
-                            </div>
-                            
-                            {formData.specialRequests && (
-                              <div>
-                                <h4 className="font-medium mb-1">Special Requests:</h4>
-                                <p className="text-sm text-muted-foreground">{formData.specialRequests}</p>
-                              </div>
-                            )}
-                            
-                            <div>
-                              <h4 className="font-medium mb-1">Payment Method:</h4>
-                              <p className="text-sm flex items-center">
-                                <MessageCircle className="h-4 w-4 mr-2 text-green-600" />
-                                Pay via WhatsApp
-                              </p>
-                            </div>
+                        <div className="py-4 border-b space-y-2">
+                          <div className="flex justify-between items-center text-sm">
+                            <span>Tour Date</span>
+                            <span className="font-medium">
+                              {tourDate ? format(tourDate, "MMM d, yyyy") : "Not selected"}
+                            </span>
+                          </div>
+                          <div className="flex justify-between items-center text-sm">
+                            <span>Participants</span>
+                            <span className="font-medium">{totalParticipants}</span>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                    
-                    {/* Price Summary */}
-                    <div className="glass-card p-6 mb-8">
-                      <h3 className="text-lg font-medium mb-4">Price Summary</h3>
-                      <div className="space-y-2">
-                        {selectedApartment && (
-                          <>
-                            <div className="flex justify-between items-center">
-                              <span>
-                                ${selectedApartment.price} x {totalParticipants} {totalParticipants === 1 ? "person" : "people"}
-                              </span>
-                              <span className="font-medium">${totalPrice}</span>
-                            </div>
-                            <div className="flex justify-between items-center pt-4 border-t mt-4">
-                              <span className="font-semibold">Total</span>
-                              <span className="font-bold text-xl">${totalPrice}</span>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                    </div>
-                    
-                    {/* Terms and Conditions */}
-                    <div className="mb-8">
-                      <div className="flex items-start">
-                        <input
-                          type="checkbox"
-                          id="terms"
-                          className="mt-1 mr-3"
-                        />
-                        <label htmlFor="terms" className="text-sm text-muted-foreground">
-                          I agree to the <a href="#" className="text-primary underline">Terms and Conditions</a> and <a href="#" className="text-primary underline">Privacy Policy</a>. I understand that my booking is subject to the property's cancellation policy.
-                        </label>
-                      </div>
-                    </div>
-                    
-                    <div className="flex justify-between">
-                      <Button 
-                        variant="outline"
-                        onClick={() => setCurrentStep(2)}
-                      >
-                        Back
-                      </Button>
-                      <Button 
-                        className="btn-primary"
-                        onClick={handleSubmitBooking}
-                        disabled={isSubmitting}
-                      >
-                        {isSubmitting ? (
-                          <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Processing...
-                          </>
-                        ) : (
-                          <>
-                            Confirm Booking <Check className="ml-2 h-4 w-4" />
-                          </>
-                        )}
-                      </Button>
-                    </div>
-                  </>
-                ) : (
-                  <div className="glass-card p-8 text-center animate-fade-in">
-                    <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
-                    </div>
-                    <h2 className="text-2xl font-bold mb-2">Booking Confirmed!</h2>
-                    <p className="text-muted-foreground mb-6">
-                      Your reservation has been successfully confirmed. A confirmation email has been sent to {formData.email}.
-                    </p>
-                    <p className="font-medium mb-8">
-                      Booking Reference: <span className="text-primary">MRS-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}</span>
-                    </p>
-                    <Button asChild className="btn-primary">
-                      <Link to="/">Return to Homepage</Link>
-                    </Button>
+                        
+                        <div className="py-4 border-b">
+                          <div className="flex justify-between items-center text-sm">
+                            <span>${selectedTour.price} x {totalParticipants}</span>
+                            <span className="font-medium">${totalPrice}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="pt-4 mb-6">
+                          <div className="flex justify-between items-center font-bold text-lg">
+                            <span>Total</span>
+                            <span className="text-primary">${totalPrice}</span>
+                          </div>
+                        </div>
+
+                        <Button 
+                          type="submit"
+                          className="w-full btn-primary"
+                          disabled={isSubmitting || !selectedTour}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Processing...
+                            </>
+                          ) : (
+                            <>
+                              Confirm Booking <Check className="ml-2 h-4 w-4" />
+                            </>
+                          )}
+                        </Button>
+                      </>
+                    ) : (
+                      <p className="text-muted-foreground text-center py-8">
+                        Select a tour to see pricing
+                      </p>
+                    )}
                   </div>
-                )}
+                </div>
               </div>
+            </form>
+          ) : (
+            <div className="max-w-lg mx-auto glass-card p-8 text-center animate-fade-in">
+              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Booking Confirmed!</h2>
+              <p className="text-muted-foreground mb-6">
+                Your reservation has been saved. A confirmation email has been sent to {formData.email}.
+              </p>
+              <p className="font-medium mb-8">
+                Booking Reference: <span className="text-primary">MRS-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}</span>
+              </p>
+              <Button asChild className="btn-primary">
+                <Link to="/">Return to Homepage</Link>
+              </Button>
             </div>
           )}
         </section>
