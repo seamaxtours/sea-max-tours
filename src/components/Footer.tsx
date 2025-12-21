@@ -20,20 +20,29 @@ export default function Footer() {
               {t.footer.description}
             </p>
             <div className="flex space-x-4">
-              <button 
+              <button
+                type="button"
                 onClick={() => {
-                  const win = window.top || window;
-                  win.open('https://www.facebook.com/seamaxtours', '_blank');
+                  // Use noopener/noreferrer to avoid COOP/opener issues in some browsers
+                  window.open(
+                    "https://www.facebook.com/seamaxtours",
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
                 }}
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={20} />
               </button>
-              <button 
+              <button
+                type="button"
                 onClick={() => {
-                  const win = window.top || window;
-                  win.open('https://www.instagram.com/seamaxtours/', '_blank');
+                  window.open(
+                    "https://www.instagram.com/seamaxtours/",
+                    "_blank",
+                    "noopener,noreferrer"
+                  );
                 }}
                 className="text-muted-foreground hover:text-primary transition-colors"
                 aria-label="Instagram"
