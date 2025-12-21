@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { format, addDays, differenceInDays } from "date-fns";
+import { format } from "date-fns";
 import { Link, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -33,8 +33,7 @@ export default function BookingPage() {
   const { user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [toursData, setToursData] = useState<TourProps[]>([]);
-  const [startDate, setStartDate] = useState<Date | undefined>(new Date());
-  const [endDate, setEndDate] = useState<Date | undefined>(addDays(new Date(), 7));
+  const [tourDate, setTourDate] = useState<Date | undefined>(new Date());
   const [adults, setAdults] = useState("2");
   const [children, setChildren] = useState("0");
   const [selectedApartment, setSelectedApartment] = useState<TourProps | null>(null);
@@ -73,9 +72,9 @@ export default function BookingPage() {
     window.scrollTo(0, 0);
   }, []);
   
-  // Calculate nights and total price
-  const nightsCount = startDate && endDate ? differenceInDays(endDate, startDate) : 0;
-  const totalPrice = selectedApartment ? selectedApartment.price * nightsCount : 0;
+  // Calculate total price based on participants
+  const totalParticipants = parseInt(adults) + parseInt(children);
+  const totalPrice = selectedApartment ? selectedApartment.price * totalParticipants : 0;
   
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -100,7 +99,7 @@ export default function BookingPage() {
   const handleSubmitBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!user || !selectedApartment || !startDate) {
+    if (!user || !selectedApartment || !tourDate) {
       toast.error("Missing required booking information");
       return;
     }
@@ -108,15 +107,15 @@ export default function BookingPage() {
     setIsSubmitting(true);
 
     try {
-      const totalParticipants = parseInt(adults) + parseInt(children);
-      const calculatedTotal = selectedApartment.price * totalParticipants;
+      const participants = parseInt(adults) + parseInt(children);
+      const calculatedTotal = selectedApartment.price * participants;
 
       const { error } = await supabase
         .from('bookings')
         .insert({
           tour_id: selectedApartment.id,
           user_id: user.id,
-          booking_date: format(startDate, 'yyyy-MM-dd'),
+          booking_date: format(tourDate, 'yyyy-MM-dd'),
           participants: totalParticipants,
           total_price: calculatedTotal,
           guest_name: `${formData.firstName} ${formData.lastName}`,
@@ -133,7 +132,7 @@ export default function BookingPage() {
       const whatsappMessage = encodeURIComponent(
         `🏝️ *New Tour Booking Request*\n\n` +
         `*Tour:* ${selectedApartment.name}\n` +
-        `*Date:* ${format(startDate, 'EEEE, MMMM d, yyyy')}\n` +
+        `*Date:* ${format(tourDate, 'EEEE, MMMM d, yyyy')}\n` +
         `*Participants:* ${totalParticipantsDisplay}\n` +
         `*Total Price:* $${calculatedTotal}\n\n` +
         `*Guest Details:*\n` +
@@ -154,8 +153,7 @@ export default function BookingPage() {
       setTimeout(() => {
         setCurrentStep(1);
         setSelectedApartment(null);
-        setStartDate(new Date());
-        setEndDate(addDays(new Date(), 7));
+        setTourDate(new Date());
         setAdults("2");
         setChildren("0");
         setFormData({
@@ -275,18 +273,18 @@ export default function BookingPage() {
                             variant="outline"
                             className={cn(
                               "w-full justify-start text-left font-normal",
-                              !startDate && "text-muted-foreground"
+                              !tourDate && "text-muted-foreground"
                             )}
                           >
                             <CalendarIcon className="mr-2 h-4 w-4" />
-                            {startDate ? format(startDate, "PPP") : <span>Select date</span>}
+                            {tourDate ? format(tourDate, "PPP") : <span>Select date</span>}
                           </Button>
                         </PopoverTrigger>
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
                             mode="single"
-                            selected={startDate}
-                            onSelect={setStartDate}
+                            selected={tourDate}
+                            onSelect={setTourDate}
                             initialFocus
                             disabled={(date) => date < new Date()}
                             className="pointer-events-auto"
@@ -551,19 +549,13 @@ export default function BookingPage() {
                           
                           <div className="py-4 border-b space-y-2">
                             <div className="flex justify-between items-center">
-                              <span>Check-in</span>
+                              <span>Tour Date</span>
                               <span className="font-medium">
-                                {startDate ? format(startDate, "EEE, MMM d, yyyy") : "Not selected"}
+                                {tourDate ? format(tourDate, "EEE, MMM d, yyyy") : "Not selected"}
                               </span>
                             </div>
                             <div className="flex justify-between items-center">
-                              <span>Check-out</span>
-                              <span className="font-medium">
-                                {endDate ? format(endDate, "EEE, MMM d, yyyy") : "Not selected"}
-                              </span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span>Guests</span>
+                              <span>Participants</span>
                               <span className="font-medium">
                                 {adults} {parseInt(adults) === 1 ? "Adult" : "Adults"}
                                 {parseInt(children) > 0 && `, ${children} ${parseInt(children) === 1 ? "Child" : "Children"}`}
@@ -574,24 +566,16 @@ export default function BookingPage() {
                           <div className="py-4 border-b space-y-2">
                             <div className="flex justify-between items-center">
                               <span>
-                                ${selectedApartment.price} x {nightsCount} {nightsCount === 1 ? "night" : "nights"}
+                                ${selectedApartment.price} x {totalParticipants} {totalParticipants === 1 ? "person" : "people"}
                               </span>
-                              <span className="font-medium">${selectedApartment.price * nightsCount}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span>Cleaning fee</span>
-                              <span className="font-medium">$50</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span>Service fee</span>
-                              <span className="font-medium">$30</span>
+                              <span className="font-medium">${totalPrice}</span>
                             </div>
                           </div>
                           
                           <div className="pt-4">
                             <div className="flex justify-between items-center font-bold">
                               <span>Total</span>
-                              <span>${totalPrice + 50 + 30}</span>
+                              <span>${totalPrice}</span>
                             </div>
                           </div>
                         </>
@@ -628,9 +612,9 @@ export default function BookingPage() {
                     
                     <div className="glass-card p-6 mb-8">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Apartment Details */}
+                        {/* Tour Details */}
                         <div>
-                          <h3 className="text-lg font-medium mb-4">Accommodation Details</h3>
+                          <h3 className="text-lg font-medium mb-4">Tour Details</h3>
                           {selectedApartment && (
                             <div className="space-y-4">
                               <div className="rounded-lg overflow-hidden">
@@ -646,19 +630,13 @@ export default function BookingPage() {
                               </div>
                               <div className="space-y-1 text-sm">
                                 <div className="flex justify-between">
-                                  <span>Check-in:</span>
+                                  <span>Tour Date:</span>
                                   <span className="font-medium">
-                                    {startDate ? format(startDate, "EEE, MMM d, yyyy") : "Not selected"}
+                                    {tourDate ? format(tourDate, "EEE, MMM d, yyyy") : "Not selected"}
                                   </span>
                                 </div>
                                 <div className="flex justify-between">
-                                  <span>Check-out:</span>
-                                  <span className="font-medium">
-                                    {endDate ? format(endDate, "EEE, MMM d, yyyy") : "Not selected"}
-                                  </span>
-                                </div>
-                                <div className="flex justify-between">
-                                  <span>Guests:</span>
+                                  <span>Participants:</span>
                                   <span className="font-medium">
                                     {adults} {parseInt(adults) === 1 ? "Adult" : "Adults"}
                                     {parseInt(children) > 0 && `, ${children} ${parseInt(children) === 1 ? "Child" : "Children"}`}
@@ -727,21 +705,13 @@ export default function BookingPage() {
                           <>
                             <div className="flex justify-between items-center">
                               <span>
-                                ${selectedApartment.price} x {nightsCount} {nightsCount === 1 ? "night" : "nights"}
+                                ${selectedApartment.price} x {totalParticipants} {totalParticipants === 1 ? "person" : "people"}
                               </span>
-                              <span className="font-medium">${selectedApartment.price * nightsCount}</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span>Cleaning fee</span>
-                              <span className="font-medium">$50</span>
-                            </div>
-                            <div className="flex justify-between items-center">
-                              <span>Service fee</span>
-                              <span className="font-medium">$30</span>
+                              <span className="font-medium">${totalPrice}</span>
                             </div>
                             <div className="flex justify-between items-center pt-4 border-t mt-4">
                               <span className="font-semibold">Total</span>
-                              <span className="font-bold text-xl">${totalPrice + 50 + 30}</span>
+                              <span className="font-bold text-xl">${totalPrice}</span>
                             </div>
                           </>
                         )}
