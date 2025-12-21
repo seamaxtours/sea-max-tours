@@ -59,9 +59,6 @@ export default function BookingPage() {
     lastName: "",
     email: "",
     phone: "",
-    address: "",
-    city: "",
-    zipCode: "",
     country: "",
     specialRequests: ""
   });
@@ -161,9 +158,6 @@ export default function BookingPage() {
           lastName: "",
           email: "",
           phone: "",
-          address: "",
-          city: "",
-          zipCode: "",
           country: "",
           specialRequests: ""
         });
@@ -465,47 +459,14 @@ export default function BookingPage() {
                         </div>
                         
                         <div className="space-y-2">
-                          <Label htmlFor="address">Address</Label>
+                          <Label htmlFor="country">Country</Label>
                           <Input 
-                            id="address" 
-                            name="address" 
-                            value={formData.address} 
+                            id="country" 
+                            name="country" 
+                            value={formData.country} 
                             onChange={handleInputChange} 
                             required 
                           />
-                        </div>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="city">City</Label>
-                            <Input 
-                              id="city" 
-                              name="city" 
-                              value={formData.city} 
-                              onChange={handleInputChange} 
-                              required 
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="zipCode">Zip Code</Label>
-                            <Input 
-                              id="zipCode" 
-                              name="zipCode" 
-                              value={formData.zipCode} 
-                              onChange={handleInputChange} 
-                              required 
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="country">Country</Label>
-                            <Input 
-                              id="country" 
-                              name="country" 
-                              value={formData.country} 
-                              onChange={handleInputChange} 
-                              required 
-                            />
-                          </div>
                         </div>
                         
                         <div className="space-y-2">
@@ -663,14 +624,6 @@ export default function BookingPage() {
                               <div className="flex justify-between">
                                 <span>Phone:</span>
                                 <span className="font-medium">{formData.phone}</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>Address:</span>
-                                <span className="font-medium">{formData.address}</span>
-                              </div>
-                              <div className="flex justify-between">
-                                <span>City:</span>
-                                <span className="font-medium">{formData.city}</span>
                               </div>
                               <div className="flex justify-between">
                                 <span>Country:</span>
