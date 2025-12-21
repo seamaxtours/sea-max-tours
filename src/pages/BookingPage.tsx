@@ -377,7 +377,30 @@ export default function BookingPage() {
                 </div>
 
                 {/* Booking Summary Sidebar */}
-                <div className="lg:col-span-1">
+                <div className="lg:col-span-1 space-y-6">
+                  {/* Important Fees Notice */}
+                  <div className="glass-card p-6 bg-amber-50/50 dark:bg-amber-950/20 border-amber-200 dark:border-amber-800">
+                    <h3 className="text-lg font-semibold mb-3 text-amber-800 dark:text-amber-200">
+                      Important Fees
+                    </h3>
+                    <p className="text-sm text-amber-700 dark:text-amber-300 mb-3">
+                      The following fees are paid directly at the location:
+                    </p>
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-amber-800 dark:text-amber-200">Marine Park Fee</span>
+                        <span className="font-semibold text-amber-900 dark:text-amber-100">$23.60/person</span>
+                      </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <span className="text-amber-800 dark:text-amber-200">Whale Shark Conservation Fee</span>
+                        <span className="font-semibold text-amber-900 dark:text-amber-100">$12/person</span>
+                      </div>
+                    </div>
+                    <p className="text-xs text-amber-600 dark:text-amber-400 mt-3">
+                      * Fees vary depending on activities selected
+                    </p>
+                  </div>
+
                   <div className="glass-card p-6 sticky top-24">
                     <h2 className="text-xl font-semibold mb-4">Booking Summary</h2>
                     
