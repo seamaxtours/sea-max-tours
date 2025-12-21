@@ -340,12 +340,24 @@ export default function BookingPage() {
                       
                       <div className="space-y-2">
                         <Label htmlFor="country">Country</Label>
-                        <Input 
-                          id="country" 
-                          name="country" 
-                          value={formData.country} 
-                          onChange={handleInputChange} 
-                        />
+                        <Select value={formData.country} onValueChange={(value) => setFormData(prev => ({ ...prev, country: value }))}>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Select your country" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {[
+                              "United States", "United Kingdom", "Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Switzerland", "Austria",
+                              "Australia", "New Zealand", "Canada", "Japan", "China", "South Korea", "India", "Singapore", "Malaysia", "Thailand",
+                              "South Africa", "Kenya", "Tanzania", "Uganda", "Rwanda", "Ethiopia", "Nigeria", "Ghana", "Egypt", "Morocco",
+                              "Brazil", "Argentina", "Mexico", "Colombia", "Chile", "Peru", "United Arab Emirates", "Saudi Arabia", "Qatar", "Israel",
+                              "Sweden", "Norway", "Denmark", "Finland", "Poland", "Czech Republic", "Portugal", "Ireland", "Russia", "Turkey"
+                            ].sort().map((country) => (
+                              <SelectItem key={country} value={country}>
+                                {country}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                       </div>
                       
                       <div className="space-y-2">
