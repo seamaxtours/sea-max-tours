@@ -346,14 +346,29 @@ export default function BookingPage() {
                           </SelectTrigger>
                           <SelectContent>
                             {[
-                              "United States", "United Kingdom", "Germany", "France", "Italy", "Spain", "Netherlands", "Belgium", "Switzerland", "Austria",
-                              "Australia", "New Zealand", "Canada", "Japan", "China", "South Korea", "India", "Singapore", "Malaysia", "Thailand",
-                              "South Africa", "Kenya", "Tanzania", "Uganda", "Rwanda", "Ethiopia", "Nigeria", "Ghana", "Egypt", "Morocco",
-                              "Brazil", "Argentina", "Mexico", "Colombia", "Chile", "Peru", "United Arab Emirates", "Saudi Arabia", "Qatar", "Israel",
-                              "Sweden", "Norway", "Denmark", "Finland", "Poland", "Czech Republic", "Portugal", "Ireland", "Russia", "Turkey"
-                            ].sort().map((country) => (
-                              <SelectItem key={country} value={country}>
-                                {country}
+                              { name: "Argentina", flag: "🇦🇷" }, { name: "Australia", flag: "🇦🇺" }, { name: "Austria", flag: "🇦🇹" },
+                              { name: "Belgium", flag: "🇧🇪" }, { name: "Brazil", flag: "🇧🇷" }, { name: "Canada", flag: "🇨🇦" },
+                              { name: "Chile", flag: "🇨🇱" }, { name: "China", flag: "🇨🇳" }, { name: "Colombia", flag: "🇨🇴" },
+                              { name: "Czech Republic", flag: "🇨🇿" }, { name: "Denmark", flag: "🇩🇰" }, { name: "Egypt", flag: "🇪🇬" },
+                              { name: "Ethiopia", flag: "🇪🇹" }, { name: "Finland", flag: "🇫🇮" }, { name: "France", flag: "🇫🇷" },
+                              { name: "Germany", flag: "🇩🇪" }, { name: "Ghana", flag: "🇬🇭" }, { name: "India", flag: "🇮🇳" },
+                              { name: "Ireland", flag: "🇮🇪" }, { name: "Israel", flag: "🇮🇱" }, { name: "Italy", flag: "🇮🇹" },
+                              { name: "Japan", flag: "🇯🇵" }, { name: "Kenya", flag: "🇰🇪" }, { name: "Malaysia", flag: "🇲🇾" },
+                              { name: "Mexico", flag: "🇲🇽" }, { name: "Morocco", flag: "🇲🇦" }, { name: "Netherlands", flag: "🇳🇱" },
+                              { name: "New Zealand", flag: "🇳🇿" }, { name: "Nigeria", flag: "🇳🇬" }, { name: "Norway", flag: "🇳🇴" },
+                              { name: "Peru", flag: "🇵🇪" }, { name: "Poland", flag: "🇵🇱" }, { name: "Portugal", flag: "🇵🇹" },
+                              { name: "Qatar", flag: "🇶🇦" }, { name: "Russia", flag: "🇷🇺" }, { name: "Rwanda", flag: "🇷🇼" },
+                              { name: "Saudi Arabia", flag: "🇸🇦" }, { name: "Singapore", flag: "🇸🇬" }, { name: "South Africa", flag: "🇿🇦" },
+                              { name: "South Korea", flag: "🇰🇷" }, { name: "Spain", flag: "🇪🇸" }, { name: "Sweden", flag: "🇸🇪" },
+                              { name: "Switzerland", flag: "🇨🇭" }, { name: "Tanzania", flag: "🇹🇿" }, { name: "Thailand", flag: "🇹🇭" },
+                              { name: "Turkey", flag: "🇹🇷" }, { name: "Uganda", flag: "🇺🇬" }, { name: "United Arab Emirates", flag: "🇦🇪" },
+                              { name: "United Kingdom", flag: "🇬🇧" }, { name: "United States", flag: "🇺🇸" }
+                            ].map((country) => (
+                              <SelectItem key={country.name} value={country.name}>
+                                <span className="flex items-center gap-2">
+                                  <span>{country.flag}</span>
+                                  <span>{country.name}</span>
+                                </span>
                               </SelectItem>
                             ))}
                           </SelectContent>
