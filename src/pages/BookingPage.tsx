@@ -1,11 +1,10 @@
 
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { CalendarIcon, Check, Loader2, MessageCircle } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -29,8 +28,6 @@ import { supabase } from "@/integrations/supabase/client";
 import { getTourImage } from "@/lib/tourImages";
 
 export default function BookingPage() {
-  const { user, loading: authLoading } = useAuth();
-  const navigate = useNavigate();
   const [toursData, setToursData] = useState<TourProps[]>([]);
   const [tourDate, setTourDate] = useState<Date | undefined>(new Date());
   const [adults, setAdults] = useState("2");
@@ -76,20 +73,12 @@ export default function BookingPage() {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
-  // Redirect to auth if not logged in
-  useEffect(() => {
-    if (!authLoading && !user) {
-      toast.error("Please log in to book a tour");
-      navigate("/auth");
-    }
-  }, [user, authLoading, navigate]);
 
   // Submit booking
   const handleSubmitBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!user || !selectedTour || !tourDate) {
+    if (!selectedTour || !tourDate) {
       toast.error("Please select a tour and date");
       return;
     }
@@ -104,23 +93,6 @@ export default function BookingPage() {
     try {
       const participants = parseInt(adults) + parseInt(children);
       const calculatedTotal = selectedTour.price * participants;
-
-      const { error } = await supabase
-        .from('bookings')
-        .insert({
-          tour_id: selectedTour.id,
-          user_id: user.id,
-          booking_date: format(tourDate, 'yyyy-MM-dd'),
-          participants: totalParticipants,
-          total_price: calculatedTotal,
-          guest_name: `${formData.firstName} ${formData.lastName}`,
-          guest_email: formData.email,
-          guest_phone: formData.phone || null,
-          special_requests: formData.specialRequests || null,
-          status: 'pending'
-        });
-
-      if (error) throw error;
 
       // Create WhatsApp message with booking details
       const whatsappMessage = encodeURIComponent(
@@ -139,7 +111,7 @@ export default function BookingPage() {
       
       window.open(`https://wa.me/255715333801?text=${whatsappMessage}`, '_blank');
       
-      toast.success("Booking saved! Complete payment via WhatsApp.");
+      toast.success("Redirecting to WhatsApp to complete your booking!");
       setIsBookingConfirmed(true);
       
       setTimeout(() => {
@@ -158,19 +130,11 @@ export default function BookingPage() {
         setIsBookingConfirmed(false);
       }, 5000);
     } catch (error: any) {
-      toast.error("Failed to create booking. Please try again.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
-  }
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -471,12 +435,9 @@ export default function BookingPage() {
               <div className="w-16 h-16 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Check className="h-8 w-8 text-green-600 dark:text-green-400" />
               </div>
-              <h2 className="text-2xl font-bold mb-2">Booking Confirmed!</h2>
+              <h2 className="text-2xl font-bold mb-2">Booking Submitted!</h2>
               <p className="text-muted-foreground mb-6">
-                Your reservation has been saved. A confirmation email has been sent to {formData.email}.
-              </p>
-              <p className="font-medium mb-8">
-                Booking Reference: <span className="text-primary">MRS-{Math.floor(Math.random() * 10000).toString().padStart(4, '0')}</span>
+                Please complete your reservation via WhatsApp. We'll confirm your booking shortly.
               </p>
               <Button asChild className="btn-primary">
                 <Link to="/">Return to Homepage</Link>
