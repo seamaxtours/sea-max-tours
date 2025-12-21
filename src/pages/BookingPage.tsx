@@ -32,7 +32,7 @@ export default function BookingPage() {
   const [tourDate, setTourDate] = useState<Date | undefined>(new Date());
   const [adults, setAdults] = useState("2");
   const [children, setChildren] = useState("0");
-  const [selectedTour, setSelectedTour] = useState<TourProps | null>(null);
+  const [selectedTours, setSelectedTours] = useState<TourProps[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isBookingConfirmed, setIsBookingConfirmed] = useState(false);
   
@@ -66,7 +66,19 @@ export default function BookingPage() {
   
   // Calculate total price based on participants
   const totalParticipants = parseInt(adults) + parseInt(children);
-  const totalPrice = selectedTour ? selectedTour.price * totalParticipants : 0;
+  const totalPrice = selectedTours.reduce((sum, tour) => sum + tour.price * totalParticipants, 0);
+  
+  // Toggle tour selection
+  const toggleTourSelection = (tour: TourProps) => {
+    setSelectedTours(prev => {
+      const isSelected = prev.some(t => t.id === tour.id);
+      if (isSelected) {
+        return prev.filter(t => t.id !== tour.id);
+      } else {
+        return [...prev, tour];
+      }
+    });
+  };
   
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -78,8 +90,8 @@ export default function BookingPage() {
   const handleSubmitBooking = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!selectedTour || !tourDate) {
-      toast.error("Please select a tour and date");
+    if (selectedTours.length === 0 || !tourDate) {
+      toast.error("Please select at least one tour and a date");
       return;
     }
 
@@ -92,15 +104,15 @@ export default function BookingPage() {
 
     try {
       const participants = parseInt(adults) + parseInt(children);
-      const calculatedTotal = selectedTour.price * participants;
 
       // Create WhatsApp message with booking details
+      const toursList = selectedTours.map(t => `• ${t.name} ($${t.price}/person)`).join('\n');
       const whatsappMessage = encodeURIComponent(
         `🏝️ *New Tour Booking Request*\n\n` +
-        `*Tour:* ${selectedTour.name}\n` +
+        `*Tours:*\n${toursList}\n\n` +
         `*Date:* ${format(tourDate, 'EEEE, MMMM d, yyyy')}\n` +
         `*Participants:* ${participants}\n` +
-        `*Total Price:* $${calculatedTotal}\n\n` +
+        `*Total Price:* $${totalPrice}\n\n` +
         `*Guest Details:*\n` +
         `Name: ${formData.firstName} ${formData.lastName}\n` +
         `Email: ${formData.email}\n` +
@@ -115,7 +127,7 @@ export default function BookingPage() {
       setIsBookingConfirmed(true);
       
       setTimeout(() => {
-        setSelectedTour(null);
+        setSelectedTours([]);
         setTourDate(new Date());
         setAdults("2");
         setChildren("0");
@@ -169,39 +181,43 @@ export default function BookingPage() {
                 <div className="lg:col-span-2 space-y-8">
                   {/* Tour Selection */}
                   <div className="glass-card p-6">
-                    <h2 className="text-xl font-semibold mb-4">Select Your Tour</h2>
+                    <h2 className="text-xl font-semibold mb-4">Select Your Tours</h2>
+                    <p className="text-sm text-muted-foreground mb-4">You can select multiple tours for your trip</p>
                     <div className="space-y-4">
-                      {toursData.map((tour) => (
-                        <div 
-                          key={tour.id}
-                          className={cn(
-                            "border rounded-lg p-4 cursor-pointer transition-all flex gap-4",
-                            selectedTour?.id === tour.id 
-                              ? "border-primary bg-primary/5" 
-                              : "border-border hover:border-primary/50"
-                          )}
-                          onClick={() => setSelectedTour(tour)}
-                        >
-                          <img 
-                            src={getTourImage(tour.image_url)} 
-                            alt={tour.name}
-                            className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
-                          />
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-start justify-between gap-2">
-                              <h3 className="font-semibold">{tour.name}</h3>
-                              {selectedTour?.id === tour.id && (
-                                <Check className="h-5 w-5 text-primary flex-shrink-0" />
-                              )}
-                            </div>
-                            <p className="text-sm text-muted-foreground line-clamp-2">{tour.description}</p>
-                            <div className="flex items-center gap-4 mt-2">
-                              <span className="text-sm text-muted-foreground">{tour.duration_hours}h</span>
-                              <span className="font-semibold text-primary">${tour.price}/person</span>
+                      {toursData.map((tour) => {
+                        const isSelected = selectedTours.some(t => t.id === tour.id);
+                        return (
+                          <div 
+                            key={tour.id}
+                            className={cn(
+                              "border rounded-lg p-4 cursor-pointer transition-all flex gap-4",
+                              isSelected 
+                                ? "border-primary bg-primary/5" 
+                                : "border-border hover:border-primary/50"
+                            )}
+                            onClick={() => toggleTourSelection(tour)}
+                          >
+                            <img 
+                              src={getTourImage(tour.image_url)} 
+                              alt={tour.name}
+                              className="w-24 h-24 object-cover rounded-lg flex-shrink-0"
+                            />
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-start justify-between gap-2">
+                                <h3 className="font-semibold">{tour.name}</h3>
+                                {isSelected && (
+                                  <Check className="h-5 w-5 text-primary flex-shrink-0" />
+                                )}
+                              </div>
+                              <p className="text-sm text-muted-foreground line-clamp-2">{tour.description}</p>
+                              <div className="flex items-center gap-4 mt-2">
+                                <span className="text-sm text-muted-foreground">{tour.duration_hours}h</span>
+                                <span className="font-semibold text-primary">${tour.price}/person</span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -365,16 +381,22 @@ export default function BookingPage() {
                   <div className="glass-card p-6 sticky top-24">
                     <h2 className="text-xl font-semibold mb-4">Booking Summary</h2>
                     
-                    {selectedTour ? (
+                    {selectedTours.length > 0 ? (
                       <>
-                        <div className="pb-4 border-b">
-                          <img 
-                            src={getTourImage(selectedTour.image_url)} 
-                            alt={selectedTour.name}
-                            className="w-full h-32 object-cover rounded-lg mb-3"
-                          />
-                          <h3 className="font-medium">{selectedTour.name}</h3>
-                          <p className="text-sm text-muted-foreground">{selectedTour.location}</p>
+                        <div className="pb-4 border-b space-y-3">
+                          {selectedTours.map((tour) => (
+                            <div key={tour.id} className="flex gap-3">
+                              <img 
+                                src={getTourImage(tour.image_url)} 
+                                alt={tour.name}
+                                className="w-16 h-16 object-cover rounded-lg flex-shrink-0"
+                              />
+                              <div className="min-w-0">
+                                <h3 className="font-medium text-sm">{tour.name}</h3>
+                                <p className="text-xs text-muted-foreground">${tour.price}/person</p>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                         
                         <div className="py-4 border-b space-y-2">
@@ -390,11 +412,13 @@ export default function BookingPage() {
                           </div>
                         </div>
                         
-                        <div className="py-4 border-b">
-                          <div className="flex justify-between items-center text-sm">
-                            <span>${selectedTour.price} x {totalParticipants}</span>
-                            <span className="font-medium">${totalPrice}</span>
-                          </div>
+                        <div className="py-4 border-b space-y-1">
+                          {selectedTours.map((tour) => (
+                            <div key={tour.id} className="flex justify-between items-center text-sm">
+                              <span className="truncate mr-2">{tour.name}</span>
+                              <span className="font-medium flex-shrink-0">${tour.price * totalParticipants}</span>
+                            </div>
+                          ))}
                         </div>
                         
                         <div className="pt-4 mb-6">
@@ -407,7 +431,7 @@ export default function BookingPage() {
                         <Button 
                           type="submit"
                           className="w-full btn-primary"
-                          disabled={isSubmitting || !selectedTour}
+                          disabled={isSubmitting || selectedTours.length === 0}
                         >
                           {isSubmitting ? (
                             <>
