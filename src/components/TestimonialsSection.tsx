@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
     name: "Sophia Martinez",
     location: "New York, USA",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=faces",
-    content: "My family and I had the most wonderful stay at MareSereno. The apartment was immaculate, with breathtaking sea views. The staff went above and beyond to make our vacation special.",
+    content: "Swimming with whale sharks was a life-changing experience! Max and his team made us feel safe the entire time. The guides knew exactly where to find the whale sharks and the whole tour was incredibly well organized.",
     rating: 5
   },
   {
@@ -26,7 +26,7 @@ const testimonials: Testimonial[] = [
     name: "Marco Rossi",
     location: "Rome, Italy",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=faces",
-    content: "Absolutely perfect location, steps away from the beach. The apartment had everything we needed and more. The modern amenities combined with the traditional coastal charm created a truly magical experience.",
+    content: "The snorkeling tour at Chole Bay was absolutely breathtaking. Crystal clear waters, vibrant coral reefs, and so many colorful fish! Sea Max Tours provided excellent equipment and their local knowledge made all the difference.",
     rating: 5
   },
   {
@@ -34,8 +34,8 @@ const testimonials: Testimonial[] = [
     name: "Emma Johnson",
     location: "London, UK",
     avatar: "https://images.unsplash.com/photo-1569913486515-b74bf7751574?w=150&h=150&fit=crop&crop=faces",
-    content: "We spent a wonderful week at this beachfront paradise. The sunrise views from our terrace were worth the trip alone. Exceptionally clean and beautifully designed spaces.",
-    rating: 4
+    content: "We took the sandbank picnic tour and it was pure paradise. A private beach experience with delicious local food. The dhow sailing at sunset was magical. Highly recommend Sea Max Tours!",
+    rating: 5
   },
 ];
 

@@ -18,7 +18,7 @@ export const it = {
     scrollDown: "Scorri Giù"
   },
   footer: {
-    description: "Appartamenti di lusso sul mare e camere d'albergo con splendide viste sul mare, che offrono il perfetto connubio di comfort ed eleganza per la tua vacanza da sogno.",
+    description: "Vivi avventure indimenticabili con i nostri tour guidati da esperti. Siamo specializzati nel creare esperienze memorabili che ti connettono con destinazioni straordinarie.",
     quickLinks: "Link Rapidi",
     contact: "Contatti",
     newsletter: "Newsletter",
@@ -41,7 +41,7 @@ export const it = {
   },
   testimonials: {
     title: "Cosa Dicono i Nostri Ospiti",
-    description: "Scopri perché i nostri ospiti continuano a tornare a MareSereno per le loro fughe al mare."
+    description: "Scopri perché i nostri ospiti continuano a tornare da Sea Max Tours per avventure indimenticabili a Mafia Island."
   },
   notFound: {
     title: "Pagina Non Trovata",

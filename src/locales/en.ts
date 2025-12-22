@@ -41,7 +41,7 @@ export const en = {
   },
   testimonials: {
     title: "What Our Guests Say",
-    description: "Discover why our guests keep coming back to MareSereno for their seaside getaways."
+    description: "Discover why our guests keep coming back to Sea Max Tours for unforgettable Mafia Island adventures."
   },
   notFound: {
     title: "Page Not Found",
@@ -316,9 +316,9 @@ export const en = {
     }
   },
   amenitiesPage: {
-    title: "Our Amenities",
-    subtitle: "Discover the luxury amenities and services that make your stay unforgettable.",
-    description: "At MareSereno, we are dedicated to providing a comprehensive and luxurious stay experience. From our beachfront services to wellness facilities, every detail has been curated to ensure maximum comfort and pleasure.",
+    title: "Tour Features",
+    subtitle: "Discover what makes our tours exceptional and unforgettable.",
+    description: "At Sea Max Tours, we are dedicated to providing comprehensive and memorable tour experiences. From expert local guides to premium equipment, every detail has been curated to ensure maximum enjoyment and safety.",
     categories: {
       wellness: {
         title: "Wellness & Relaxation",

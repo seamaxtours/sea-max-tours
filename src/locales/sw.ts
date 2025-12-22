@@ -41,7 +41,7 @@ export const sw = {
   },
   testimonials: {
     title: "Wageni Wetu Wanasema Nini",
-    description: "Gundua kwa nini wageni wetu wanaendelea kurudi kwa MareSereno kwa likizo zao za pwani."
+    description: "Gundua kwa nini wageni wetu wanaendelea kurudi kwa Sea Max Tours kwa matembezi ya kusisimua ya Kisiwa cha Mafia."
   },
   notFound: {
     title: "Ukurasa Haupatikani",
